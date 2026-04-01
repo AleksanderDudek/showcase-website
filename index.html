@@ -189,21 +189,55 @@
 
     .c-links { display: flex; gap: .5rem; flex-wrap: wrap; flex-shrink: 0; }
 
+    .hero-actions {
+      display: flex; gap: .85rem; flex-wrap: wrap; justify-content: center;
+    }
+
     .btn {
       display: inline-flex; align-items: center; gap: .35rem;
-      padding: .35rem .75rem; border-radius: 8px;
-      font-size: .7rem; font-family: var(--mono); font-weight: 600;
+      padding: .55rem .95rem; border-radius: 10px;
+      font-size: .74rem; font-family: var(--mono); font-weight: 700;
+      letter-spacing: .04em;
       text-decoration: none; white-space: nowrap;
-      transition: all .2s ease; line-height: 1;
+      transition: transform .2s ease, box-shadow .25s ease, border-color .25s ease, background .25s ease, color .25s ease;
+      line-height: 1;
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
     }
-    .btn-gh  { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1);  color: var(--dim); }
-    .btn-gh:hover { background: rgba(255,255,255,.1); color: var(--text); }
-    .btn-live{ background: rgba(0,212,255,.08);    border: 1px solid rgba(0,212,255,.3);   color: var(--cyan); }
-    .btn-live:hover { background: rgba(0,212,255,.18); box-shadow: 0 0 14px rgba(0,212,255,.2); }
-    .btn-ext { background: rgba(139,92,246,.08);  border: 1px solid rgba(139,92,246,.3);  color: var(--purple); }
-    .btn-ext:hover { background: rgba(139,92,246,.18); }
-    .btn-gql { background: rgba(236,72,153,.08);  border: 1px solid rgba(236,72,153,.3);  color: #f472b6; }
-    .btn-gql:hover { background: rgba(236,72,153,.18); }
+    .btn::before,
+    .btn-cv::before,
+    .foot-btn::before {
+      content: '';
+      position: absolute;
+      inset: -30%;
+      background: linear-gradient(115deg, transparent 20%, rgba(255,255,255,.18) 45%, transparent 70%);
+      transform: translateX(-130%);
+      animation: sweep 4.8s linear infinite;
+      z-index: -1;
+      pointer-events: none;
+    }
+    .btn:hover,
+    .btn-cv:hover,
+    .foot-btn:hover {
+      transform: translateY(-2px) scale(1.02);
+    }
+    .btn-gh  { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.22); color: #f8fafc; box-shadow: 0 0 20px rgba(255,255,255,.08); }
+    .btn-gh:hover { background: rgba(255,255,255,.14); box-shadow: 0 0 28px rgba(255,255,255,.14); }
+    .btn-live{ background: rgba(0,212,255,.16); border: 1px solid rgba(0,212,255,.55); color: #b8f6ff; box-shadow: 0 0 18px rgba(0,212,255,.2), 0 0 34px rgba(0,212,255,.08); }
+    .btn-live:hover { background: rgba(0,212,255,.24); box-shadow: 0 0 18px rgba(0,212,255,.3), 0 0 44px rgba(0,212,255,.15); }
+    .btn-ext { background: rgba(139,92,246,.18); border: 1px solid rgba(167,139,250,.5); color: #ddd6fe; box-shadow: 0 0 18px rgba(139,92,246,.16), 0 0 34px rgba(139,92,246,.08); }
+    .btn-ext:hover { background: rgba(139,92,246,.28); box-shadow: 0 0 18px rgba(139,92,246,.28), 0 0 44px rgba(139,92,246,.14); }
+    .btn-gql { background: rgba(236,72,153,.18); border: 1px solid rgba(244,114,182,.5); color: #ffd0e8; box-shadow: 0 0 18px rgba(236,72,153,.16), 0 0 34px rgba(236,72,153,.08); }
+    .btn-gql:hover { background: rgba(236,72,153,.26); box-shadow: 0 0 18px rgba(236,72,153,.28), 0 0 44px rgba(236,72,153,.14); }
+    .btn-mail { background: rgba(245,158,11,.18); border: 1px solid rgba(245,158,11,.48); color: #fde68a; box-shadow: 0 0 18px rgba(245,158,11,.18), 0 0 34px rgba(245,158,11,.08); }
+    .btn-mail:hover { background: rgba(245,158,11,.28); box-shadow: 0 0 18px rgba(245,158,11,.28), 0 0 44px rgba(245,158,11,.14); }
+    @keyframes sweep {
+      0% { transform: translateX(-130%); opacity: 0; }
+      10% { opacity: 1; }
+      55% { opacity: .9; }
+      100% { transform: translateX(130%); opacity: 0; }
+    }
 
     /* ─── TAGS ───────────────────────────────── */
     .tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1rem; }
@@ -316,12 +350,15 @@
       background: linear-gradient(135deg, rgba(0,212,255,.1), rgba(139,92,246,.1));
       border: 1px solid rgba(0,212,255,.4); color: var(--cyan);
       transition: all .25s ease;
-      box-shadow: 0 0 16px rgba(0,212,255,.07);
+      box-shadow: 0 0 18px rgba(0,212,255,.16), 0 0 34px rgba(139,92,246,.08);
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
     }
     .btn-cv:hover {
       background: linear-gradient(135deg, rgba(0,212,255,.2), rgba(139,92,246,.2));
       border-color: rgba(0,212,255,.75);
-      box-shadow: 0 0 28px rgba(0,212,255,.22);
+      box-shadow: 0 0 28px rgba(0,212,255,.28), 0 0 48px rgba(139,92,246,.14);
       transform: translateY(-2px);
     }
 
@@ -504,6 +541,67 @@
       background: rgba(255,255,255,.04);
       border: 1px solid rgba(255,255,255,.08);
     }
+    .credential-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.2rem;
+      margin-top: 1.4rem;
+    }
+    .credential-media {
+      background: rgba(255,255,255,.02);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 18px 36px rgba(0,0,0,.22);
+    }
+    .credential-media img {
+      width: 100%;
+      display: block;
+      aspect-ratio: 1 / 1.414;
+      object-fit: cover;
+      background: #060610;
+    }
+    .credential-copy {
+      padding: 1rem;
+      display: grid;
+      gap: .7rem;
+    }
+    .credential-copy h4 {
+      font-size: 1rem;
+    }
+    .credential-copy p {
+      color: var(--dim);
+      line-height: 1.6;
+      font-size: .88rem;
+    }
+    .credential-actions {
+      display: flex;
+      gap: .6rem;
+      flex-wrap: wrap;
+    }
+    .foot-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      padding: .55rem .95rem;
+      border-radius: 10px;
+      text-decoration: none;
+      font-family: var(--mono);
+      font-size: .72rem;
+      letter-spacing: .06em;
+      border: 1px solid rgba(0,212,255,.35);
+      color: #b8f6ff;
+      background: rgba(0,212,255,.11);
+      box-shadow: 0 0 18px rgba(0,212,255,.14);
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+      transition: transform .2s ease, box-shadow .25s ease, background .25s ease;
+    }
+    .foot-btn:hover {
+      background: rgba(0,212,255,.2);
+      box-shadow: 0 0 24px rgba(0,212,255,.22), 0 0 38px rgba(139,92,246,.1);
+    }
     @media (max-width: 920px) {
       .split-7,
       .split-5 { grid-column: span 12; }
@@ -521,10 +619,15 @@
 
 <!-- ═══════════════════ HERO ═══════════════════ -->
 <header>
-  <a class="btn-cv" href="https://drive.google.com/drive/folders/1aXlqEXLI3U8NwoTzMX5Ul--HqSIPb0Z1?usp=sharing" target="_blank" rel="noopener">
-    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-    View CV
-  </a>
+  <div class="hero-actions">
+    <a class="btn-cv" href="https://drive.google.com/drive/folders/1aXlqEXLI3U8NwoTzMX5Ul--HqSIPb0Z1?usp=sharing" target="_blank" rel="noopener">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      View CV
+    </a>
+    <a class="btn btn-live" href="https://www.linkedin.com/in/aleksanderdudek/" target="_blank" rel="noopener">LinkedIn</a>
+    <a class="btn btn-gh" href="https://github.com/AleksanderDudek" target="_blank" rel="noopener">GitHub</a>
+    <a class="btn btn-mail" href="mailto:web.fullstack.programmer@gmail.com">Email</a>
+  </div>
 
   <div class="badge">// available for opportunities</div>
 
@@ -570,6 +673,8 @@
         <a class="btn btn-live" href="AleksanderDudekCV_M_compressed%20(1).pdf" target="_blank" rel="noopener">Open PDF</a>
         <a class="btn btn-ext" href="https://youtu.be/uaah4ScxAOg" target="_blank" rel="noopener">Video CV</a>
         <a class="btn btn-gh" href="https://www.linkedin.com/in/aleksanderdudek/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn btn-gh" href="https://github.com/AleksanderDudek" target="_blank" rel="noopener">GitHub Profile</a>
+        <a class="btn btn-mail" href="mailto:web.fullstack.programmer@gmail.com">Email</a>
       </div>
 
       <div class="meta-grid">
@@ -673,6 +778,45 @@
         <span class="tag sc">Quality Engineering</span>
         <span class="tag sc">Architecture</span>
         <span class="tag sc">Leadership</span>
+      </div>
+
+      <div class="credential-gallery">
+        <article class="credential-media">
+          <img src="assets/credentials/page-7.png" alt="AI Devs certificate scan" />
+          <div class="credential-copy">
+            <h4>AI Devs Certificate</h4>
+            <p>Embedded scan rendered directly from the CV PDF so the credential is visible on the page instead of only living inside the document.</p>
+            <div class="credential-actions">
+              <a class="btn btn-live" href="assets/credentials/page-7.png" target="_blank" rel="noopener">Open Scan</a>
+              <a class="btn btn-ext" href="AleksanderDudekCV_M_compressed%20(1).pdf" target="_blank" rel="noopener">Open PDF</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="credential-media">
+          <img src="assets/credentials/page-5.png" alt="Engineer's diploma scan" />
+          <div class="credential-copy">
+            <h4>Engineer's Diploma</h4>
+            <p>Academic diploma scan extracted from the PDF and surfaced in the certifications area so it is visible without opening the full CV first.</p>
+            <div class="credential-actions">
+              <a class="btn btn-live" href="assets/credentials/page-5.png" target="_blank" rel="noopener">Open Scan</a>
+              <a class="btn btn-gh" href="assets/credentials/page-6.png" target="_blank" rel="noopener">Extra Page</a>
+              <a class="btn btn-ext" href="AleksanderDudekCV_M_compressed%20(1).pdf" target="_blank" rel="noopener">Open PDF</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="credential-media">
+          <img src="assets/credentials/page-8.png" alt="Opanuj Frontend AI Edition certificate scan" />
+          <div class="credential-copy">
+            <h4>Opanuj Frontend AI Edition</h4>
+            <p>Training certificate scan rendered from the PDF with the same credential details summarized above.</p>
+            <div class="credential-actions">
+              <a class="btn btn-live" href="assets/credentials/page-8.png" target="_blank" rel="noopener">Open Scan</a>
+              <a class="btn btn-ext" href="AleksanderDudekCV_M_compressed%20(1).pdf" target="_blank" rel="noopener">Open PDF</a>
+            </div>
+          </div>
+        </article>
       </div>
     </article>
   </div>
@@ -1155,7 +1299,10 @@
 <!-- ═══════════════════ FOOTER ═══════════════════ -->
 <footer>
   <div class="foot-links">
-    <a href="https://github.com/AleksanderDudek" target="_blank" rel="noopener">GitHub Profile</a>
+    <a class="foot-btn" href="https://github.com/AleksanderDudek" target="_blank" rel="noopener">GitHub</a>
+    <a class="foot-btn" href="https://www.linkedin.com/in/aleksanderdudek/" target="_blank" rel="noopener">LinkedIn</a>
+    <a class="foot-btn" href="AleksanderDudekCV_M_compressed%20(1).pdf" target="_blank" rel="noopener">CV PDF</a>
+    <a class="foot-btn" href="mailto:web.fullstack.programmer@gmail.com">Email</a>
   </div>
   <p>Built with pure HTML · CSS · JS &mdash; no frameworks, no build step &mdash; just craft.</p>
 </footer>
