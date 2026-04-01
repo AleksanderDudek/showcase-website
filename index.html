@@ -348,6 +348,171 @@
       line-height: 1; color: var(--c-accent, var(--cyan)); flex-shrink: 0;
       opacity: .35;
     }
+
+    /* ─── CV / CERTIFICATIONS ─────────────────── */
+    .cv-grid,
+    .cert-grid {
+      max-width: 1200px; margin: 0 auto; padding: 1rem 2rem 6rem;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1.5rem;
+    }
+    .cv-card,
+    .cert-card {
+      grid-column: span 12;
+      background: rgba(13,13,28,.88);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 1.5rem;
+      box-shadow: 0 20px 60px rgba(0,0,0,.28);
+    }
+    .cv-card h3,
+    .cert-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: .9rem;
+    }
+    .cv-lead {
+      color: var(--dim);
+      line-height: 1.7;
+      font-size: .96rem;
+    }
+    .split-7 { grid-column: span 7; }
+    .split-5 { grid-column: span 5; }
+    .cv-actions {
+      display: flex; gap: .75rem; flex-wrap: wrap; margin-top: 1.25rem;
+    }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: .9rem;
+      margin-top: 1.25rem;
+    }
+    .meta-box {
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.06);
+      border-radius: 12px;
+      padding: .95rem 1rem;
+    }
+    .meta-k {
+      display: block;
+      font-family: var(--mono);
+      font-size: .65rem;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: .45rem;
+    }
+    .meta-v {
+      color: var(--text);
+      line-height: 1.55;
+      font-size: .92rem;
+    }
+    .timeline {
+      display: grid;
+      gap: 1rem;
+    }
+    .timeline-item {
+      position: relative;
+      padding-left: 1.1rem;
+      border-left: 1px solid rgba(0,212,255,.18);
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -5px;
+      top: .35rem;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--cyan);
+      box-shadow: 0 0 16px rgba(0,212,255,.35);
+    }
+    .timeline-top {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: .28rem;
+      flex-wrap: wrap;
+    }
+    .timeline-role {
+      font-weight: 700;
+      color: var(--text);
+    }
+    .timeline-date {
+      font-family: var(--mono);
+      font-size: .72rem;
+      color: var(--cyan);
+    }
+    .timeline-company {
+      color: var(--dim);
+      font-size: .88rem;
+      margin-bottom: .45rem;
+    }
+    .bullet-list {
+      display: grid;
+      gap: .65rem;
+      color: var(--dim);
+      line-height: 1.6;
+      font-size: .9rem;
+    }
+    .bullet-list div {
+      padding-left: 1rem;
+      position: relative;
+    }
+    .bullet-list div::before {
+      content: '>'; 
+      position: absolute;
+      left: 0;
+      color: var(--cyan);
+      font-family: var(--mono);
+    }
+    .cert-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: flex-start;
+      margin-bottom: .9rem;
+      flex-wrap: wrap;
+    }
+    .cert-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      padding: .35rem .7rem;
+      border-radius: 999px;
+      background: rgba(16,185,129,.08);
+      border: 1px solid rgba(16,185,129,.28);
+      color: #6ee7b7;
+      font-family: var(--mono);
+      font-size: .66rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .cert-meta {
+      display: flex;
+      gap: .6rem;
+      flex-wrap: wrap;
+      margin-top: .8rem;
+    }
+    .cert-pill {
+      font-family: var(--mono);
+      font-size: .68rem;
+      padding: .28rem .55rem;
+      border-radius: 6px;
+      color: var(--dim);
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.08);
+    }
+    @media (max-width: 920px) {
+      .split-7,
+      .split-5 { grid-column: span 12; }
+    }
+    @media (max-width: 660px) {
+      .cv-grid,
+      .cert-grid { padding: 1rem; }
+      .meta-grid { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
@@ -388,6 +553,130 @@
     </svg>
   </div>
 </header>
+
+<!-- ═══════════════════ CV SNAPSHOT ═════════════ -->
+<section>
+  <div class="sec-head">
+    <p class="sec-tag">$ open ./AleksanderDudekCV_M_compressed\ \(1\).pdf</p>
+    <h2 class="sec-title">CV <span>Snapshot</span></h2>
+  </div>
+
+  <div class="cv-grid">
+    <article class="cv-card split-7">
+      <h3>Senior software developer with frontend depth and full-stack range</h3>
+      <p class="cv-lead">JavaScript, TypeScript, React, Node.js and Python focused engineer with a practical workload split of roughly 80% frontend and 20% backend. The CV highlights autonomous delivery, architecture input, PR reviews, component implementation from mockups, API integration work, and remote collaboration across multinational teams.</p>
+
+      <div class="cv-actions">
+        <a class="btn btn-live" href="AleksanderDudekCV_M_compressed%20(1).pdf" target="_blank" rel="noopener">Open PDF</a>
+        <a class="btn btn-ext" href="https://youtu.be/uaah4ScxAOg" target="_blank" rel="noopener">Video CV</a>
+        <a class="btn btn-gh" href="https://www.linkedin.com/in/aleksanderdudek/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+
+      <div class="meta-grid">
+        <div class="meta-box">
+          <span class="meta-k">Current role</span>
+          <div class="meta-v">Senior Software Developer, frontend focus with full-stack elements at Heineken for an international beverages client, remote since 09/2024.</div>
+        </div>
+        <div class="meta-box">
+          <span class="meta-k">Contact</span>
+          <div class="meta-v">web.fullstack.programmer@gmail.com<br />+48 727 926 470</div>
+        </div>
+        <div class="meta-box">
+          <span class="meta-k">Languages</span>
+          <div class="meta-v">Polish: native<br />English: proficient<br />German: beginner</div>
+        </div>
+        <div class="meta-box">
+          <span class="meta-k">Tech span</span>
+          <div class="meta-v">React, Vite, TypeScript, GraphQL, Azure, Node.js, Python, Docker, CI/CD, Next.js, Redux, testing, CMS integrations.</div>
+        </div>
+      </div>
+    </article>
+
+    <article class="cv-card split-5">
+      <h3>Selected experience</h3>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-top">
+            <div class="timeline-role">Senior Software Developer</div>
+            <div class="timeline-date">09/2024 - current</div>
+          </div>
+          <div class="timeline-company">Heineken / international beverages client</div>
+          <div class="bullet-list">
+            <div>Autonomous delivery, backlog shaping, architectural input and PR reviews.</div>
+            <div>Worked with React, Vite, GraphQL, Zustand, Contentful CMS and Azure DevOps.</div>
+            <div>Temporarily stepped into DevOps work to unblock a failing CI/CD pipeline.</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-top">
+            <div class="timeline-role">Senior Software Developer</div>
+            <div class="timeline-date">12/2023 - 05/2024</div>
+          </div>
+          <div class="timeline-company">GSK / international pharmaceutical client</div>
+          <div class="bullet-list">
+            <div>Frontend-heavy delivery using React, Vite, TypeScript, Redux Toolkit, Zod and Azure Functions.</div>
+            <div>Worked across multiple REST APIs with strong ownership over implementation choices.</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-top">
+            <div class="timeline-role">Frontend-focused full-stack developer</div>
+            <div class="timeline-date">01/2020 - 11/2023</div>
+          </div>
+          <div class="timeline-company">Rally Health and Teamy.ai</div>
+          <div class="bullet-list">
+            <div>Built API-driven React products and improved onboarding to reduce time-to-first-PR from 2 weeks to 1-2 days.</div>
+            <div>Worked with GraphQL, Next.js, Python, Docker, Keycloak, Node.js and distributed remote teams.</div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="cv-card split-12">
+      <h3>Impact highlighted in the PDF</h3>
+      <div class="bullet-list">
+        <div>Improved task delivery time for the Heineken development team by 30% by reusing existing repositories effectively.</div>
+        <div>Influenced repository and design decisions to simplify visual component code and improve developer speed.</div>
+        <div>Unblocked a failing Azure DevOps CI/CD pipeline after self-learning the stack quickly, saving roughly 3 days of work for an 8-person team.</div>
+        <div>Built a contractor onboarding path at Rally Health that dramatically reduced setup friction for new developers.</div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ═══════════════════ CERTIFICATIONS ══════════ -->
+<section>
+  <div class="sec-head">
+    <p class="sec-tag">$ ls ./certifications</p>
+    <h2 class="sec-title">Selected <span>Certifications</span></h2>
+  </div>
+
+  <div class="cert-grid">
+    <article class="cert-card">
+      <div class="cert-top">
+        <div>
+          <h3>Opanuj Frontend AI Edition</h3>
+          <p class="cv-lead">Certificate of completion for a 10-week professional frontend training program extended with practical Generative AI usage in day-to-day frontend work.</p>
+        </div>
+        <span class="cert-badge">Completed</span>
+      </div>
+      <div class="cert-meta">
+        <span class="cert-pill">Issued: 25.10.2024</span>
+        <span class="cert-pill">Certificate No: 24/0051</span>
+        <span class="cert-pill">Participant: Aleksander Tadeusz Dudek</span>
+        <span class="cert-pill">Mode: cohort-based</span>
+      </div>
+      <div class="tags" style="margin-top: 1rem; margin-bottom: 0;">
+        <span class="tag rct">Frontend</span>
+        <span class="tag ai">Generative AI</span>
+        <span class="tag ci">CI/CD</span>
+        <span class="tag sc">Quality Engineering</span>
+        <span class="tag sc">Architecture</span>
+        <span class="tag sc">Leadership</span>
+      </div>
+    </article>
+  </div>
+</section>
 
 <!-- ═══════════════════ PROJECTS ═══════════════ -->
 <main>
