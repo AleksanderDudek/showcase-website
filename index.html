@@ -109,8 +109,11 @@
     @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
 
     .stats {
-      display: flex; gap: 2.5rem; flex-wrap: wrap; justify-content: center;
+      display: flex; gap: 1.25rem; flex-wrap: wrap; justify-content: center;
       margin-top: .5rem;
+    }
+    @media (min-width: 600px) {
+      .stats { gap: 2.5rem; }
     }
     .stat { text-align: center; }
     .stat-n {
@@ -134,7 +137,10 @@
     }
 
     /* ─── SECTION HEADER ─────────────────────── */
-    .sec-head { text-align: center; padding: 5rem 2rem 3rem; }
+    .sec-head { text-align: center; padding: 2.5rem 1.25rem 1.75rem; }
+    @media (min-width: 768px) {
+      .sec-head { padding: 5rem 2rem 3rem; }
+    }
     .sec-tag {
       font-family: var(--mono); font-size: .72rem; color: var(--cyan);
       text-transform: uppercase; letter-spacing: .2em; margin-bottom: .75rem;
@@ -146,13 +152,16 @@
 
     /* ─── GRID ───────────────────────────────── */
     .grid {
-      max-width: 1420px; margin: 0 auto; padding: 1rem 2rem 6rem;
+      max-width: 1420px; margin: 0 auto; padding: 1rem 1rem 3rem;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(580px, 1fr));
+      grid-template-columns: 1fr;
       gap: 1.5rem;
     }
-    @media (max-width: 660px) {
-      .grid { grid-template-columns: 1fr; padding: 1rem; }
+    @media (min-width: 768px) {
+      .grid {
+        padding: 1rem 2rem 6rem;
+        grid-template-columns: repeat(auto-fit, minmax(580px, 1fr));
+      }
     }
 
     /* ─── CARD ───────────────────────────────── */
@@ -180,14 +189,17 @@
     .card-body { padding: 1.5rem; }
 
     .card-top {
-      display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1rem;
+      display: flex; flex-wrap: wrap; align-items: flex-start; gap: .75rem; margin-bottom: 1rem;
     }
     .c-icon { font-size: 2rem; line-height: 1; flex-shrink: 0; }
     .c-meta { flex: 1; min-width: 0; }
     .c-title { font-size: 1.15rem; font-weight: 700; margin-bottom: .25rem; }
     .c-desc  { font-size: .85rem; color: var(--dim); line-height: 1.55; }
 
-    .c-links { display: flex; gap: .5rem; flex-wrap: wrap; flex-shrink: 0; }
+    .c-links { display: flex; gap: .5rem; flex-wrap: wrap; width: 100%; }
+    @media (min-width: 600px) {
+      .c-links { width: auto; flex-shrink: 0; }
+    }
 
     .hero-actions {
       display: flex; gap: .85rem; flex-wrap: wrap; justify-content: center;
@@ -364,13 +376,16 @@
 
     /* ─── INTERESTS ──────────────────────────────── */
     .interests-grid {
-      max-width: 1200px; margin: 0 auto; padding: 1rem 2rem 6rem;
+      max-width: 1200px; margin: 0 auto; padding: 1rem 1rem 3rem;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      grid-template-columns: 1fr;
       gap: 1.5rem;
     }
-    @media (max-width: 660px) {
-      .interests-grid { grid-template-columns: 1fr; padding: 1rem; }
+    @media (min-width: 700px) {
+      .interests-grid {
+        padding: 1rem 2rem 6rem;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      }
     }
     .lang-badge {
       display: inline-flex; align-items: center; gap: .28rem;
@@ -389,10 +404,13 @@
     /* ─── CV / CERTIFICATIONS ─────────────────── */
     .cv-grid,
     .cert-grid {
-      max-width: 1200px; margin: 0 auto; padding: 1rem 2rem 6rem;
+      max-width: 1200px; margin: 0 auto; padding: 1rem;
       display: grid;
       grid-template-columns: repeat(12, 1fr);
       gap: 1.5rem;
+    }
+    @media (min-width: 768px) {
+      .cv-grid, .cert-grid { padding: 1rem 2rem 6rem; }
     }
     .cv-card,
     .cert-card {
@@ -400,8 +418,11 @@
       background: rgba(13,13,28,.88);
       border: 1px solid var(--border);
       border-radius: 18px;
-      padding: 1.5rem;
+      padding: 1rem;
       box-shadow: 0 20px 60px rgba(0,0,0,.28);
+    }
+    @media (min-width: 600px) {
+      .cv-card, .cert-card { padding: 1.5rem; }
     }
     .cv-card h3,
     .cert-card h3 {
@@ -420,9 +441,12 @@
     }
     .meta-grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: 1fr;
       gap: .9rem;
       margin-top: 1.25rem;
+    }
+    @media (min-width: 600px) {
+      .meta-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
     .meta-box {
       background: rgba(255,255,255,.03);
@@ -543,9 +567,14 @@
     }
     .credential-gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: 1fr;
       gap: 1.2rem;
       margin-top: 1.4rem;
+    }
+    @media (min-width: 700px) {
+      .credential-gallery {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      }
     }
     .credential-media {
       background: rgba(255,255,255,.02);
@@ -602,14 +631,105 @@
       background: rgba(0,212,255,.2);
       box-shadow: 0 0 24px rgba(0,212,255,.22), 0 0 38px rgba(139,92,246,.1);
     }
-    @media (max-width: 920px) {
-      .split-7,
-      .split-5 { grid-column: span 12; }
+    @media (min-width: 920px) {
+      .split-7 { grid-column: span 7; }
+      .split-5 { grid-column: span 5; }
     }
-    @media (max-width: 660px) {
+
+    /* ─── VIDEO GRID (Knowledge Sharing) ─────── */
+    .video-grid {
+      max-width: 1420px; margin: 0 auto;
+      padding: 0.75rem 0.75rem 3rem;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    @media (min-width: 600px) {
+      .video-grid {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 1rem 1.25rem 4rem;
+      }
+    }
+    @media (min-width: 1024px) {
+      .video-grid {
+        grid-template-columns: repeat(3, 1fr);
+        padding: 1rem 2rem 6rem;
+      }
+    }
+    .video-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 16px; overflow: hidden;
+      opacity: 0; transform: translateY(28px);
+      transition: opacity .6s ease, transform .6s ease,
+                  box-shadow .3s ease, border-color .3s ease;
+    }
+    .video-card.vis {
+      opacity: 1; transform: translateY(0);
+    }
+    .video-card:hover {
+      border-color: var(--cyan);
+      box-shadow: 0 20px 60px rgba(0,0,0,.5), 0 0 28px rgba(0,212,255,.08);
+      transform: translateY(-4px);
+    }
+    .video-embed {
+      position: relative; width: 100%; aspect-ratio: 16/9;
+      background: #04040a;
+    }
+    .video-embed iframe {
+      position: absolute; inset: 0; width: 100%; height: 100%; border: none;
+    }
+    .video-placeholder {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: .75rem;
+      background: linear-gradient(135deg, #0a0a18, #111128);
+      color: var(--muted); font-family: var(--mono); font-size: .75rem;
+      letter-spacing: .06em;
+    }
+    .video-placeholder .ph-icon {
+      width: 52px; height: 52px; border-radius: 50%;
+      border: 2px dashed rgba(0,212,255,.28);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(0,212,255,.45); font-size: 1.5rem;
+    }
+    .video-info {
+      padding: 1rem 1.25rem 1.25rem;
+      border-top: 1px solid var(--border);
+    }
+    .video-title {
+      font-size: .95rem; font-weight: 700; margin-bottom: .4rem;
+    }
+    .video-desc {
+      font-size: .82rem; color: var(--dim); line-height: 1.55;
+    }
+
+    /* ─── MOBILE IMPROVEMENTS ───────────────────── */
+    @media (max-width: 599px) {
+      header { padding: 1.25rem; gap: 1.25rem; }
+      .card-body { padding: 1rem; }
+      .hero-tagline { width: 100%; max-width: 100%; }
+      .grid,
+      .interests-grid,
+      .video-grid { padding-left: 0.75rem; padding-right: 0.75rem; }
       .cv-grid,
-      .cert-grid { padding: 1rem; }
-      .meta-grid { grid-template-columns: 1fr; }
+      .cert-grid { padding-left: 0.75rem; padding-right: 0.75rem; }
+      .sec-head { padding: 2rem 1rem 1.25rem; }
+      .c-title { font-size: 1rem; }
+      .c-desc,
+      .cv-lead { font-size: .84rem; }
+      pre.code { font-size: .7rem; padding: .85rem 1rem; }
+      .meta-box { padding: .75rem; }
+      .meta-v { font-size: .86rem; line-height: 1.5; }
+      .timeline-item { padding-left: .85rem; }
+      .credential-copy { padding: .75rem; }
+      .credential-copy p { font-size: .82rem; }
+      .stats { gap: 1rem; }
+      .stat-n { font-size: 1.65rem; }
+      .hero-name { letter-spacing: -.03em; }
+      .bullet-list { font-size: .86rem; }
+      .video-info { padding: .85rem 1rem 1rem; }
+      .video-title { font-size: .9rem; }
+      .video-desc { font-size: .78rem; }
     }
   </style>
 </head>
@@ -1428,6 +1548,104 @@
   </div>
 </section>
 
+<!-- ═══════════════════ KNOWLEDGE SHARING ════════ -->
+<section>
+  <div class="sec-head">
+    <p class="sec-tag">$ youtube-dl --playlist ./knowledge-sharing</p>
+    <h2 class="sec-title">Knowledge <span>Sharing</span></h2>
+  </div>
+
+  <!-- Replace VIDEO_ID_* placeholders with your YouTube playlist video IDs -->
+  <div class="video-grid">
+
+    <!-- ── 1. Video CV ─── -->
+    <article class="video-card">
+      <div class="video-embed">
+        <iframe
+          src="https://www.youtube.com/embed/uaah4ScxAOg?rel=0"
+          title="Video CV — Aleksander Dudek"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="video-info">
+        <div class="video-title">Video CV</div>
+        <div class="video-desc">A walkthrough of my background, stack, and the kind of work I care about — in video form.</div>
+      </div>
+    </article>
+
+    <!-- ── 2. Placeholder — replace VIDEO_ID_2 ── -->
+    <article class="video-card">
+      <div class="video-embed">
+        <div class="video-placeholder">
+          <div class="ph-icon">▷</div>
+          <span>Update with playlist video ID</span>
+        </div>
+      </div>
+      <div class="video-info">
+        <div class="video-title">Stan się Mistrzem Koncentracji</div>
+        <div class="video-desc">Naukowe podstawy i praktyczne techniki osiągania głębokiej koncentracji oraz stanu flow.</div>
+      </div>
+    </article>
+
+    <!-- ── 3. Placeholder — replace VIDEO_ID_3 ── -->
+    <article class="video-card">
+      <div class="video-embed">
+        <div class="video-placeholder">
+          <div class="ph-icon">▷</div>
+          <span>Update with playlist video ID</span>
+        </div>
+      </div>
+      <div class="video-info">
+        <div class="video-title">Oddech, Który Zmienia Życie</div>
+        <div class="video-desc">Techniki oddechowe stosowane przez Navy SEALs — redukcja stresu, lepsza energia, klarowność umysłu.</div>
+      </div>
+    </article>
+
+    <!-- ── 4. Placeholder — replace VIDEO_ID_4 ── -->
+    <article class="video-card">
+      <div class="video-embed">
+        <div class="video-placeholder">
+          <div class="ph-icon">▷</div>
+          <span>Update with playlist video ID</span>
+        </div>
+      </div>
+      <div class="video-info">
+        <div class="video-title">Tylko Luz Nas Uratuje</div>
+        <div class="video-desc">Jak zachować spokój, elastyczność i humor w życiu i pracy — bez utraty skuteczności.</div>
+      </div>
+    </article>
+
+    <!-- ── 5. Placeholder — replace VIDEO_ID_5 ── -->
+    <article class="video-card">
+      <div class="video-embed">
+        <div class="video-placeholder">
+          <div class="ph-icon">▷</div>
+          <span>Update with playlist video ID</span>
+        </div>
+      </div>
+      <div class="video-info">
+        <div class="video-title">Emocjonalna Błogość w 15 Minut</div>
+        <div class="video-desc">Praca z ciałem przez świadomy dotyk i akupresurę — efektywna w biurze, w domu, w podróży.</div>
+      </div>
+    </article>
+
+    <!-- ── 6. Placeholder — replace VIDEO_ID_6 ── -->
+    <article class="video-card">
+      <div class="video-embed">
+        <div class="video-placeholder">
+          <div class="ph-icon">▷</div>
+          <span>Update with playlist video ID</span>
+        </div>
+      </div>
+      <div class="video-info">
+        <div class="video-title">AI Devs — Structured LLM Outputs</div>
+        <div class="video-desc">Provider-agnostic LLM client patterns, Zod schema validation, and production-safe structured completions in TypeScript.</div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
 <!-- ═══════════════════ FOOTER ═══════════════════ -->
 <footer>
   <div class="foot-links">
@@ -1561,7 +1779,7 @@
     });
   }, { threshold: .08 });
 
-  document.querySelectorAll('.card').forEach(c => obs.observe(c));
+  document.querySelectorAll('.card, .video-card').forEach(c => obs.observe(c));
 })();
 
 /* ── 3-D tilt on cards ───────────────────────── */
