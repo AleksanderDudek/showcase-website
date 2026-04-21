@@ -5,733 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Aleksander Dudek — Full-Stack Engineer portfolio: TypeScript, React, Python, WebSockets, AI integrations, DevOps." />
   <title>Aleksander Dudek — Portfolio</title>
-  <style>
-    /* ─── TOKENS ─────────────────────────────── */
-    :root {
-      --bg:        #07070f;
-      --card:      #0d0d1c;
-      --card-h:    #111128;
-      --border:    #181830;
-      --border-h:  #2a2a5a;
-      --cyan:      #00d4ff;
-      --purple:    #8b5cf6;
-      --green:     #10b981;
-      --orange:    #f97316;
-      --pink:      #ec4899;
-      --yellow:    #f59e0b;
-      --text:      #e2e8f0;
-      --muted:     #64748b;
-      --dim:       #94a3b8;
-      --mono:      'Consolas','Monaco','Courier New',monospace;
-      --sans:      -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
-    }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--sans);
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
-
-    /* grid overlay */
-    body::before {
-      content: '';
-      position: fixed; inset: 0; z-index: 0; pointer-events: none;
-      background-image:
-        linear-gradient(rgba(0,212,255,.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,212,255,.03) 1px, transparent 1px);
-      background-size: 50px 50px;
-    }
-
-    #bg-canvas {
-      position: fixed; inset: 0; z-index: 0; opacity: .35;
-    }
-
-    header, main, footer { position: relative; z-index: 1; }
-
-    /* ─── HERO ───────────────────────────────── */
-    header {
-      min-height: 100vh;
-      display: flex; flex-direction: column;
-      justify-content: center; align-items: center; text-align: center;
-      padding: 2rem; gap: 1.75rem;
-    }
-
-    .badge {
-      font-family: var(--mono); font-size: .72rem; letter-spacing: .2em;
-      text-transform: uppercase; color: var(--cyan);
-      border: 1px solid rgba(0,212,255,.3); border-radius: 100px;
-      padding: .4rem 1.1rem; background: rgba(0,212,255,.05);
-      animation: pulse-border 3s ease infinite;
-    }
-    @keyframes pulse-border {
-      0%,100% { border-color: rgba(0,212,255,.3); }
-      50%      { border-color: rgba(0,212,255,.7); box-shadow: 0 0 20px rgba(0,212,255,.15); }
-    }
-
-    .hero-name {
-      font-size: clamp(2.8rem, 9vw, 6.5rem);
-      font-weight: 800; letter-spacing: -.02em; line-height: 1;
-      background: linear-gradient(140deg, #fff 30%, var(--cyan) 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      background-clip: text;
-      position: relative;
-    }
-    .hero-name::after {
-      content: attr(data-text);
-      position: absolute; inset: 0;
-      background: linear-gradient(140deg, transparent 30%, rgba(0,212,255,.12) 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      background-clip: text;
-      animation: glitch 9s ease infinite;
-    }
-    @keyframes glitch {
-      0%,94%,100% { clip-path: none; transform: none; }
-      95% { clip-path: polygon(0 18%,100% 18%,100% 38%,0 38%); transform: translate(-3px,0); }
-      96% { clip-path: polygon(0 55%,100% 55%,100% 72%,0 72%); transform: translate(3px,0); }
-      97% { clip-path: none; transform: none; }
-      98% { clip-path: polygon(0 5%,100% 5%,100% 14%,0 14%);  transform: translate(-1px,0); }
-    }
-
-    .hero-tagline {
-      font-family: var(--mono); font-size: clamp(.9rem,2.5vw,1.2rem);
-      color: var(--dim); min-height: 1.6em;
-    }
-    .cursor {
-      display: inline-block; width: 2px; height: 1em;
-      background: var(--cyan); margin-left: 2px; vertical-align: text-bottom;
-      animation: blink 1s step-end infinite;
-    }
-    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
-
-    .stats {
-      display: flex; gap: 1.25rem; flex-wrap: wrap; justify-content: center;
-      margin-top: .5rem;
-    }
-    @media (min-width: 600px) {
-      .stats { gap: 2.5rem; }
-    }
-    .stat { text-align: center; }
-    .stat-n {
-      display: block; font-family: var(--mono); font-size: 2rem;
-      font-weight: 700; color: var(--cyan);
-    }
-    .stat-l {
-      font-size: .72rem; color: var(--muted); text-transform: uppercase;
-      letter-spacing: .1em;
-    }
-
-    .scroll-hint {
-      position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
-      display: flex; flex-direction: column; align-items: center; gap:.5rem;
-      color: var(--muted); font-size: .72rem; letter-spacing: .1em;
-      animation: bounce 2.5s ease infinite;
-    }
-    @keyframes bounce {
-      0%,100% { transform: translateX(-50%) translateY(0); }
-      50%      { transform: translateX(-50%) translateY(8px); }
-    }
-
-    /* ─── SECTION HEADER ─────────────────────── */
-    .sec-head { text-align: center; padding: 2.5rem 1.25rem 1.75rem; }
-    @media (min-width: 768px) {
-      .sec-head { padding: 5rem 2rem 3rem; }
-    }
-    .sec-tag {
-      font-family: var(--mono); font-size: .72rem; color: var(--cyan);
-      text-transform: uppercase; letter-spacing: .2em; margin-bottom: .75rem;
-    }
-    .sec-title {
-      font-size: clamp(1.8rem,4vw,2.8rem); font-weight: 700;
-    }
-    .sec-title span { color: var(--cyan); }
-
-    /* ─── GRID ───────────────────────────────── */
-    .grid {
-      max-width: 1420px; margin: 0 auto; padding: 1rem 1rem 3rem;
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
-    }
-    @media (min-width: 768px) {
-      .grid {
-        padding: 1rem 2rem 6rem;
-        grid-template-columns: repeat(auto-fit, minmax(580px, 1fr));
-      }
-    }
-
-    /* ─── CARD ───────────────────────────────── */
-    .card {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 16px; overflow: hidden;
-      opacity: 0; transform: translateY(28px);
-      transition: opacity .6s ease, transform .6s ease,
-                  box-shadow .3s ease, border-color .3s ease;
-    }
-    .card.vis {
-      opacity: 1; transform: translateY(0);
-    }
-    .card:hover {
-      border-color: var(--c-accent,var(--cyan));
-      box-shadow: 0 20px 60px rgba(0,0,0,.5), 0 0 28px var(--c-glow,rgba(0,212,255,.08));
-      transform: translateY(-5px);
-    }
-
-    .accent-bar {
-      height: 3px;
-      background: linear-gradient(90deg, var(--c-from), var(--c-to));
-    }
-
-    .card-body { padding: 1.5rem; }
-
-    .card-top {
-      display: flex; flex-wrap: wrap; align-items: flex-start; gap: .75rem; margin-bottom: 1rem;
-    }
-    .c-icon { font-size: 2rem; line-height: 1; flex-shrink: 0; }
-    .c-meta { flex: 1; min-width: 0; }
-    .c-title { font-size: 1.15rem; font-weight: 700; margin-bottom: .25rem; }
-    .c-desc  { font-size: .85rem; color: var(--dim); line-height: 1.55; }
-
-    .c-links { display: flex; gap: .5rem; flex-wrap: wrap; width: 100%; }
-    @media (min-width: 600px) {
-      .c-links { width: auto; flex-shrink: 0; }
-    }
-
-    .hero-actions {
-      display: flex; gap: .85rem; flex-wrap: wrap; justify-content: center;
-    }
-
-    .btn {
-      display: inline-flex; align-items: center; gap: .35rem;
-      padding: .55rem .95rem; border-radius: 10px;
-      font-size: .74rem; font-family: var(--mono); font-weight: 700;
-      letter-spacing: .04em;
-      text-decoration: none; white-space: nowrap;
-      transition: transform .2s ease, box-shadow .25s ease, border-color .25s ease, background .25s ease, color .25s ease;
-      line-height: 1;
-      position: relative;
-      overflow: hidden;
-      isolation: isolate;
-    }
-    .btn::before,
-    .btn-cv::before,
-    .foot-btn::before {
-      content: '';
-      position: absolute;
-      inset: -30%;
-      background: linear-gradient(115deg, transparent 20%, rgba(255,255,255,.18) 45%, transparent 70%);
-      transform: translateX(-130%);
-      animation: sweep 4.8s linear infinite;
-      z-index: -1;
-      pointer-events: none;
-    }
-    .btn:hover,
-    .btn-cv:hover,
-    .foot-btn:hover {
-      transform: translateY(-2px) scale(1.02);
-    }
-    .btn-gh  { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.22); color: #f8fafc; box-shadow: 0 0 20px rgba(255,255,255,.08); }
-    .btn-gh:hover { background: rgba(255,255,255,.14); box-shadow: 0 0 28px rgba(255,255,255,.14); }
-    .btn-live{ background: rgba(0,212,255,.16); border: 1px solid rgba(0,212,255,.55); color: #b8f6ff; box-shadow: 0 0 18px rgba(0,212,255,.2), 0 0 34px rgba(0,212,255,.08); }
-    .btn-live:hover { background: rgba(0,212,255,.24); box-shadow: 0 0 18px rgba(0,212,255,.3), 0 0 44px rgba(0,212,255,.15); }
-    .btn-ext { background: rgba(139,92,246,.18); border: 1px solid rgba(167,139,250,.5); color: #ddd6fe; box-shadow: 0 0 18px rgba(139,92,246,.16), 0 0 34px rgba(139,92,246,.08); }
-    .btn-ext:hover { background: rgba(139,92,246,.28); box-shadow: 0 0 18px rgba(139,92,246,.28), 0 0 44px rgba(139,92,246,.14); }
-    .btn-gql { background: rgba(236,72,153,.18); border: 1px solid rgba(244,114,182,.5); color: #ffd0e8; box-shadow: 0 0 18px rgba(236,72,153,.16), 0 0 34px rgba(236,72,153,.08); }
-    .btn-gql:hover { background: rgba(236,72,153,.26); box-shadow: 0 0 18px rgba(236,72,153,.28), 0 0 44px rgba(236,72,153,.14); }
-    .btn-mail { background: rgba(245,158,11,.18); border: 1px solid rgba(245,158,11,.48); color: #fde68a; box-shadow: 0 0 18px rgba(245,158,11,.18), 0 0 34px rgba(245,158,11,.08); }
-    .btn-mail:hover { background: rgba(245,158,11,.28); box-shadow: 0 0 18px rgba(245,158,11,.28), 0 0 44px rgba(245,158,11,.14); }
-    @keyframes sweep {
-      0% { transform: translateX(-130%); opacity: 0; }
-      10% { opacity: 1; }
-      55% { opacity: .9; }
-      100% { transform: translateX(130%); opacity: 0; }
-    }
-
-    /* ─── TAGS ───────────────────────────────── */
-    .tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1rem; }
-    .tag {
-      font-family: var(--mono); font-size: .68rem; padding: .2rem .6rem;
-      border-radius: 5px; font-weight: 500; border: 1px solid transparent;
-      transition: all .2s ease; cursor: default;
-    }
-    .tag:hover { transform: translateY(-2px); filter: brightness(1.2); }
-
-    .ts   { background: rgba(59,130,246,.13);  color: #60a5fa; border-color: rgba(59,130,246,.25); }
-    .rct  { background: rgba(56,189,248,.13);  color: #38bdf8; border-color: rgba(56,189,248,.25); }
-    .py   { background: rgba(234,179,8,.13);   color: #facc15; border-color: rgba(234,179,8,.25); }
-    .ws   { background: rgba(16,185,129,.13);  color: #34d399; border-color: rgba(16,185,129,.25); }
-    .dk   { background: rgba(14,165,233,.13);  color: #38bdf8; border-color: rgba(14,165,233,.25); }
-    .gql  { background: rgba(229,70,156,.13);  color: #f472b6; border-color: rgba(229,70,156,.25); }
-    .d3   { background: rgba(249,115,22,.13);  color: #fb923c; border-color: rgba(249,115,22,.25); }
-    .ai   { background: rgba(139,92,246,.13);  color: #a78bfa; border-color: rgba(139,92,246,.25); }
-    .rdx  { background: rgba(124,58,237,.13);  color: #a78bfa; border-color: rgba(124,58,237,.25); }
-    .ci   { background: rgba(16,185,129,.13);  color: #34d399; border-color: rgba(16,185,129,.25); }
-    .ble  { background: rgba(239,68,68,.13);   color: #f87171; border-color: rgba(239,68,68,.25); }
-    .vt   { background: rgba(139,92,246,.13);  color: #c084fc; border-color: rgba(139,92,246,.25); }
-    .gc   { background: rgba(59,130,246,.13);  color: #93c5fd; border-color: rgba(59,130,246,.25); }
-    .nd   { background: rgba(74,222,128,.13);  color: #4ade80; border-color: rgba(74,222,128,.25); }
-    .fp   { background: rgba(16,185,129,.13);  color: #6ee7b7; border-color: rgba(16,185,129,.25); }
-    .sc   { background: rgba(100,116,139,.13); color: #94a3b8; border-color: rgba(100,116,139,.25); }
-    .sb   { background: rgba(255,71,133,.13);  color: #ff6b9d; border-color: rgba(255,71,133,.25); }
-    .ag   { background: rgba(0,204,102,.13);   color: #00cc66; border-color: rgba(0,204,102,.25); }
-    .nx   { background: rgba(255,255,255,.06); color: #e2e8f0; border-color: rgba(255,255,255,.12); }
-
-    /* ─── CODE BLOCK ─────────────────────────── */
-    .code-wrap {
-      background: #04040a;
-      border: 1px solid var(--border);
-      border-radius: 10px; overflow: hidden;
-      margin-top: .75rem; position: relative;
-    }
-    .code-bar {
-      background: #080812; padding: .5rem 1rem;
-      display: flex; align-items: center; gap: .4rem;
-      border-bottom: 1px solid var(--border);
-    }
-    .dot { width: 10px; height: 10px; border-radius: 50%; }
-    .dr { background: #ff5f57; } .dy { background: #febc2e; } .dg { background: #28c840; }
-    .fname {
-      margin-left: .5rem; font-family: var(--mono); font-size: .68rem;
-      color: var(--muted);
-    }
-    pre.code {
-      padding: 1rem 1.25rem; font-family: var(--mono); font-size: .77rem;
-      line-height: 1.75; overflow-x: auto; position: relative; white-space: pre;
-    }
-    pre.code::after {
-      content: '';
-      position: absolute; left: 0; right: 0; height: 2px;
-      background: linear-gradient(90deg, transparent, rgba(0,212,255,.2), transparent);
-      top: 0; animation: scan 5s linear infinite; pointer-events: none;
-    }
-    @keyframes scan { 0%{top:0;opacity:0} 5%{opacity:1} 95%{opacity:1} 100%{top:100%;opacity:0} }
-
-    /* syntax tokens */
-    .kw  { color: #c084fc; }
-    .fn  { color: #60a5fa; }
-    .ty  { color: #f472b6; }
-    .st  { color: #86efac; }
-    .cm  { color: #3d4f6b; font-style: italic; }
-    .nm  { color: #e2e8f0; }
-    .op  { color: #64748b; }
-    .dc  { color: #a78bfa; }
-    .nu  { color: #fdba74; }
-    .kw2 { color: #38bdf8; } /* async/await etc */
-
-    /* ─── FOOTER ─────────────────────────────── */
-    footer {
-      text-align: center; padding: 4rem 2rem;
-      border-top: 1px solid var(--border);
-      color: var(--muted); font-size: .85rem; margin-top: 2rem;
-    }
-    footer a { color: var(--cyan); text-decoration: none; }
-    footer a:hover { text-decoration: underline; }
-    .foot-links { display: flex; gap: 2rem; justify-content: center; margin-bottom: 1rem; flex-wrap: wrap; }
-
-    /* ─── AVATAR ─────────────────────────────────── */
-    .avatar-wrap {
-      position: relative;
-      width: 148px; height: 148px; flex-shrink: 0;
-    }
-    .avatar-wrap img {
-      width: 148px; height: 148px;
-      border-radius: 50%; object-fit: cover;
-      border: 2px solid rgba(0,212,255,.4);
-      box-shadow: 0 0 32px rgba(0,212,255,.2), 0 0 64px rgba(139,92,246,.12);
-      display: block;
-    }
-    .avatar-ring {
-      position: absolute; inset: -7px; border-radius: 50%;
-      border: 1.5px dashed rgba(0,212,255,.28);
-      animation: spin-ring 14s linear infinite;
-    }
-    @keyframes spin-ring {
-      from { transform: rotate(0deg); } to { transform: rotate(360deg); }
-    }
-
-    /* ─── CV BUTTON ──────────────────────────────── */
-    .btn-cv {
-      display: inline-flex; align-items: center; gap: .45rem;
-      padding: .5rem 1.2rem; border-radius: 10px;
-      font-family: var(--mono); font-size: .78rem; font-weight: 700;
-      letter-spacing: .07em; text-decoration: none; white-space: nowrap;
-      background: linear-gradient(135deg, rgba(0,212,255,.1), rgba(139,92,246,.1));
-      border: 1px solid rgba(0,212,255,.4); color: var(--cyan);
-      transition: all .25s ease;
-      box-shadow: 0 0 18px rgba(0,212,255,.16), 0 0 34px rgba(139,92,246,.08);
-      position: relative;
-      overflow: hidden;
-      isolation: isolate;
-    }
-    .btn-cv:hover {
-      background: linear-gradient(135deg, rgba(0,212,255,.2), rgba(139,92,246,.2));
-      border-color: rgba(0,212,255,.75);
-      box-shadow: 0 0 28px rgba(0,212,255,.28), 0 0 48px rgba(139,92,246,.14);
-      transform: translateY(-2px);
-    }
-
-    /* ─── INTERESTS ──────────────────────────────── */
-    .interests-grid {
-      max-width: 1200px; margin: 0 auto; padding: 1rem 1rem 3rem;
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
-    }
-    @media (min-width: 700px) {
-      .interests-grid {
-        padding: 1rem 2rem 6rem;
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      }
-    }
-    .lang-badge {
-      display: inline-flex; align-items: center; gap: .28rem;
-      font-family: var(--mono); font-size: .6rem; padding: .15rem .5rem;
-      border-radius: 5px; font-weight: 600; letter-spacing: .05em;
-      background: rgba(245,158,11,.1); color: #f59e0b;
-      border: 1px solid rgba(245,158,11,.28); vertical-align: middle;
-      margin-left: .4rem;
-    }
-    .interest-num {
-      font-family: var(--mono); font-size: 2.4rem; font-weight: 800;
-      line-height: 1; color: var(--c-accent, var(--cyan)); flex-shrink: 0;
-      opacity: .35;
-    }
-
-    /* ─── CV / CERTIFICATIONS ─────────────────── */
-    .cv-grid,
-    .cert-grid {
-      max-width: 1200px; margin: 0 auto; padding: 1rem;
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 1.5rem;
-    }
-    @media (min-width: 768px) {
-      .cv-grid, .cert-grid { padding: 1rem 2rem 6rem; }
-    }
-    .cv-card,
-    .cert-card {
-      grid-column: span 12;
-      background: rgba(13,13,28,.88);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 1rem;
-      box-shadow: 0 20px 60px rgba(0,0,0,.28);
-    }
-    @media (min-width: 600px) {
-      .cv-card, .cert-card { padding: 1.5rem; }
-    }
-    .cv-card h3,
-    .cert-card h3 {
-      font-size: 1.1rem;
-      margin-bottom: .9rem;
-    }
-    .cv-lead {
-      color: var(--dim);
-      line-height: 1.7;
-      font-size: .96rem;
-    }
-    .split-7 { grid-column: span 7; }
-    .split-5 { grid-column: span 5; }
-    .cv-actions {
-      display: flex; gap: .75rem; flex-wrap: wrap; margin-top: 1.25rem;
-    }
-    .meta-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: .9rem;
-      margin-top: 1.25rem;
-    }
-    @media (min-width: 600px) {
-      .meta-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    }
-    .meta-box {
-      background: rgba(255,255,255,.03);
-      border: 1px solid rgba(255,255,255,.06);
-      border-radius: 12px;
-      padding: .95rem 1rem;
-    }
-    .meta-k {
-      display: block;
-      font-family: var(--mono);
-      font-size: .65rem;
-      letter-spacing: .09em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: .45rem;
-    }
-    .meta-v {
-      color: var(--text);
-      line-height: 1.55;
-      font-size: .92rem;
-    }
-    .timeline {
-      display: grid;
-      gap: 1rem;
-    }
-    .timeline-item {
-      position: relative;
-      padding-left: 1.1rem;
-      border-left: 1px solid rgba(0,212,255,.18);
-    }
-    .timeline-item::before {
-      content: '';
-      position: absolute;
-      left: -5px;
-      top: .35rem;
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background: var(--cyan);
-      box-shadow: 0 0 16px rgba(0,212,255,.35);
-    }
-    .timeline-top {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 1rem;
-      margin-bottom: .28rem;
-      flex-wrap: wrap;
-    }
-    .timeline-role {
-      font-weight: 700;
-      color: var(--text);
-    }
-    .timeline-date {
-      font-family: var(--mono);
-      font-size: .72rem;
-      color: var(--cyan);
-    }
-    .timeline-company {
-      color: var(--dim);
-      font-size: .88rem;
-      margin-bottom: .45rem;
-    }
-    .bullet-list {
-      display: grid;
-      gap: .65rem;
-      color: var(--dim);
-      line-height: 1.6;
-      font-size: .9rem;
-    }
-    .bullet-list div {
-      padding-left: 1rem;
-      position: relative;
-    }
-    .bullet-list div::before {
-      content: '>'; 
-      position: absolute;
-      left: 0;
-      color: var(--cyan);
-      font-family: var(--mono);
-    }
-    .cert-top {
-      display: flex;
-      justify-content: space-between;
-      gap: 1rem;
-      align-items: flex-start;
-      margin-bottom: .9rem;
-      flex-wrap: wrap;
-    }
-    .cert-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: .4rem;
-      padding: .35rem .7rem;
-      border-radius: 999px;
-      background: rgba(16,185,129,.08);
-      border: 1px solid rgba(16,185,129,.28);
-      color: #6ee7b7;
-      font-family: var(--mono);
-      font-size: .66rem;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-    }
-    .cert-meta {
-      display: flex;
-      gap: .6rem;
-      flex-wrap: wrap;
-      margin-top: .8rem;
-    }
-    .cert-pill {
-      font-family: var(--mono);
-      font-size: .68rem;
-      padding: .28rem .55rem;
-      border-radius: 6px;
-      color: var(--dim);
-      background: rgba(255,255,255,.04);
-      border: 1px solid rgba(255,255,255,.08);
-    }
-    .credential-gallery {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.2rem;
-      margin-top: 1.4rem;
-    }
-    @media (min-width: 700px) {
-      .credential-gallery {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      }
-    }
-    .credential-media {
-      background: rgba(255,255,255,.02);
-      border: 1px solid rgba(255,255,255,.08);
-      border-radius: 14px;
-      overflow: hidden;
-      box-shadow: 0 18px 36px rgba(0,0,0,.22);
-    }
-    .credential-media img {
-      width: 100%;
-      display: block;
-      aspect-ratio: 1 / 1.414;
-      object-fit: cover;
-      background: #060610;
-    }
-    .credential-copy {
-      padding: 1rem;
-      display: grid;
-      gap: .7rem;
-    }
-    .credential-copy h4 {
-      font-size: 1rem;
-    }
-    .credential-copy p {
-      color: var(--dim);
-      line-height: 1.6;
-      font-size: .88rem;
-    }
-    .credential-actions {
-      display: flex;
-      gap: .6rem;
-      flex-wrap: wrap;
-    }
-    .foot-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: .4rem;
-      padding: .55rem .95rem;
-      border-radius: 10px;
-      text-decoration: none;
-      font-family: var(--mono);
-      font-size: .72rem;
-      letter-spacing: .06em;
-      border: 1px solid rgba(0,212,255,.35);
-      color: #b8f6ff;
-      background: rgba(0,212,255,.11);
-      box-shadow: 0 0 18px rgba(0,212,255,.14);
-      position: relative;
-      overflow: hidden;
-      isolation: isolate;
-      transition: transform .2s ease, box-shadow .25s ease, background .25s ease;
-    }
-    .foot-btn:hover {
-      background: rgba(0,212,255,.2);
-      box-shadow: 0 0 24px rgba(0,212,255,.22), 0 0 38px rgba(139,92,246,.1);
-    }
-    @media (min-width: 920px) {
-      .split-7 { grid-column: span 7; }
-      .split-5 { grid-column: span 5; }
-    }
-
-    /* ─── VIDEO GRID (Knowledge Sharing) ─────── */
-    .video-grid {
-      max-width: 1420px; margin: 0 auto;
-      padding: 0.75rem 0.75rem 3rem;
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
-    }
-    @media (min-width: 600px) {
-      .video-grid {
-        grid-template-columns: repeat(2, 1fr);
-        padding: 1rem 1.25rem 4rem;
-      }
-    }
-    @media (min-width: 1024px) {
-      .video-grid {
-        grid-template-columns: repeat(3, 1fr);
-        padding: 1rem 2rem 6rem;
-      }
-    }
-    .video-card {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 16px; overflow: hidden;
-      opacity: 0; transform: translateY(28px);
-      transition: opacity .6s ease, transform .6s ease,
-                  box-shadow .3s ease, border-color .3s ease;
-    }
-    .video-card.vis {
-      opacity: 1; transform: translateY(0);
-    }
-    .video-card:hover {
-      border-color: var(--cyan);
-      box-shadow: 0 20px 60px rgba(0,0,0,.5), 0 0 28px rgba(0,212,255,.08);
-      transform: translateY(-4px);
-    }
-    .video-embed {
-      position: relative; width: 100%; aspect-ratio: 16/9;
-      background: #04040a;
-    }
-    .video-embed iframe {
-      position: absolute; inset: 0; width: 100%; height: 100%; border: none;
-    }
-    .video-placeholder {
-      position: absolute; inset: 0;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center; gap: .75rem;
-      background: linear-gradient(135deg, #0a0a18, #111128);
-      color: var(--muted); font-family: var(--mono); font-size: .75rem;
-      letter-spacing: .06em;
-    }
-    .video-placeholder .ph-icon {
-      width: 52px; height: 52px; border-radius: 50%;
-      border: 2px dashed rgba(0,212,255,.28);
-      display: flex; align-items: center; justify-content: center;
-      color: rgba(0,212,255,.45); font-size: 1.5rem;
-    }
-    .video-info {
-      padding: 1rem 1.25rem 1.25rem;
-      border-top: 1px solid var(--border);
-    }
-    .video-title {
-      font-size: .95rem; font-weight: 700; margin-bottom: .4rem;
-    }
-    .video-desc {
-      font-size: .82rem; color: var(--dim); line-height: 1.55;
-    }
-
-    /* ─── MOBILE IMPROVEMENTS ───────────────────── */
-    @media (max-width: 599px) {
-      header { padding: 1.25rem; gap: 1.25rem; }
-      .card-body { padding: 1rem; }
-      .hero-tagline { width: 100%; max-width: 100%; }
-      .grid,
-      .interests-grid,
-      .video-grid { padding-left: 0.75rem; padding-right: 0.75rem; }
-      .cv-grid,
-      .cert-grid { padding-left: 0.75rem; padding-right: 0.75rem; }
-      .sec-head { padding: 2rem 1rem 1.25rem; }
-      .c-title { font-size: 1rem; }
-      .c-desc,
-      .cv-lead { font-size: .84rem; }
-      pre.code { font-size: .7rem; padding: .85rem 1rem; }
-      .meta-box { padding: .75rem; }
-      .meta-v { font-size: .86rem; line-height: 1.5; }
-      .timeline-item { padding-left: .85rem; }
-      .credential-copy { padding: .75rem; }
-      .credential-copy p { font-size: .82rem; }
-      .stats { gap: 1rem; }
-      .stat-n { font-size: 1.65rem; }
-      .hero-name { letter-spacing: -.03em; }
-      .bullet-list { font-size: .86rem; }
-      .video-info { padding: .85rem 1rem 1rem; }
-      .video-title { font-size: .9rem; }
-      .video-desc { font-size: .78rem; }
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -763,10 +37,10 @@
   </p>
 
   <div class="stats">
-    <div class="stat"><span class="stat-n" data-target="8">0</span><span class="stat-l">Projects</span></div>
+    <div class="stat"><span class="stat-n" data-target="10">0</span><span class="stat-l">Projects</span></div>
     <div class="stat"><span class="stat-n" data-target="5">0</span><span class="stat-l">Languages</span></div>
     <div class="stat"><span class="stat-n" data-target="20">0</span><span class="stat-l">Technologies</span></div>
-    <div class="stat"><span class="stat-n" data-target="8">0</span><span class="stat-l">Live Demos</span></div>
+    <div class="stat"><span class="stat-n" data-target="10">0</span><span class="stat-l">Live Demos</span></div>
   </div>
 
   <div class="scroll-hint">
@@ -776,6 +50,548 @@
     </svg>
   </div>
 </header>
+
+
+<!-- ═══════════════════ KNOWLEDGE SHARING ════════ -->
+<section>
+  <div class="sec-head">
+    <p class="sec-tag">$ youtube-dl --playlist ./knowledge-sharing</p>
+    <h2 class="sec-title">Knowledge <span>Sharing</span></h2>
+  </div>
+
+  <div class="video-grid">
+
+    <!-- ── 1. ── -->
+    <article class="video-card">
+      <div class="video-embed">
+        <iframe
+          src="https://www.youtube.com/embed/4UesiEAv-IU?rel=0"
+          title="Playlist video 1"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen loading="lazy"></iframe>
+      </div>
+    </article>
+
+    <!-- ── 2. ── -->
+    <article class="video-card">
+      <div class="video-embed">
+        <iframe
+          src="https://www.youtube.com/embed/L7STUSNW1Wg?rel=0"
+          title="Playlist video 2"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen loading="lazy"></iframe>
+      </div>
+    </article>
+
+    <!-- ── 3. ── -->
+    <article class="video-card">
+      <div class="video-embed">
+        <iframe
+          src="https://www.youtube.com/embed/LBUkET80FPk?rel=0"
+          title="Playlist video 3"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen loading="lazy"></iframe>
+      </div>
+    </article>
+
+    <!-- ── 4. ── -->
+    <article class="video-card">
+      <div class="video-embed">
+        <iframe
+          src="https://www.youtube.com/embed/Wt6z5C4IxE4?rel=0"
+          title="Playlist video 4"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen loading="lazy"></iframe>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ═══════════════════ PROJECTS ═══════════════ -->
+<main>
+  <div class="sec-head">
+    <p class="sec-tag">$ ls -la ./projects</p>
+    <h2 class="sec-title">Things I've <span>Built</span></h2>
+  </div>
+
+  <div class="grid">
+
+
+
+    <!-- ── 1. Agentic Research Assistant ─────────── -->
+    <article class="card" style="--c-accent:#7c3aed;--c-glow:rgba(124,58,237,.12);--c-from:#7c3aed;--c-to:#0ea5e9">
+      <div class="accent-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="c-icon">🔬</div>
+          <div class="c-meta">
+            <div class="c-title">Agentic Research Assistant</div>
+            <div class="c-desc">Production-grade AI research agent built from first principles. Plan→Execute→Reflect loop with up to 3 replan cycles, MCP tool execution (web search, PDF reader, sandboxed Python), PostgreSQL crash-safe state, full OpenTelemetry traces, and Starlette SSE streaming to a web UI.</div>
+          </div>
+          <div class="c-links">
+            <a class="btn btn-gh" href="https://github.com/AleksanderDudek/research-assistant" target="_blank" rel="noopener">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.39.6.1.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02 0 2.04.13 3 .4 2.3-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.87.12 3.17.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.69.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              GitHub
+            </a>
+            <a class="btn btn-live" href="https://aleksanderdudek.github.io/research-assistant/" target="_blank" rel="noopener">▶ Live</a>
+          </div>
+        </div>
+        <div class="tags">
+          <span class="tag py">Python</span>
+          <span class="tag ai">Claude API</span>
+          <span class="tag ag">MCP</span>
+          <span class="tag sc">PostgreSQL</span>
+          <span class="tag sc">OpenTelemetry</span>
+          <span class="tag ws">Starlette SSE</span>
+          <span class="tag dk">Docker</span>
+        </div>
+        <div class="code-wrap">
+          <div class="code-bar">
+            <div class="dot dr"></div><div class="dot dy"></div><div class="dot dg"></div>
+            <span class="fname">agent.py</span>
+          </div>
+          <pre class="code"><span class="cm"># Plan → Execute → Reflect loop (up to 3 replan cycles)</span>
+<span class="kw">async def</span> <span class="fn">run</span><span class="op">(</span><span class="nm">self</span><span class="op">,</span> <span class="nm">question</span><span class="op">:</span> <span class="ty">str</span><span class="op">) -></span> <span class="ty">str</span><span class="op">:</span>
+    <span class="nm">plan</span> <span class="op">=</span> <span class="kw2">await</span> <span class="nm">self</span><span class="op">.</span><span class="nm">planner</span><span class="op">.</span><span class="fn">plan</span><span class="op">(</span><span class="nm">question</span><span class="op">)</span>
+    <span class="kw">for</span> <span class="nm">_</span> <span class="kw">in</span> <span class="fn">range</span><span class="op">(</span><span class="nm">MAX_REPLANS</span><span class="op">):</span>
+        <span class="nm">results</span> <span class="op">=</span> <span class="kw2">await</span> <span class="nm">self</span><span class="op">.</span><span class="nm">executor</span><span class="op">.</span><span class="fn">run</span><span class="op">(</span><span class="nm">plan</span><span class="op">)</span>
+        <span class="nm">verdict</span> <span class="op">=</span> <span class="kw2">await</span> <span class="nm">self</span><span class="op">.</span><span class="nm">reflector</span><span class="op">.</span><span class="fn">reflect</span><span class="op">(</span><span class="nm">results</span><span class="op">)</span>
+        <span class="kw">if</span> <span class="nm">verdict</span><span class="op">.</span><span class="nm">sufficient</span><span class="op">:</span>
+            <span class="kw">return</span> <span class="nm">verdict</span><span class="op">.</span><span class="nm">answer</span>
+        <span class="nm">plan</span> <span class="op">=</span> <span class="kw2">await</span> <span class="nm">self</span><span class="op">.</span><span class="nm">planner</span><span class="op">.</span><span class="fn">replan</span><span class="op">(</span><span class="nm">verdict</span><span class="op">.</span><span class="nm">gaps</span><span class="op">)</span>
+    <span class="kw">raise</span> <span class="ty">BudgetExceeded</span><span class="op">()</span></pre>
+        </div>
+      </div>
+    </article>
+
+
+    <!-- ── 2. Gospel RAG ────────────────────── -->
+    <article class="card" style="--c-accent:#0d9488;--c-glow:rgba(13,148,136,.1);--c-from:#0d9488;--c-to:#6366f1">
+      <div class="accent-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="c-icon">📖</div>
+          <div class="c-meta">
+            <div class="c-title">Gospel RAG</div>
+            <div class="c-desc">Production-grade RAG system for the four Gospels. Streaming chat with inline verse citations, cross-translation comparison and passage synthesis. Hybrid RRF search fuses pgvector semantic similarity with PostgreSQL full-text search. No LangChain — raw SQL and streaming.</div>
+          </div>
+          <div class="c-links">
+            <a class="btn btn-gh" href="https://github.com/AleksanderDudek/gospel-rag" target="_blank" rel="noopener">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.39.6.1.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02 0 2.04.13 3 .4 2.3-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.87.12 3.17.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.69.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              GitHub
+            </a>
+            <a class="btn btn-live" href="https://gospel-rag-web.onrender.com/" target="_blank" rel="noopener">▶ Live</a>
+          </div>
+        </div>
+        <div class="tags">
+          <span class="tag py">Python</span>
+          <span class="tag ai">Claude API</span>
+          <span class="tag nd">FastAPI</span>
+          <span class="tag nx">Next.js 15</span>
+          <span class="tag sc">pgvector</span>
+          <span class="tag sc">PostgreSQL</span>
+          <span class="tag sc">Voyage AI</span>
+          <span class="tag rct">Vercel AI SDK</span>
+        </div>
+        <div class="code-wrap">
+          <div class="code-bar">
+            <div class="dot dr"></div><div class="dot dy"></div><div class="dot dg"></div>
+            <span class="fname">search.sql</span>
+          </div>
+          <pre class="code"><span class="cm">-- Hybrid RRF: semantic + full-text fused by rank</span>
+<span class="kw">WITH</span> <span class="ty">semantic</span> <span class="kw">AS</span> <span class="op">(</span>
+  <span class="kw">SELECT</span> <span class="nm">id</span><span class="op">,</span> <span class="fn">ROW_NUMBER</span><span class="op">() OVER (ORDER BY</span> <span class="nm">embedding</span> <span class="op">&lt;=&gt;</span> <span class="nm">$1</span><span class="op">)</span> <span class="nm">rk</span>
+  <span class="kw">FROM</span> <span class="nm">verses</span> <span class="kw">ORDER BY</span> <span class="nm">embedding</span> <span class="op">&lt;=&gt;</span> <span class="nm">$1</span> <span class="kw">LIMIT</span> <span class="nu">60</span>
+<span class="op">),</span> <span class="ty">lexical</span> <span class="kw">AS</span> <span class="op">(</span>
+  <span class="kw">SELECT</span> <span class="nm">id</span><span class="op">,</span> <span class="fn">ROW_NUMBER</span><span class="op">() OVER (ORDER BY</span> <span class="fn">ts_rank</span><span class="op">(</span><span class="nm">fts</span><span class="op">,</span> <span class="nm">q</span><span class="op">)</span> <span class="kw">DESC</span><span class="op">)</span> <span class="nm">rk</span>
+  <span class="kw">FROM</span> <span class="nm">verses</span><span class="op">,</span> <span class="fn">websearch_to_tsquery</span><span class="op">(</span><span class="nm">$2</span><span class="op">)</span> <span class="nm">q</span> <span class="kw">WHERE</span> <span class="nm">fts</span> <span class="op">@@</span> <span class="nm">q</span> <span class="kw">LIMIT</span> <span class="nu">60</span>
+<span class="op">)</span>
+<span class="kw">SELECT</span> <span class="nm">id</span><span class="op">,</span> <span class="fn">SUM</span><span class="op">(</span><span class="nu">1.0</span><span class="op">/(</span><span class="nu">60</span><span class="op">+</span><span class="nm">rk</span><span class="op">))</span> <span class="nm">score</span>
+<span class="kw">FROM</span> <span class="op">(</span><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> <span class="nm">semantic</span> <span class="kw">UNION ALL SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> <span class="nm">lexical</span><span class="op">)</span> <span class="nm">t</span>
+<span class="kw">GROUP BY</span> <span class="nm">id</span> <span class="kw">ORDER BY</span> <span class="nm">score</span> <span class="kw">DESC</span> <span class="kw">LIMIT</span> <span class="nm">$3</span></pre>
+        </div>
+      </div>
+    </article>
+
+    <!-- ── 3. Signal Decay ─────────────────────── -->
+    <article class="card" style="--c-accent:#00d4ff;--c-glow:rgba(0,212,255,.12);--c-from:#00d4ff;--c-to:#8b5cf6">
+      <div class="accent-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="c-icon">⚡</div>
+          <div class="c-meta">
+            <div class="c-title">Signal Decay</div>
+            <div class="c-desc">Real-time multiplayer word-unscramble duel over WebSockets. Race to decode shuffled words before time runs out. Pluggable LLM endpoint generates dynamic words &amp; hints; 250-word fallback bank ensures offline play.</div>
+          </div>
+          <div class="c-links">
+            <a class="btn btn-gh" href="https://github.com/AleksanderDudek/game-of-words" target="_blank" rel="noopener">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.39.6.1.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02 0 2.04.13 3 .4 2.3-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.87.12 3.17.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.69.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              GitHub
+            </a>
+            <a class="btn btn-live" href="https://aleksanderdudek.github.io/game-of-words/" target="_blank" rel="noopener">▶ Live</a>
+          </div>
+        </div>
+        <div class="tags">
+          <span class="tag ts">TypeScript</span>
+          <span class="tag rct">React</span>
+          <span class="tag ws">WebSocket</span>
+          <span class="tag nd">Node.js</span>
+          <span class="tag dk">Docker</span>
+          <span class="tag vt">Vite</span>
+          <span class="tag ai">LLM API</span>
+          <span class="tag sc">SCSS</span>
+        </div>
+        <div class="code-wrap">
+          <div class="code-bar">
+            <div class="dot dr"></div><div class="dot dy"></div><div class="dot dg"></div>
+            <span class="fname">session.ts</span>
+          </div>
+          <pre class="code"><span class="cm">// Game state machine — lobby → countdown → playing ⇄ round_end</span>
+<span class="kw">class</span> <span class="ty">GameSession</span> {
+  <span class="kw">private</span> <span class="nm">phase</span><span class="op">:</span> <span class="ty">Phase</span> <span class="op">=</span> <span class="st">'lobby'</span><span class="op">;</span>
+  <span class="kw">private</span> <span class="nm">scores</span><span class="op">:</span> <span class="ty">Record</span><span class="op">&lt;</span><span class="ty">string</span><span class="op">,</span> <span class="ty">number</span><span class="op">&gt; =</span> <span class="op">{};</span>
+
+  <span class="kw2">async</span> <span class="fn">handleGuess</span><span class="op">(</span><span class="nm">playerId</span><span class="op">:</span> <span class="ty">string</span><span class="op">,</span> <span class="nm">word</span><span class="op">:</span> <span class="ty">string</span><span class="op">):</span> <span class="ty">Promise</span><span class="op">&lt;</span><span class="ty">void</span><span class="op">&gt; {</span>
+    <span class="kw">const</span> <span class="op">{</span> <span class="nm">correct</span><span class="op">,</span> <span class="nm">points</span> <span class="op">} =</span> <span class="kw">this</span><span class="op">.</span><span class="nm">board</span><span class="op">.</span><span class="fn">evaluate</span><span class="op">(</span><span class="nm">word</span><span class="op">);</span>
+    <span class="kw">if</span> <span class="op">(</span><span class="nm">correct</span><span class="op">) {</span>
+      <span class="kw">this</span><span class="op">.</span><span class="nm">scores</span><span class="op">[</span><span class="nm">playerId</span><span class="op">] +=</span> <span class="nm">points</span> <span class="op">+</span> <span class="kw">this</span><span class="op">.</span><span class="fn">timeBonus</span><span class="op">();</span>
+      <span class="kw">this</span><span class="op">.</span><span class="fn">broadcast</span><span class="op">({</span> <span class="nm">type</span><span class="op">:</span> <span class="st">'round_won'</span><span class="op">,</span> <span class="nm">scores</span><span class="op">:</span> <span class="kw">this</span><span class="op">.</span><span class="nm">scores</span> <span class="op">});</span>
+      <span class="kw2">await</span> <span class="kw">this</span><span class="op">.</span><span class="fn">nextRound</span><span class="op">();</span>
+    <span class="op">}</span>
+  <span class="op">}</span>
+<span class="op">}</span></pre>
+        </div>
+      </div>
+    </article>
+
+    <!-- ── 4. Sensor App ────────────────────────── -->
+    <article class="card" style="--c-accent:#10b981;--c-glow:rgba(16,185,129,.1);--c-from:#10b981;--c-to:#06b6d4">
+      <div class="accent-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="c-icon">📡</div>
+          <div class="c-meta">
+            <div class="c-title">Sensor App</div>
+            <div class="c-desc">IoT-style sensor &amp; receiver simulation dashboard. Multiple virtual sensors push live data to receivers via WebSocket; receiver status can be toggled from the UI. Built with configurable sensor/receiver counts and clean component architecture.</div>
+          </div>
+          <div class="c-links">
+            <a class="btn btn-gh" href="https://github.com/AleksanderDudek/sensor-app" target="_blank" rel="noopener">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.39.6.1.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02 0 2.04.13 3 .4 2.3-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.87.12 3.17.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.69.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              GitHub
+            </a>
+            <a class="btn btn-live" href="https://sensor-app-tqk4.vercel.app/" target="_blank" rel="noopener">▶ Live</a>
+          </div>
+        </div>
+        <div class="tags">
+          <span class="tag ts">TypeScript</span>
+          <span class="tag rct">React</span>
+          <span class="tag vt">Vite</span>
+          <span class="tag ws">WebSocket</span>
+          <span class="tag sc">CSS</span>
+          <span class="tag sc">Husky</span>
+          <span class="tag sc">ESLint</span>
+        </div>
+        <div class="code-wrap">
+          <div class="code-bar">
+            <div class="dot dr"></div><div class="dot dy"></div><div class="dot dg"></div>
+            <span class="fname">useSensorData.ts</span>
+          </div>
+          <pre class="code"><span class="cm">// Reactive sensor stream — auto-reconnect on unmount</span>
+<span class="kw">const</span> <span class="fn">useSensorData</span> <span class="op">=</span> <span class="op">(</span><span class="nm">id</span><span class="op">:</span> <span class="ty">string</span><span class="op">) => {</span>
+  <span class="kw">const</span> <span class="op">[</span><span class="nm">state</span><span class="op">,</span> <span class="fn">setState</span><span class="op">] =</span> <span class="fn">useState</span><span class="op">&lt;</span><span class="ty">SensorData</span> <span class="op">|</span> <span class="kw">null</span><span class="op">&gt;(</span><span class="kw">null</span><span class="op">);</span>
+
+  <span class="fn">useEffect</span><span class="op">(() => {</span>
+    <span class="kw">const</span> <span class="nm">ws</span> <span class="op">=</span> <span class="kw">new</span> <span class="ty">WebSocket</span><span class="op">(`/api/sensor/${</span><span class="nm">id</span><span class="op">}`);</span>
+    <span class="nm">ws</span><span class="op">.</span><span class="nm">onmessage</span> <span class="op">=</span> <span class="op">({</span> <span class="nm">data</span> <span class="op">}) =></span>
+      <span class="fn">setState</span><span class="op">(</span><span class="ty">JSON</span><span class="op">.</span><span class="fn">parse</span><span class="op">(</span><span class="nm">data</span><span class="op">) </span><span class="kw">as</span> <span class="ty">SensorData</span><span class="op">);</span>
+    <span class="kw">return</span> <span class="op">() =>  </span><span class="nm">ws</span><span class="op">.</span><span class="fn">close</span><span class="op">();</span>
+  <span class="op">}, [</span><span class="nm">id</span><span class="op">]);</span>
+
+  <span class="kw">return</span> <span class="nm">state</span><span class="op">;</span>
+<span class="op">};</span></pre>
+        </div>
+      </div>
+    </article>
+
+    <!-- ── 5. BrainLink ────────────────────────── -->
+    <article class="card" style="--c-accent:#ec4899;--c-glow:rgba(236,72,153,.1);--c-from:#ec4899;--c-to:#8b5cf6">
+      <div class="accent-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="c-icon">🧠</div>
+          <div class="c-meta">
+            <div class="c-title">BrainLink — EEG-to-Game Engine</div>
+            <div class="c-desc">Reverse-engineered BrainAccess HALO EEG headset for macOS (no official support). FastAPI server exposes real-time brain metrics (Focus, Calm, Flow…) over WebSocket &amp; REST. DSP pipeline: Welch PSD band-power extraction, blink detection, combo states, guided calibration.</div>
+          </div>
+          <div class="c-links">
+            <a class="btn btn-gh" href="https://github.com/AleksanderDudek/brainlink-bluetooth-macos-integration" target="_blank" rel="noopener">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.39.6.1.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02 0 2.04.13 3 .4 2.3-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.87.12 3.17.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.69.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+        <div class="tags">
+          <span class="tag py">Python</span>
+          <span class="tag fp">FastAPI</span>
+          <span class="tag ble">BLE / CoreBluetooth</span>
+          <span class="tag ws">WebSocket</span>
+          <span class="tag sc">DSP / Welch PSD</span>
+          <span class="tag sc">NumPy</span>
+          <span class="tag sc">macOS</span>
+        </div>
+        <div class="code-wrap">
+          <div class="code-bar">
+            <div class="dot dr"></div><div class="dot dy"></div><div class="dot dg"></div>
+            <span class="fname">dsp.py</span>
+          </div>
+          <pre class="code"><span class="cm"># Band-power extraction via Welch PSD — 10 Hz push</span>
+<span class="kw">def</span> <span class="fn">compute_band_powers</span><span class="op">(</span><span class="nm">self</span><span class="op">,</span> <span class="nm">ch</span><span class="op">:</span> <span class="ty">str</span><span class="op">) -></span> <span class="ty">dict</span><span class="op">[</span><span class="ty">str</span><span class="op">,</span> <span class="ty">float</span><span class="op">]:</span>
+    <span class="nm">freq</span><span class="op">,</span> <span class="nm">psd</span> <span class="op">=</span> <span class="fn">welch</span><span class="op">(</span><span class="nm">self</span><span class="op">.</span><span class="nm">_buf</span><span class="op">[</span><span class="nm">ch</span><span class="op">],</span> <span class="nm">fs</span><span class="op">=</span><span class="nu">256</span><span class="op">,</span> <span class="nm">nperseg</span><span class="op">=</span><span class="nu">256</span><span class="op">)</span>
+    <span class="kw">return</span> <span class="op">{</span>
+        <span class="nm">band</span><span class="op">:</span> <span class="ty">float</span><span class="op">(</span><span class="nm">np</span><span class="op">.</span><span class="fn">trapz</span><span class="op">(</span>
+            <span class="nm">psd</span><span class="op">[(</span><span class="nm">freq</span> <span class="op">&gt;=</span> <span class="nm">lo</span><span class="op">) &amp; (</span><span class="nm">freq</span> <span class="op">&lt;</span> <span class="nm">hi</span><span class="op">)],</span>
+            <span class="nm">freq</span><span class="op">[(</span><span class="nm">freq</span> <span class="op">&gt;=</span> <span class="nm">lo</span><span class="op">) &amp; (</span><span class="nm">freq</span> <span class="op">&lt;</span> <span class="nm">hi</span><span class="op">)]))</span>
+        <span class="kw">for</span> <span class="nm">band</span><span class="op">,</span> <span class="op">(</span><span class="nm">lo</span><span class="op">,</span> <span class="nm">hi</span><span class="op">)</span> <span class="kw">in</span> <span class="nm">FREQ_BANDS</span><span class="op">.</span><span class="fn">items</span><span class="op">()</span>
+    <span class="op">}</span></pre>
+        </div>
+      </div>
+    </article>
+
+    <!-- ── 6. Galactic Data Dashboard ─────────── -->
+    <article class="card" style="--c-accent:#8b5cf6;--c-glow:rgba(139,92,246,.12);--c-from:#8b5cf6;--c-to:#ec4899">
+      <div class="accent-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="c-icon">🌌</div>
+          <div class="c-meta">
+            <div class="c-title">Galactic Data Dashboard</div>
+            <div class="c-desc">Full-stack monorepo that federates REST Countries, SpaceX, PokéAPI &amp; Open-Meteo behind a single GraphQL layer. D3.js bubble charts, radar charts &amp; timelines; AG Grid with virtual scrolling; Redux RTK Query; Storybook component library — all in strict TypeScript.</div>
+          </div>
+          <div class="c-links">
+            <a class="btn btn-gh" href="https://github.com/AleksanderDudek/data-visualization-pro" target="_blank" rel="noopener">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.39.6.1.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02 0 2.04.13 3 .4 2.3-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.87.12 3.17.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.69.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              GitHub
+            </a>
+            <a class="btn btn-live" href="https://aleksanderdudek.github.io/data-visualization-pro/" target="_blank" rel="noopener">▶ Live</a>
+            <a class="btn btn-ext" href="https://69cbc9e847376109cb5f127b-umvchfloib.chromatic.com/" target="_blank" rel="noopener">Storybook</a>
+            <a class="btn btn-gql" href="https://data-visualization-pro.onrender.com/graphql" target="_blank" rel="noopener">GraphQL</a>
+          </div>
+        </div>
+        <div class="tags">
+          <span class="tag ts">TypeScript</span>
+          <span class="tag rct">React 18</span>
+          <span class="tag gql">GraphQL</span>
+          <span class="tag nd">Apollo Server</span>
+          <span class="tag d3">D3.js</span>
+          <span class="tag rdx">Redux Toolkit</span>
+          <span class="tag ag">AG Grid</span>
+          <span class="tag sb">Storybook</span>
+          <span class="tag nx">npm workspaces</span>
+        </div>
+        <div class="code-wrap">
+          <div class="code-bar">
+            <div class="dot dr"></div><div class="dot dy"></div><div class="dot dg"></div>
+            <span class="fname">resolvers/galaxy.ts</span>
+          </div>
+          <pre class="code"><span class="cm">// GraphQL federation — 4 REST APIs unified in one query</span>
+<span class="kw">const</span> <span class="nm">resolvers</span> <span class="op">= {</span>
+  <span class="ty">Query</span><span class="op">: {</span>
+    <span class="fn">galaxyReport</span><span class="op">:</span> <span class="kw2">async</span> <span class="op">(</span><span class="nm">_</span><span class="op">,</span> <span class="nm">__</span><span class="op">, {</span> <span class="nm">dataSources</span> <span class="op">}) => ({</span>
+      <span class="nm">civilizations</span><span class="op">:</span> <span class="kw2">await</span> <span class="nm">dataSources</span><span class="op">.</span><span class="nm">restCountries</span><span class="op">.</span><span class="fn">getAll</span><span class="op">(),</span>
+      <span class="nm">transport</span><span class="op">    :</span> <span class="kw2">await</span> <span class="nm">dataSources</span><span class="op">.</span><span class="nm">spaceX</span><span class="op">.</span><span class="fn">getLaunches</span><span class="op">(),</span>
+      <span class="nm">fauna</span><span class="op">        :</span> <span class="kw2">await</span> <span class="nm">dataSources</span><span class="op">.</span><span class="nm">pokeApi</span><span class="op">.</span><span class="fn">getAll</span><span class="op">(),</span>
+      <span class="nm">atmosphere</span><span class="op">   :</span> <span class="kw2">await</span> <span class="nm">dataSources</span><span class="op">.</span><span class="nm">openMeteo</span><span class="op">.</span><span class="fn">getCurrent</span><span class="op">(),</span>
+    <span class="op">}),</span>
+  <span class="op">},</span>
+<span class="op">};</span></pre>
+        </div>
+      </div>
+    </article>
+
+    <!-- ── 7. AI Devs 4 ──────────────────────── -->
+    <article class="card" style="--c-accent:#a78bfa;--c-glow:rgba(167,139,250,.1);--c-from:#a78bfa;--c-to:#f472b6">
+      <div class="accent-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="c-icon">🤖</div>
+          <div class="c-meta">
+            <div class="c-title">AI Devs 4 — TypeScript Solutions</div>
+            <div class="c-desc">Modular solution set for the AI_devs 4 certification programme. Abstracted LLM clients for Anthropic, OpenAI &amp; Gemini behind a unified wrapper supporting structured outputs via Zod schemas; centralised Hub API client with task submission; secure env-driven config.</div>
+          </div>
+          <div class="c-links">
+            <a class="btn btn-gh" href="https://github.com/AleksanderDudek/aidevs4-solutions-typescript" target="_blank" rel="noopener">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.39.6.1.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02 0 2.04.13 3 .4 2.3-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.87.12 3.17.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.69.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+        <div class="tags">
+          <span class="tag ts">TypeScript</span>
+          <span class="tag ai">Anthropic Claude</span>
+          <span class="tag ai">OpenAI</span>
+          <span class="tag ai">Gemini</span>
+          <span class="tag sc">Zod</span>
+          <span class="tag sc">tsx</span>
+        </div>
+        <div class="code-wrap">
+          <div class="code-bar">
+            <div class="dot dr"></div><div class="dot dy"></div><div class="dot dg"></div>
+            <span class="fname">lib/llm.ts</span>
+          </div>
+          <pre class="code"><span class="cm">// Provider-agnostic structured completion</span>
+<span class="kw">export async function</span> <span class="fn">completeStructured</span><span class="op">&lt;</span><span class="ty">T</span><span class="op">&gt;(</span>
+  <span class="nm">system</span><span class="op">:</span> <span class="ty">string</span><span class="op">,</span>
+  <span class="nm">prompt</span><span class="op">:</span> <span class="ty">string</span><span class="op">,</span>
+  <span class="nm">schema</span><span class="op">:</span> <span class="ty">ZodSchema</span><span class="op">&lt;</span><span class="ty">T</span><span class="op">&gt;</span>
+<span class="op">):</span> <span class="ty">Promise</span><span class="op">&lt;</span><span class="ty">T</span><span class="op">&gt; {</span>
+  <span class="kw">const</span> <span class="op">{</span> <span class="nm">content</span> <span class="op">} =</span> <span class="kw2">await</span> <span class="nm">anthropic</span><span class="op">.</span><span class="nm">messages</span><span class="op">.</span><span class="fn">create</span><span class="op">({</span>
+    <span class="nm">model</span><span class="op">:</span> <span class="st">'claude-3-5-sonnet-20241022'</span><span class="op">,</span>
+    <span class="nm">system</span><span class="op">,</span> <span class="nm">max_tokens</span><span class="op">:</span> <span class="nu">1024</span><span class="op">,</span>
+    <span class="nm">messages</span><span class="op">: [{</span> <span class="nm">role</span><span class="op">:</span> <span class="st">'user'</span><span class="op">,</span> <span class="nm">content</span><span class="op">:</span> <span class="nm">prompt</span> <span class="op">}],</span>
+  <span class="op">});</span>
+  <span class="kw">return</span> <span class="nm">schema</span><span class="op">.</span><span class="fn">parse</span><span class="op">(</span><span class="ty">JSON</span><span class="op">.</span><span class="fn">parse</span><span class="op">(</span><span class="nm">content</span><span class="op">[</span><span class="nu">0</span><span class="op">].</span><span class="nm">text</span><span class="op">));</span>
+<span class="op">}</span></pre>
+        </div>
+      </div>
+    </article>
+
+    <!-- ── 8. React Vite Boilerplate ─────────── -->
+    <article class="card" style="--c-accent:#f97316;--c-glow:rgba(249,115,22,.1);--c-from:#f97316;--c-to:#f59e0b">
+      <div class="accent-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="c-icon">🚀</div>
+          <div class="c-meta">
+            <div class="c-title">React / Vite / TS Boilerplate</div>
+            <div class="c-desc">Production-ready starter template with every quality gate wired up: Vitest + RTL with 70 % coverage thresholds, SonarQube Cloud, multi-stage Docker build (Node → nginx), GitHub Actions pipeline (lint → type-check → test → sonar → docker → deploy), Husky pre-push guard, typed env vars.</div>
+          </div>
+          <div class="c-links">
+            <a class="btn btn-gh" href="https://github.com/AleksanderDudek/react-vite-typescript-boilerplate" target="_blank" rel="noopener">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.39.6.1.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02 0 2.04.13 3 .4 2.3-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.87.12 3.17.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.69.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              GitHub
+            </a>
+            <a class="btn btn-live" href="https://aleksanderdudek.github.io/react-vite-typescript-boilerplate/" target="_blank" rel="noopener">▶ Live</a>
+          </div>
+        </div>
+        <div class="tags">
+          <span class="tag rct">React 19</span>
+          <span class="tag ts">TypeScript</span>
+          <span class="tag vt">Vite 6</span>
+          <span class="tag sc">Vitest</span>
+          <span class="tag dk">Docker</span>
+          <span class="tag ci">GitHub Actions</span>
+          <span class="tag sc">SonarQube</span>
+          <span class="tag sc">Husky</span>
+          <span class="tag sc">ESLint 9</span>
+        </div>
+        <div class="code-wrap">
+          <div class="code-bar">
+            <div class="dot dr"></div><div class="dot dy"></div><div class="dot dg"></div>
+            <span class="fname">vite.config.ts</span>
+          </div>
+          <pre class="code"><span class="cm">// Coverage gates + path aliases — CI fails below threshold</span>
+<span class="kw">export default</span> <span class="fn">defineConfig</span><span class="op">({</span>
+  <span class="nm">plugins</span><span class="op">: [</span><span class="fn">react</span><span class="op">()],</span>
+  <span class="nm">resolve</span><span class="op">: {</span> <span class="nm">alias</span><span class="op">: {</span> <span class="st">'@'</span><span class="op">:</span> <span class="nm">path</span><span class="op">.</span><span class="fn">resolve</span><span class="op">(</span><span class="nm">__dirname</span><span class="op">,</span> <span class="st">'./src'</span><span class="op">) } },</span>
+  <span class="nm">test</span><span class="op">: {</span>
+    <span class="nm">environment</span><span class="op">:</span> <span class="st">'jsdom'</span><span class="op">,</span>
+    <span class="nm">coverage</span><span class="op">: {</span>
+      <span class="nm">provider</span><span class="op">:</span> <span class="st">'v8'</span><span class="op">,</span>
+      <span class="nm">thresholds</span><span class="op">: {</span>
+        <span class="nm">branches</span><span class="op">:</span> <span class="nu">70</span><span class="op">,</span> <span class="nm">functions</span><span class="op">:</span> <span class="nu">70</span><span class="op">,</span> <span class="nm">lines</span><span class="op">:</span> <span class="nu">70</span><span class="op">,</span>
+      <span class="op">},</span>
+    <span class="op">},</span>
+  <span class="op">},</span>
+<span class="op">});</span></pre>
+        </div>
+      </div>
+    </article>
+
+    <!-- ── 9. Pixabay Scripts ─────────────────── -->
+    <article class="card" style="--c-accent:#f59e0b;--c-glow:rgba(245,158,11,.1);--c-from:#f59e0b;--c-to:#10b981">
+      <div class="accent-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="c-icon">🎬</div>
+          <div class="c-meta">
+            <div class="c-title">Pixabay Script Video Generator</div>
+            <div class="c-desc">Python toolset that transforms screenplay sentences into visual content. Extracts visual keywords per scene using NLP stop-word filtering, then searches Pixabay with multi-strategy fallback (phrase → individual terms), returning ranked download URLs for both videos and images.</div>
+          </div>
+          <div class="c-links">
+            <a class="btn btn-gh" href="https://github.com/AleksanderDudek/pixabay-api-scripts" target="_blank" rel="noopener">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.39.6.1.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02 0 2.04.13 3 .4 2.3-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.87.12 3.17.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.69.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+        <div class="tags">
+          <span class="tag py">Python</span>
+          <span class="tag sc">requests</span>
+          <span class="tag sc">REST API</span>
+          <span class="tag sc">NLP keyword extraction</span>
+          <span class="tag sc">dotenv</span>
+        </div>
+        <div class="code-wrap">
+          <div class="code-bar">
+            <div class="dot dr"></div><div class="dot dy"></div><div class="dot dg"></div>
+            <span class="fname">get_pixabay_videos.py</span>
+          </div>
+          <pre class="code"><span class="cm"># Smart keyword extraction with multi-strategy fallback</span>
+<span class="kw">def</span> <span class="fn">extract_keywords</span><span class="op">(</span><span class="nm">sentence</span><span class="op">:</span> <span class="ty">str</span><span class="op">) -></span> <span class="ty">list</span><span class="op">[</span><span class="ty">str</span><span class="op">]:</span>
+    <span class="nm">stop</span> <span class="op">= {</span><span class="st">'a'</span><span class="op">,</span> <span class="st">'an'</span><span class="op">,</span> <span class="st">'the'</span><span class="op">,</span> <span class="st">'is'</span><span class="op">,</span> <span class="st">'in'</span><span class="op">,</span> <span class="st">'over'</span><span class="op">,</span> <span class="st">'with'</span><span class="op">}</span>
+    <span class="kw">return</span> <span class="op">[</span><span class="nm">w</span><span class="op">.</span><span class="fn">strip</span><span class="op">(</span><span class="st">'.,!'</span><span class="op">)</span>
+            <span class="kw">for</span> <span class="nm">w</span> <span class="kw">in</span> <span class="nm">sentence</span><span class="op">.</span><span class="fn">lower</span><span class="op">().</span><span class="fn">split</span><span class="op">()</span>
+            <span class="kw">if</span> <span class="nm">w</span><span class="op">.</span><span class="fn">strip</span><span class="op">(</span><span class="st">'.,!'</span><span class="op">)</span> <span class="kw">not in</span> <span class="nm">stop</span><span class="op">][:</span><span class="nu">4</span><span class="op">]</span>
+
+<span class="nm">results</span> <span class="op">=</span> <span class="nm">retriever</span><span class="op">.</span><span class="fn">process_script_scenes</span><span class="op">(</span><span class="nm">script_sentences</span><span class="op">)</span></pre>
+        </div>
+      </div>
+    </article>
+
+    <!-- ── 10. GSC Auto-Indexer ─────────────────── -->
+    <article class="card" style="--c-accent:#60a5fa;--c-glow:rgba(96,165,250,.1);--c-from:#3b82f6;--c-to:#06b6d4">
+      <div class="accent-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="c-icon">🔍</div>
+          <div class="c-meta">
+            <div class="c-title">GSC Auto-Indexer</div>
+            <div class="c-desc">Automates Google Search Console URL submission. Authenticates via a service-account JSON key, parses all sitemaps (supports nested / multi-sitemap setups), batches URL_UPDATED notifications to the Indexing API — no paid SEO tool required. Extended original with multiple-sitemap support.</div>
+          </div>
+          <div class="c-links">
+            <a class="btn btn-gh" href="https://github.com/AleksanderDudek/google-search-console-index-api-automated" target="_blank" rel="noopener">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.39.6.1.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02 0 2.04.13 3 .4 2.3-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.87.12 3.17.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.69.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+        <div class="tags">
+          <span class="tag py">Python</span>
+          <span class="tag gc">Google Cloud API</span>
+          <span class="tag sc">OAuth2 Service Account</span>
+          <span class="tag sc">Sitemap XML</span>
+          <span class="tag sc">SEO automation</span>
+        </div>
+        <div class="code-wrap">
+          <div class="code-bar">
+            <div class="dot dr"></div><div class="dot dy"></div><div class="dot dg"></div>
+            <span class="fname">main.py</span>
+          </div>
+          <pre class="code"><span class="cm"># Batch URL_UPDATED via Google Indexing API</span>
+<span class="kw">def</span> <span class="fn">submit_urls</span><span class="op">(</span><span class="nm">urls</span><span class="op">:</span> <span class="ty">list</span><span class="op">[</span><span class="ty">str</span><span class="op">],</span> <span class="nm">service</span><span class="op">) -></span> <span class="ty">None</span><span class="op">:</span>
+    <span class="kw">for</span> <span class="nm">url</span> <span class="kw">in</span> <span class="nm">urls</span><span class="op">:</span>
+        <span class="nm">service</span><span class="op">.</span><span class="fn">urlNotifications</span><span class="op">().</span><span class="fn">publish</span><span class="op">(</span>
+            <span class="nm">body</span><span class="op">={</span><span class="st">"url"</span><span class="op">:</span> <span class="nm">url</span><span class="op">,</span> <span class="st">"type"</span><span class="op">:</span> <span class="st">"URL_UPDATED"</span><span class="op">}</span>
+        <span class="op">).</span><span class="fn">execute</span><span class="op">()</span>
+        <span class="fn">print</span><span class="op">(</span><span class="st">f"✓ Indexed: <span class="op">{</span><span class="nm">url</span><span class="op">}</span>"</span><span class="op">)</span></pre>
+        </div>
+      </div>
+    </article>
+    
+
+  </div><!-- /grid -->
+</main>
 
 <!-- ═══════════════════ CV SNAPSHOT ═════════════ -->
 <section>
@@ -868,449 +684,6 @@
     </article>
   </div>
 </section>
-
-<!-- ═══════════════════ KNOWLEDGE SHARING ════════ -->
-<section>
-  <div class="sec-head">
-    <p class="sec-tag">$ youtube-dl --playlist ./knowledge-sharing</p>
-    <h2 class="sec-title">Knowledge <span>Sharing</span></h2>
-  </div>
-
-  <div class="video-grid">
-
-    <!-- ── 1. ── -->
-    <article class="video-card">
-      <div class="video-embed">
-        <iframe
-          src="https://www.youtube.com/embed/4UesiEAv-IU?rel=0"
-          title="Playlist video 1"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen loading="lazy"></iframe>
-      </div>
-    </article>
-
-    <!-- ── 2. ── -->
-    <article class="video-card">
-      <div class="video-embed">
-        <iframe
-          src="https://www.youtube.com/embed/L7STUSNW1Wg?rel=0"
-          title="Playlist video 2"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen loading="lazy"></iframe>
-      </div>
-    </article>
-
-    <!-- ── 3. ── -->
-    <article class="video-card">
-      <div class="video-embed">
-        <iframe
-          src="https://www.youtube.com/embed/LBUkET80FPk?rel=0"
-          title="Playlist video 3"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen loading="lazy"></iframe>
-      </div>
-    </article>
-
-    <!-- ── 4. ── -->
-    <article class="video-card">
-      <div class="video-embed">
-        <iframe
-          src="https://www.youtube.com/embed/Wt6z5C4IxE4?rel=0"
-          title="Playlist video 4"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen loading="lazy"></iframe>
-      </div>
-    </article>
-
-  </div>
-</section>
-
-<!-- ═══════════════════ PROJECTS ═══════════════ -->
-<main>
-  <div class="sec-head">
-    <p class="sec-tag">$ ls -la ./projects</p>
-    <h2 class="sec-title">Things I've <span>Built</span></h2>
-  </div>
-
-  <div class="grid">
-
-    <!-- ── 1. Signal Decay ─────────────────────── -->
-    <article class="card" style="--c-accent:#00d4ff;--c-glow:rgba(0,212,255,.12);--c-from:#00d4ff;--c-to:#8b5cf6">
-      <div class="accent-bar"></div>
-      <div class="card-body">
-        <div class="card-top">
-          <div class="c-icon">⚡</div>
-          <div class="c-meta">
-            <div class="c-title">Signal Decay</div>
-            <div class="c-desc">Real-time multiplayer word-unscramble duel over WebSockets. Race to decode shuffled words before time runs out. Pluggable LLM endpoint generates dynamic words &amp; hints; 250-word fallback bank ensures offline play.</div>
-          </div>
-          <div class="c-links">
-            <a class="btn btn-gh" href="https://github.com/AleksanderDudek/game-of-words" target="_blank" rel="noopener">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.39.6.1.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02 0 2.04.13 3 .4 2.3-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.87.12 3.17.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.69.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
-              GitHub
-            </a>
-            <a class="btn btn-live" href="https://aleksanderdudek.github.io/game-of-words/" target="_blank" rel="noopener">▶ Live</a>
-          </div>
-        </div>
-        <div class="tags">
-          <span class="tag ts">TypeScript</span>
-          <span class="tag rct">React</span>
-          <span class="tag ws">WebSocket</span>
-          <span class="tag nd">Node.js</span>
-          <span class="tag dk">Docker</span>
-          <span class="tag vt">Vite</span>
-          <span class="tag ai">LLM API</span>
-          <span class="tag sc">SCSS</span>
-        </div>
-        <div class="code-wrap">
-          <div class="code-bar">
-            <div class="dot dr"></div><div class="dot dy"></div><div class="dot dg"></div>
-            <span class="fname">session.ts</span>
-          </div>
-          <pre class="code"><span class="cm">// Game state machine — lobby → countdown → playing ⇄ round_end</span>
-<span class="kw">class</span> <span class="ty">GameSession</span> {
-  <span class="kw">private</span> <span class="nm">phase</span><span class="op">:</span> <span class="ty">Phase</span> <span class="op">=</span> <span class="st">'lobby'</span><span class="op">;</span>
-  <span class="kw">private</span> <span class="nm">scores</span><span class="op">:</span> <span class="ty">Record</span><span class="op">&lt;</span><span class="ty">string</span><span class="op">,</span> <span class="ty">number</span><span class="op">&gt; =</span> <span class="op">{};</span>
-
-  <span class="kw2">async</span> <span class="fn">handleGuess</span><span class="op">(</span><span class="nm">playerId</span><span class="op">:</span> <span class="ty">string</span><span class="op">,</span> <span class="nm">word</span><span class="op">:</span> <span class="ty">string</span><span class="op">):</span> <span class="ty">Promise</span><span class="op">&lt;</span><span class="ty">void</span><span class="op">&gt; {</span>
-    <span class="kw">const</span> <span class="op">{</span> <span class="nm">correct</span><span class="op">,</span> <span class="nm">points</span> <span class="op">} =</span> <span class="kw">this</span><span class="op">.</span><span class="nm">board</span><span class="op">.</span><span class="fn">evaluate</span><span class="op">(</span><span class="nm">word</span><span class="op">);</span>
-    <span class="kw">if</span> <span class="op">(</span><span class="nm">correct</span><span class="op">) {</span>
-      <span class="kw">this</span><span class="op">.</span><span class="nm">scores</span><span class="op">[</span><span class="nm">playerId</span><span class="op">] +=</span> <span class="nm">points</span> <span class="op">+</span> <span class="kw">this</span><span class="op">.</span><span class="fn">timeBonus</span><span class="op">();</span>
-      <span class="kw">this</span><span class="op">.</span><span class="fn">broadcast</span><span class="op">({</span> <span class="nm">type</span><span class="op">:</span> <span class="st">'round_won'</span><span class="op">,</span> <span class="nm">scores</span><span class="op">:</span> <span class="kw">this</span><span class="op">.</span><span class="nm">scores</span> <span class="op">});</span>
-      <span class="kw2">await</span> <span class="kw">this</span><span class="op">.</span><span class="fn">nextRound</span><span class="op">();</span>
-    <span class="op">}</span>
-  <span class="op">}</span>
-<span class="op">}</span></pre>
-        </div>
-      </div>
-    </article>
-
-    <!-- ── 2. Sensor App ────────────────────────── -->
-    <article class="card" style="--c-accent:#10b981;--c-glow:rgba(16,185,129,.1);--c-from:#10b981;--c-to:#06b6d4">
-      <div class="accent-bar"></div>
-      <div class="card-body">
-        <div class="card-top">
-          <div class="c-icon">📡</div>
-          <div class="c-meta">
-            <div class="c-title">Sensor App</div>
-            <div class="c-desc">IoT-style sensor &amp; receiver simulation dashboard. Multiple virtual sensors push live data to receivers via WebSocket; receiver status can be toggled from the UI. Built with configurable sensor/receiver counts and clean component architecture.</div>
-          </div>
-          <div class="c-links">
-            <a class="btn btn-gh" href="https://github.com/AleksanderDudek/sensor-app" target="_blank" rel="noopener">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.39.6.1.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02 0 2.04.13 3 .4 2.3-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.87.12 3.17.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.69.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
-              GitHub
-            </a>
-            <a class="btn btn-live" href="https://sensor-app-tqk4.vercel.app/" target="_blank" rel="noopener">▶ Live</a>
-          </div>
-        </div>
-        <div class="tags">
-          <span class="tag ts">TypeScript</span>
-          <span class="tag rct">React</span>
-          <span class="tag vt">Vite</span>
-          <span class="tag ws">WebSocket</span>
-          <span class="tag sc">CSS</span>
-          <span class="tag sc">Husky</span>
-          <span class="tag sc">ESLint</span>
-        </div>
-        <div class="code-wrap">
-          <div class="code-bar">
-            <div class="dot dr"></div><div class="dot dy"></div><div class="dot dg"></div>
-            <span class="fname">useSensorData.ts</span>
-          </div>
-          <pre class="code"><span class="cm">// Reactive sensor stream — auto-reconnect on unmount</span>
-<span class="kw">const</span> <span class="fn">useSensorData</span> <span class="op">=</span> <span class="op">(</span><span class="nm">id</span><span class="op">:</span> <span class="ty">string</span><span class="op">) => {</span>
-  <span class="kw">const</span> <span class="op">[</span><span class="nm">state</span><span class="op">,</span> <span class="fn">setState</span><span class="op">] =</span> <span class="fn">useState</span><span class="op">&lt;</span><span class="ty">SensorData</span> <span class="op">|</span> <span class="kw">null</span><span class="op">&gt;(</span><span class="kw">null</span><span class="op">);</span>
-
-  <span class="fn">useEffect</span><span class="op">(() => {</span>
-    <span class="kw">const</span> <span class="nm">ws</span> <span class="op">=</span> <span class="kw">new</span> <span class="ty">WebSocket</span><span class="op">(`/api/sensor/${</span><span class="nm">id</span><span class="op">}`);</span>
-    <span class="nm">ws</span><span class="op">.</span><span class="nm">onmessage</span> <span class="op">=</span> <span class="op">({</span> <span class="nm">data</span> <span class="op">}) =></span>
-      <span class="fn">setState</span><span class="op">(</span><span class="ty">JSON</span><span class="op">.</span><span class="fn">parse</span><span class="op">(</span><span class="nm">data</span><span class="op">) </span><span class="kw">as</span> <span class="ty">SensorData</span><span class="op">);</span>
-    <span class="kw">return</span> <span class="op">() =>  </span><span class="nm">ws</span><span class="op">.</span><span class="fn">close</span><span class="op">();</span>
-  <span class="op">}, [</span><span class="nm">id</span><span class="op">]);</span>
-
-  <span class="kw">return</span> <span class="nm">state</span><span class="op">;</span>
-<span class="op">};</span></pre>
-        </div>
-      </div>
-    </article>
-
-    <!-- ── 3. BrainLink ────────────────────────── -->
-    <article class="card" style="--c-accent:#ec4899;--c-glow:rgba(236,72,153,.1);--c-from:#ec4899;--c-to:#8b5cf6">
-      <div class="accent-bar"></div>
-      <div class="card-body">
-        <div class="card-top">
-          <div class="c-icon">🧠</div>
-          <div class="c-meta">
-            <div class="c-title">BrainLink — EEG-to-Game Engine</div>
-            <div class="c-desc">Reverse-engineered BrainAccess HALO EEG headset for macOS (no official support). FastAPI server exposes real-time brain metrics (Focus, Calm, Flow…) over WebSocket &amp; REST. DSP pipeline: Welch PSD band-power extraction, blink detection, combo states, guided calibration.</div>
-          </div>
-          <div class="c-links">
-            <a class="btn btn-gh" href="https://github.com/AleksanderDudek/brainlink-bluetooth-macos-integration" target="_blank" rel="noopener">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.39.6.1.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02 0 2.04.13 3 .4 2.3-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.87.12 3.17.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.69.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
-              GitHub
-            </a>
-          </div>
-        </div>
-        <div class="tags">
-          <span class="tag py">Python</span>
-          <span class="tag fp">FastAPI</span>
-          <span class="tag ble">BLE / CoreBluetooth</span>
-          <span class="tag ws">WebSocket</span>
-          <span class="tag sc">DSP / Welch PSD</span>
-          <span class="tag sc">NumPy</span>
-          <span class="tag sc">macOS</span>
-        </div>
-        <div class="code-wrap">
-          <div class="code-bar">
-            <div class="dot dr"></div><div class="dot dy"></div><div class="dot dg"></div>
-            <span class="fname">dsp.py</span>
-          </div>
-          <pre class="code"><span class="cm"># Band-power extraction via Welch PSD — 10 Hz push</span>
-<span class="kw">def</span> <span class="fn">compute_band_powers</span><span class="op">(</span><span class="nm">self</span><span class="op">,</span> <span class="nm">ch</span><span class="op">:</span> <span class="ty">str</span><span class="op">) -></span> <span class="ty">dict</span><span class="op">[</span><span class="ty">str</span><span class="op">,</span> <span class="ty">float</span><span class="op">]:</span>
-    <span class="nm">freq</span><span class="op">,</span> <span class="nm">psd</span> <span class="op">=</span> <span class="fn">welch</span><span class="op">(</span><span class="nm">self</span><span class="op">.</span><span class="nm">_buf</span><span class="op">[</span><span class="nm">ch</span><span class="op">],</span> <span class="nm">fs</span><span class="op">=</span><span class="nu">256</span><span class="op">,</span> <span class="nm">nperseg</span><span class="op">=</span><span class="nu">256</span><span class="op">)</span>
-    <span class="kw">return</span> <span class="op">{</span>
-        <span class="nm">band</span><span class="op">:</span> <span class="ty">float</span><span class="op">(</span><span class="nm">np</span><span class="op">.</span><span class="fn">trapz</span><span class="op">(</span>
-            <span class="nm">psd</span><span class="op">[(</span><span class="nm">freq</span> <span class="op">&gt;=</span> <span class="nm">lo</span><span class="op">) &amp; (</span><span class="nm">freq</span> <span class="op">&lt;</span> <span class="nm">hi</span><span class="op">)],</span>
-            <span class="nm">freq</span><span class="op">[(</span><span class="nm">freq</span> <span class="op">&gt;=</span> <span class="nm">lo</span><span class="op">) &amp; (</span><span class="nm">freq</span> <span class="op">&lt;</span> <span class="nm">hi</span><span class="op">)]))</span>
-        <span class="kw">for</span> <span class="nm">band</span><span class="op">,</span> <span class="op">(</span><span class="nm">lo</span><span class="op">,</span> <span class="nm">hi</span><span class="op">)</span> <span class="kw">in</span> <span class="nm">FREQ_BANDS</span><span class="op">.</span><span class="fn">items</span><span class="op">()</span>
-    <span class="op">}</span></pre>
-        </div>
-      </div>
-    </article>
-
-    <!-- ── 4. Galactic Data Dashboard ─────────── -->
-    <article class="card" style="--c-accent:#8b5cf6;--c-glow:rgba(139,92,246,.12);--c-from:#8b5cf6;--c-to:#ec4899">
-      <div class="accent-bar"></div>
-      <div class="card-body">
-        <div class="card-top">
-          <div class="c-icon">🌌</div>
-          <div class="c-meta">
-            <div class="c-title">Galactic Data Dashboard</div>
-            <div class="c-desc">Full-stack monorepo that federates REST Countries, SpaceX, PokéAPI &amp; Open-Meteo behind a single GraphQL layer. D3.js bubble charts, radar charts &amp; timelines; AG Grid with virtual scrolling; Redux RTK Query; Storybook component library — all in strict TypeScript.</div>
-          </div>
-          <div class="c-links">
-            <a class="btn btn-gh" href="https://github.com/AleksanderDudek/data-visualization-pro" target="_blank" rel="noopener">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.39.6.1.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02 0 2.04.13 3 .4 2.3-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.87.12 3.17.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.69.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
-              GitHub
-            </a>
-            <a class="btn btn-live" href="https://aleksanderdudek.github.io/data-visualization-pro/" target="_blank" rel="noopener">▶ Live</a>
-            <a class="btn btn-ext" href="https://69cbc9e847376109cb5f127b-umvchfloib.chromatic.com/" target="_blank" rel="noopener">Storybook</a>
-            <a class="btn btn-gql" href="https://data-visualization-pro.onrender.com/graphql" target="_blank" rel="noopener">GraphQL</a>
-          </div>
-        </div>
-        <div class="tags">
-          <span class="tag ts">TypeScript</span>
-          <span class="tag rct">React 18</span>
-          <span class="tag gql">GraphQL</span>
-          <span class="tag nd">Apollo Server</span>
-          <span class="tag d3">D3.js</span>
-          <span class="tag rdx">Redux Toolkit</span>
-          <span class="tag ag">AG Grid</span>
-          <span class="tag sb">Storybook</span>
-          <span class="tag nx">npm workspaces</span>
-        </div>
-        <div class="code-wrap">
-          <div class="code-bar">
-            <div class="dot dr"></div><div class="dot dy"></div><div class="dot dg"></div>
-            <span class="fname">resolvers/galaxy.ts</span>
-          </div>
-          <pre class="code"><span class="cm">// GraphQL federation — 4 REST APIs unified in one query</span>
-<span class="kw">const</span> <span class="nm">resolvers</span> <span class="op">= {</span>
-  <span class="ty">Query</span><span class="op">: {</span>
-    <span class="fn">galaxyReport</span><span class="op">:</span> <span class="kw2">async</span> <span class="op">(</span><span class="nm">_</span><span class="op">,</span> <span class="nm">__</span><span class="op">, {</span> <span class="nm">dataSources</span> <span class="op">}) => ({</span>
-      <span class="nm">civilizations</span><span class="op">:</span> <span class="kw2">await</span> <span class="nm">dataSources</span><span class="op">.</span><span class="nm">restCountries</span><span class="op">.</span><span class="fn">getAll</span><span class="op">(),</span>
-      <span class="nm">transport</span><span class="op">    :</span> <span class="kw2">await</span> <span class="nm">dataSources</span><span class="op">.</span><span class="nm">spaceX</span><span class="op">.</span><span class="fn">getLaunches</span><span class="op">(),</span>
-      <span class="nm">fauna</span><span class="op">        :</span> <span class="kw2">await</span> <span class="nm">dataSources</span><span class="op">.</span><span class="nm">pokeApi</span><span class="op">.</span><span class="fn">getAll</span><span class="op">(),</span>
-      <span class="nm">atmosphere</span><span class="op">   :</span> <span class="kw2">await</span> <span class="nm">dataSources</span><span class="op">.</span><span class="nm">openMeteo</span><span class="op">.</span><span class="fn">getCurrent</span><span class="op">(),</span>
-    <span class="op">}),</span>
-  <span class="op">},</span>
-<span class="op">};</span></pre>
-        </div>
-      </div>
-    </article>
-
-    <!-- ── 5. AI Devs 4 ──────────────────────── -->
-    <article class="card" style="--c-accent:#a78bfa;--c-glow:rgba(167,139,250,.1);--c-from:#a78bfa;--c-to:#f472b6">
-      <div class="accent-bar"></div>
-      <div class="card-body">
-        <div class="card-top">
-          <div class="c-icon">🤖</div>
-          <div class="c-meta">
-            <div class="c-title">AI Devs 4 — TypeScript Solutions</div>
-            <div class="c-desc">Modular solution set for the AI_devs 4 certification programme. Abstracted LLM clients for Anthropic, OpenAI &amp; Gemini behind a unified wrapper supporting structured outputs via Zod schemas; centralised Hub API client with task submission; secure env-driven config.</div>
-          </div>
-          <div class="c-links">
-            <a class="btn btn-gh" href="https://github.com/AleksanderDudek/aidevs4-solutions-typescript" target="_blank" rel="noopener">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.39.6.1.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02 0 2.04.13 3 .4 2.3-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.87.12 3.17.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.69.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
-              GitHub
-            </a>
-          </div>
-        </div>
-        <div class="tags">
-          <span class="tag ts">TypeScript</span>
-          <span class="tag ai">Anthropic Claude</span>
-          <span class="tag ai">OpenAI</span>
-          <span class="tag ai">Gemini</span>
-          <span class="tag sc">Zod</span>
-          <span class="tag sc">tsx</span>
-        </div>
-        <div class="code-wrap">
-          <div class="code-bar">
-            <div class="dot dr"></div><div class="dot dy"></div><div class="dot dg"></div>
-            <span class="fname">lib/llm.ts</span>
-          </div>
-          <pre class="code"><span class="cm">// Provider-agnostic structured completion</span>
-<span class="kw">export async function</span> <span class="fn">completeStructured</span><span class="op">&lt;</span><span class="ty">T</span><span class="op">&gt;(</span>
-  <span class="nm">system</span><span class="op">:</span> <span class="ty">string</span><span class="op">,</span>
-  <span class="nm">prompt</span><span class="op">:</span> <span class="ty">string</span><span class="op">,</span>
-  <span class="nm">schema</span><span class="op">:</span> <span class="ty">ZodSchema</span><span class="op">&lt;</span><span class="ty">T</span><span class="op">&gt;</span>
-<span class="op">):</span> <span class="ty">Promise</span><span class="op">&lt;</span><span class="ty">T</span><span class="op">&gt; {</span>
-  <span class="kw">const</span> <span class="op">{</span> <span class="nm">content</span> <span class="op">} =</span> <span class="kw2">await</span> <span class="nm">anthropic</span><span class="op">.</span><span class="nm">messages</span><span class="op">.</span><span class="fn">create</span><span class="op">({</span>
-    <span class="nm">model</span><span class="op">:</span> <span class="st">'claude-3-5-sonnet-20241022'</span><span class="op">,</span>
-    <span class="nm">system</span><span class="op">,</span> <span class="nm">max_tokens</span><span class="op">:</span> <span class="nu">1024</span><span class="op">,</span>
-    <span class="nm">messages</span><span class="op">: [{</span> <span class="nm">role</span><span class="op">:</span> <span class="st">'user'</span><span class="op">,</span> <span class="nm">content</span><span class="op">:</span> <span class="nm">prompt</span> <span class="op">}],</span>
-  <span class="op">});</span>
-  <span class="kw">return</span> <span class="nm">schema</span><span class="op">.</span><span class="fn">parse</span><span class="op">(</span><span class="ty">JSON</span><span class="op">.</span><span class="fn">parse</span><span class="op">(</span><span class="nm">content</span><span class="op">[</span><span class="nu">0</span><span class="op">].</span><span class="nm">text</span><span class="op">));</span>
-<span class="op">}</span></pre>
-        </div>
-      </div>
-    </article>
-
-    <!-- ── 6. React Vite Boilerplate ─────────── -->
-    <article class="card" style="--c-accent:#f97316;--c-glow:rgba(249,115,22,.1);--c-from:#f97316;--c-to:#f59e0b">
-      <div class="accent-bar"></div>
-      <div class="card-body">
-        <div class="card-top">
-          <div class="c-icon">🚀</div>
-          <div class="c-meta">
-            <div class="c-title">React / Vite / TS Boilerplate</div>
-            <div class="c-desc">Production-ready starter template with every quality gate wired up: Vitest + RTL with 70 % coverage thresholds, SonarQube Cloud, multi-stage Docker build (Node → nginx), GitHub Actions pipeline (lint → type-check → test → sonar → docker → deploy), Husky pre-push guard, typed env vars.</div>
-          </div>
-          <div class="c-links">
-            <a class="btn btn-gh" href="https://github.com/AleksanderDudek/react-vite-typescript-boilerplate" target="_blank" rel="noopener">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.39.6.1.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02 0 2.04.13 3 .4 2.3-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.87.12 3.17.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.69.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
-              GitHub
-            </a>
-            <a class="btn btn-live" href="https://aleksanderdudek.github.io/react-vite-typescript-boilerplate/" target="_blank" rel="noopener">▶ Live</a>
-          </div>
-        </div>
-        <div class="tags">
-          <span class="tag rct">React 19</span>
-          <span class="tag ts">TypeScript</span>
-          <span class="tag vt">Vite 6</span>
-          <span class="tag sc">Vitest</span>
-          <span class="tag dk">Docker</span>
-          <span class="tag ci">GitHub Actions</span>
-          <span class="tag sc">SonarQube</span>
-          <span class="tag sc">Husky</span>
-          <span class="tag sc">ESLint 9</span>
-        </div>
-        <div class="code-wrap">
-          <div class="code-bar">
-            <div class="dot dr"></div><div class="dot dy"></div><div class="dot dg"></div>
-            <span class="fname">vite.config.ts</span>
-          </div>
-          <pre class="code"><span class="cm">// Coverage gates + path aliases — CI fails below threshold</span>
-<span class="kw">export default</span> <span class="fn">defineConfig</span><span class="op">({</span>
-  <span class="nm">plugins</span><span class="op">: [</span><span class="fn">react</span><span class="op">()],</span>
-  <span class="nm">resolve</span><span class="op">: {</span> <span class="nm">alias</span><span class="op">: {</span> <span class="st">'@'</span><span class="op">:</span> <span class="nm">path</span><span class="op">.</span><span class="fn">resolve</span><span class="op">(</span><span class="nm">__dirname</span><span class="op">,</span> <span class="st">'./src'</span><span class="op">) } },</span>
-  <span class="nm">test</span><span class="op">: {</span>
-    <span class="nm">environment</span><span class="op">:</span> <span class="st">'jsdom'</span><span class="op">,</span>
-    <span class="nm">coverage</span><span class="op">: {</span>
-      <span class="nm">provider</span><span class="op">:</span> <span class="st">'v8'</span><span class="op">,</span>
-      <span class="nm">thresholds</span><span class="op">: {</span>
-        <span class="nm">branches</span><span class="op">:</span> <span class="nu">70</span><span class="op">,</span> <span class="nm">functions</span><span class="op">:</span> <span class="nu">70</span><span class="op">,</span> <span class="nm">lines</span><span class="op">:</span> <span class="nu">70</span><span class="op">,</span>
-      <span class="op">},</span>
-    <span class="op">},</span>
-  <span class="op">},</span>
-<span class="op">});</span></pre>
-        </div>
-      </div>
-    </article>
-
-    <!-- ── 7. Pixabay Scripts ─────────────────── -->
-    <article class="card" style="--c-accent:#f59e0b;--c-glow:rgba(245,158,11,.1);--c-from:#f59e0b;--c-to:#10b981">
-      <div class="accent-bar"></div>
-      <div class="card-body">
-        <div class="card-top">
-          <div class="c-icon">🎬</div>
-          <div class="c-meta">
-            <div class="c-title">Pixabay Script Video Generator</div>
-            <div class="c-desc">Python toolset that transforms screenplay sentences into visual content. Extracts visual keywords per scene using NLP stop-word filtering, then searches Pixabay with multi-strategy fallback (phrase → individual terms), returning ranked download URLs for both videos and images.</div>
-          </div>
-          <div class="c-links">
-            <a class="btn btn-gh" href="https://github.com/AleksanderDudek/pixabay-api-scripts" target="_blank" rel="noopener">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.39.6.1.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02 0 2.04.13 3 .4 2.3-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.87.12 3.17.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.69.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
-              GitHub
-            </a>
-          </div>
-        </div>
-        <div class="tags">
-          <span class="tag py">Python</span>
-          <span class="tag sc">requests</span>
-          <span class="tag sc">REST API</span>
-          <span class="tag sc">NLP keyword extraction</span>
-          <span class="tag sc">dotenv</span>
-        </div>
-        <div class="code-wrap">
-          <div class="code-bar">
-            <div class="dot dr"></div><div class="dot dy"></div><div class="dot dg"></div>
-            <span class="fname">get_pixabay_videos.py</span>
-          </div>
-          <pre class="code"><span class="cm"># Smart keyword extraction with multi-strategy fallback</span>
-<span class="kw">def</span> <span class="fn">extract_keywords</span><span class="op">(</span><span class="nm">sentence</span><span class="op">:</span> <span class="ty">str</span><span class="op">) -></span> <span class="ty">list</span><span class="op">[</span><span class="ty">str</span><span class="op">]:</span>
-    <span class="nm">stop</span> <span class="op">= {</span><span class="st">'a'</span><span class="op">,</span> <span class="st">'an'</span><span class="op">,</span> <span class="st">'the'</span><span class="op">,</span> <span class="st">'is'</span><span class="op">,</span> <span class="st">'in'</span><span class="op">,</span> <span class="st">'over'</span><span class="op">,</span> <span class="st">'with'</span><span class="op">}</span>
-    <span class="kw">return</span> <span class="op">[</span><span class="nm">w</span><span class="op">.</span><span class="fn">strip</span><span class="op">(</span><span class="st">'.,!'</span><span class="op">)</span>
-            <span class="kw">for</span> <span class="nm">w</span> <span class="kw">in</span> <span class="nm">sentence</span><span class="op">.</span><span class="fn">lower</span><span class="op">().</span><span class="fn">split</span><span class="op">()</span>
-            <span class="kw">if</span> <span class="nm">w</span><span class="op">.</span><span class="fn">strip</span><span class="op">(</span><span class="st">'.,!'</span><span class="op">)</span> <span class="kw">not in</span> <span class="nm">stop</span><span class="op">][:</span><span class="nu">4</span><span class="op">]</span>
-
-<span class="nm">results</span> <span class="op">=</span> <span class="nm">retriever</span><span class="op">.</span><span class="fn">process_script_scenes</span><span class="op">(</span><span class="nm">script_sentences</span><span class="op">)</span></pre>
-        </div>
-      </div>
-    </article>
-
-    <!-- ── 8. GSC Auto-Indexer ─────────────────── -->
-    <article class="card" style="--c-accent:#60a5fa;--c-glow:rgba(96,165,250,.1);--c-from:#3b82f6;--c-to:#06b6d4">
-      <div class="accent-bar"></div>
-      <div class="card-body">
-        <div class="card-top">
-          <div class="c-icon">🔍</div>
-          <div class="c-meta">
-            <div class="c-title">GSC Auto-Indexer</div>
-            <div class="c-desc">Automates Google Search Console URL submission. Authenticates via a service-account JSON key, parses all sitemaps (supports nested / multi-sitemap setups), batches URL_UPDATED notifications to the Indexing API — no paid SEO tool required. Extended original with multiple-sitemap support.</div>
-          </div>
-          <div class="c-links">
-            <a class="btn btn-gh" href="https://github.com/AleksanderDudek/google-search-console-index-api-automated" target="_blank" rel="noopener">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.39.6.1.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02 0 2.04.13 3 .4 2.3-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.87.12 3.17.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.69.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
-              GitHub
-            </a>
-          </div>
-        </div>
-        <div class="tags">
-          <span class="tag py">Python</span>
-          <span class="tag gc">Google Cloud API</span>
-          <span class="tag sc">OAuth2 Service Account</span>
-          <span class="tag sc">Sitemap XML</span>
-          <span class="tag sc">SEO automation</span>
-        </div>
-        <div class="code-wrap">
-          <div class="code-bar">
-            <div class="dot dr"></div><div class="dot dy"></div><div class="dot dg"></div>
-            <span class="fname">main.py</span>
-          </div>
-          <pre class="code"><span class="cm"># Batch URL_UPDATED via Google Indexing API</span>
-<span class="kw">def</span> <span class="fn">submit_urls</span><span class="op">(</span><span class="nm">urls</span><span class="op">:</span> <span class="ty">list</span><span class="op">[</span><span class="ty">str</span><span class="op">],</span> <span class="nm">service</span><span class="op">) -></span> <span class="ty">None</span><span class="op">:</span>
-    <span class="kw">for</span> <span class="nm">url</span> <span class="kw">in</span> <span class="nm">urls</span><span class="op">:</span>
-        <span class="nm">service</span><span class="op">.</span><span class="fn">urlNotifications</span><span class="op">().</span><span class="fn">publish</span><span class="op">(</span>
-            <span class="nm">body</span><span class="op">={</span><span class="st">"url"</span><span class="op">:</span> <span class="nm">url</span><span class="op">,</span> <span class="st">"type"</span><span class="op">:</span> <span class="st">"URL_UPDATED"</span><span class="op">}</span>
-        <span class="op">).</span><span class="fn">execute</span><span class="op">()</span>
-        <span class="fn">print</span><span class="op">(</span><span class="st">f"✓ Indexed: <span class="op">{</span><span class="nm">url</span><span class="op">}</span>"</span><span class="op">)</span></pre>
-        </div>
-      </div>
-    </article>
-
-  </div><!-- /grid -->
-</main>
 
 <!-- ═══════════════════ PRETTY PAGES ═══════════════ -->
 <section>
@@ -1616,144 +989,6 @@
 </footer>
 
 <!-- ═══════════════════ SCRIPTS ═══════════════════ -->
-<script>
-/* ── Canvas neural-mesh animation ────────────── */
-(function() {
-  const canvas = document.getElementById('bg-canvas');
-  const ctx = canvas.getContext('2d');
-  let W, H, nodes;
-  const N = 70, MAX_DIST = 160, SPEED = 0.35;
-
-  function resize() {
-    W = canvas.width  = window.innerWidth;
-    H = canvas.height = window.innerHeight;
-  }
-
-  function initNodes() {
-    nodes = Array.from({ length: N }, () => ({
-      x: Math.random() * W,
-      y: Math.random() * H,
-      vx: (Math.random() - .5) * SPEED,
-      vy: (Math.random() - .5) * SPEED,
-      r: Math.random() * 1.5 + .5,
-      hue: Math.random() < .6 ? 195 : 270, // cyan or purple
-    }));
-  }
-
-  function draw() {
-    ctx.clearRect(0, 0, W, H);
-
-    // connections
-    for (let i = 0; i < N; i++) {
-      for (let j = i + 1; j < N; j++) {
-        const dx = nodes[i].x - nodes[j].x;
-        const dy = nodes[i].y - nodes[j].y;
-        const d  = Math.sqrt(dx*dx + dy*dy);
-        if (d < MAX_DIST) {
-          const a = 1 - d / MAX_DIST;
-          ctx.strokeStyle = `hsla(${nodes[i].hue}, 90%, 65%, ${a * .5})`;
-          ctx.lineWidth   = a * 1.2;
-          ctx.beginPath();
-          ctx.moveTo(nodes[i].x, nodes[i].y);
-          ctx.lineTo(nodes[j].x, nodes[j].y);
-          ctx.stroke();
-        }
-      }
-    }
-
-    // nodes
-    nodes.forEach(n => {
-      ctx.beginPath();
-      ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
-      ctx.fillStyle = `hsla(${n.hue}, 90%, 70%, .8)`;
-      ctx.fill();
-
-      // move
-      n.x += n.vx; n.y += n.vy;
-      if (n.x < 0) n.x = W; if (n.x > W) n.x = 0;
-      if (n.y < 0) n.y = H; if (n.y > H) n.y = 0;
-    });
-
-    requestAnimationFrame(draw);
-  }
-
-  window.addEventListener('resize', () => { resize(); initNodes(); });
-  resize(); initNodes(); draw();
-})();
-
-/* ── Typing effect ───────────────────────────── */
-(function() {
-  const lines = [
-    'Full-Stack Engineer',
-    'TypeScript · React · Python',
-    'WebSockets · Docker · CI/CD',
-    'AI Integrations · DSP · GraphQL',
-    'Builder of things that run in prod.',
-  ];
-  const el = document.getElementById('typed');
-  let li = 0, ci = 0, deleting = false;
-  const TSPEED = 55, DSPEED = 28, PAUSE = 2200;
-
-  function tick() {
-    const line = lines[li];
-    if (!deleting) {
-      el.textContent = line.slice(0, ++ci);
-      if (ci === line.length) { deleting = true; setTimeout(tick, PAUSE); return; }
-    } else {
-      el.textContent = line.slice(0, --ci);
-      if (ci === 0) { deleting = false; li = (li + 1) % lines.length; }
-    }
-    setTimeout(tick, deleting ? DSPEED : TSPEED);
-  }
-  tick();
-})();
-
-/* ── Counter animation ───────────────────────── */
-(function() {
-  const counterObs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (!e.isIntersecting) return;
-      counterObs.unobserve(e.target);
-      const target = +e.target.dataset.target;
-      let cur = 0;
-      const step = Math.ceil(target / 30);
-      const id = setInterval(() => {
-        cur = Math.min(cur + step, target);
-        e.target.textContent = cur + (e.target.dataset.suffix || '');
-        if (cur >= target) clearInterval(id);
-      }, 40);
-    });
-  }, { threshold: .5 });
-  document.querySelectorAll('[data-target]').forEach(el => counterObs.observe(el));
-})();
-
-/* ── Card scroll-in ──────────────────────────── */
-(function() {
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach((e, i) => {
-      if (!e.isIntersecting) return;
-      setTimeout(() => e.target.classList.add('vis'), i * 80);
-      obs.unobserve(e.target);
-    });
-  }, { threshold: .08 });
-
-  document.querySelectorAll('.card, .video-card').forEach(c => obs.observe(c));
-})();
-
-/* ── 3-D tilt on cards ───────────────────────── */
-(function() {
-  document.querySelectorAll('.card').forEach(card => {
-    card.addEventListener('mousemove', e => {
-      const r = card.getBoundingClientRect();
-      const x = (e.clientX - r.left) / r.width  - .5;
-      const y = (e.clientY - r.top)  / r.height - .5;
-      card.style.transform = `translateY(-5px) rotateX(${-y*6}deg) rotateY(${x*6}deg)`;
-    });
-    card.addEventListener('mouseleave', () => {
-      card.style.transform = '';
-    });
-  });
-})();
-</script>
+<script src="main.js"></script>
 </body>
 </html>
