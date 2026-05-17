@@ -37,10 +37,10 @@
   </p>
 
   <div class="stats">
-    <div class="stat"><span class="stat-n" data-target="10">0</span><span class="stat-l">Projects</span></div>
+    <div class="stat"><span class="stat-n" data-target="12">0</span><span class="stat-l">Projects</span></div>
     <div class="stat"><span class="stat-n" data-target="5">0</span><span class="stat-l">Languages</span></div>
-    <div class="stat"><span class="stat-n" data-target="20">0</span><span class="stat-l">Technologies</span></div>
-    <div class="stat"><span class="stat-n" data-target="10">0</span><span class="stat-l">Live Demos</span></div>
+    <div class="stat"><span class="stat-n" data-target="22">0</span><span class="stat-l">Technologies</span></div>
+    <div class="stat"><span class="stat-n" data-target="12">0</span><span class="stat-l">Live Demos</span></div>
   </div>
 
   <div class="scroll-hint">
@@ -117,6 +117,113 @@
 
   <div class="grid">
 
+
+
+    <!-- ── 1. Your Events ─────────── -->
+    <article class="card" style="--c-accent:#f59e0b;--c-glow:rgba(245,158,11,.12);--c-from:#f59e0b;--c-to:#ef4444">
+      <div class="accent-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="c-icon">🎟️</div>
+          <div class="c-meta">
+            <div class="c-title">Idź na miasto — Your Events</div>
+            <div class="c-desc">City-scale event discovery PWA for Szczecin. Real-time browsing of what's happening in the next four hours, weekend planners and category filters (sports, art, theatre, culinary, dance). Next.js 16 App Router + React 19 with a Supabase backend, TanStack Query data layer, Zod-validated schemas and bilingual (PL/EN) i18n.</div>
+          </div>
+          <div class="c-links">
+            <a class="btn btn-gh" href="https://github.com/AleksanderDudek/your-events" target="_blank" rel="noopener">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.39.6.1.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02 0 2.04.13 3 .4 2.3-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.87.12 3.17.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.69.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              GitHub
+            </a>
+            <a class="btn btn-live" href="https://aleksanderdudek.github.io/your-events/" target="_blank" rel="noopener">▶ Live</a>
+          </div>
+        </div>
+        <div class="tags">
+          <span class="tag ts">TypeScript</span>
+          <span class="tag nx">Next.js 16</span>
+          <span class="tag rct">React 19</span>
+          <span class="tag sc">Supabase</span>
+          <span class="tag rdx">TanStack Query</span>
+          <span class="tag sc">MUI</span>
+          <span class="tag sc">Zod</span>
+          <span class="tag sc">SCSS</span>
+          <span class="tag sc">Playwright</span>
+          <span class="tag vt">Vitest</span>
+        </div>
+        <div class="code-wrap">
+          <div class="code-bar">
+            <div class="dot dr"></div><div class="dot dy"></div><div class="dot dg"></div>
+            <span class="fname">useUpcomingEvents.ts</span>
+          </div>
+          <pre class="code"><span class="cm">// Real-time event window — Supabase + TanStack Query + Zod</span>
+<span class="kw">const</span> <span class="fn">useUpcomingEvents</span> <span class="op">= (</span><span class="nm">hours</span><span class="op">:</span> <span class="ty">number</span><span class="op">) =></span>
+  <span class="fn">useQuery</span><span class="op">({</span>
+    <span class="nm">queryKey</span><span class="op">: [</span><span class="st">'events'</span><span class="op">,</span> <span class="nm">hours</span><span class="op">],</span>
+    <span class="nm">queryFn</span><span class="op">:</span> <span class="kw2">async</span> <span class="op">() => {</span>
+      <span class="kw">const</span> <span class="op">{</span> <span class="nm">data</span><span class="op">,</span> <span class="nm">error</span> <span class="op">} =</span> <span class="kw2">await</span> <span class="nm">supabase</span>
+        <span class="op">.</span><span class="fn">from</span><span class="op">(</span><span class="st">'events'</span><span class="op">)</span>
+        <span class="op">.</span><span class="fn">select</span><span class="op">(</span><span class="st">'*, venue(*), categories(*)'</span><span class="op">)</span>
+        <span class="op">.</span><span class="fn">gte</span><span class="op">(</span><span class="st">'starts_at'</span><span class="op">,</span> <span class="kw">new</span> <span class="ty">Date</span><span class="op">().</span><span class="fn">toISOString</span><span class="op">())</span>
+        <span class="op">.</span><span class="fn">lte</span><span class="op">(</span><span class="st">'starts_at'</span><span class="op">,</span> <span class="fn">addHours</span><span class="op">(</span><span class="kw">new</span> <span class="ty">Date</span><span class="op">(),</span> <span class="nm">hours</span><span class="op">).</span><span class="fn">toISOString</span><span class="op">())</span>
+        <span class="op">.</span><span class="fn">order</span><span class="op">(</span><span class="st">'starts_at'</span><span class="op">);</span>
+      <span class="kw">if</span> <span class="op">(</span><span class="nm">error</span><span class="op">)</span> <span class="kw">throw</span> <span class="nm">error</span><span class="op">;</span>
+      <span class="kw">return</span> <span class="ty">EventSchema</span><span class="op">.</span><span class="fn">array</span><span class="op">().</span><span class="fn">parse</span><span class="op">(</span><span class="nm">data</span><span class="op">);</span>
+    <span class="op">},</span>
+    <span class="nm">staleTime</span><span class="op">:</span> <span class="nu">60_000</span><span class="op">,</span>
+  <span class="op">});</span></pre>
+        </div>
+      </div>
+    </article>
+
+
+    <!-- ── 2. ResearchMind ─────────── -->
+    <article class="card" style="--c-accent:#6366f1;--c-glow:rgba(99,102,241,.12);--c-from:#6366f1;--c-to:#06b6d4">
+      <div class="accent-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="c-icon">🧩</div>
+          <div class="c-meta">
+            <div class="c-title">ResearchMind</div>
+            <div class="c-desc">Multi-modal research assistant that builds isolated knowledge contexts from PDFs, web pages, images, audio and raw text — then chats with an agentic RAG pipeline over them. LangGraph router→retrieve→generate→critic loop, Qdrant vector store, LiteLLM proxy (Ollama / Groq / vLLM / OpenAI), plus a full voice mode with Silero VAD, faster-whisper STT and a quality-gating arbiter.</div>
+          </div>
+          <div class="c-links">
+            <a class="btn btn-gh" href="https://github.com/AleksanderDudek/research-mind" target="_blank" rel="noopener">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.39.6.1.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02 0 2.04.13 3 .4 2.3-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.87.12 3.17.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.69.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              GitHub
+            </a>
+            <a class="btn btn-live" href="https://aleksanderdudek.github.io/research-mind" target="_blank" rel="noopener">▶ Live</a>
+          </div>
+        </div>
+        <div class="tags">
+          <span class="tag py">Python</span>
+          <span class="tag fp">FastAPI</span>
+          <span class="tag ag">LangGraph</span>
+          <span class="tag sc">Qdrant</span>
+          <span class="tag ai">LiteLLM</span>
+          <span class="tag sc">Whisper</span>
+          <span class="tag sc">Silero VAD</span>
+          <span class="tag sc">Streamlit</span>
+          <span class="tag dk">Docker</span>
+          <span class="tag ts">TypeScript</span>
+        </div>
+        <div class="code-wrap">
+          <div class="code-bar">
+            <div class="dot dr"></div><div class="dot dy"></div><div class="dot dg"></div>
+            <span class="fname">graph.py</span>
+          </div>
+          <pre class="code"><span class="cm"># LangGraph agentic RAG — router → retrieve → generate → critic</span>
+<span class="nm">graph</span> <span class="op">=</span> <span class="ty">StateGraph</span><span class="op">(</span><span class="ty">RAGState</span><span class="op">)</span>
+<span class="nm">graph</span><span class="op">.</span><span class="fn">add_node</span><span class="op">(</span><span class="st">"router"</span><span class="op">,</span>   <span class="nm">router_node</span><span class="op">)</span>
+<span class="nm">graph</span><span class="op">.</span><span class="fn">add_node</span><span class="op">(</span><span class="st">"retrieve"</span><span class="op">,</span> <span class="nm">retrieve_node</span><span class="op">)</span>
+<span class="nm">graph</span><span class="op">.</span><span class="fn">add_node</span><span class="op">(</span><span class="st">"generate"</span><span class="op">,</span> <span class="nm">generate_node</span><span class="op">)</span>
+<span class="nm">graph</span><span class="op">.</span><span class="fn">add_node</span><span class="op">(</span><span class="st">"critic"</span><span class="op">,</span>   <span class="nm">critic_node</span><span class="op">)</span>
+<span class="nm">graph</span><span class="op">.</span><span class="fn">add_conditional_edges</span><span class="op">(</span>
+    <span class="st">"critic"</span><span class="op">,</span>
+    <span class="kw">lambda</span> <span class="nm">s</span><span class="op">:</span> <span class="st">"generate"</span> <span class="kw">if</span> <span class="nm">s</span><span class="op">.</span><span class="nm">quality</span> <span class="op">&lt;</span> <span class="nm">THRESHOLD</span> <span class="kw">and</span> <span class="nm">s</span><span class="op">.</span><span class="nm">iter</span> <span class="op">&lt;</span> <span class="nm">MAX_ITERS</span> <span class="kw">else</span> <span class="nm">END</span><span class="op">,</span>
+    <span class="op">{</span><span class="st">"generate"</span><span class="op">:</span> <span class="st">"generate"</span><span class="op">,</span> <span class="nm">END</span><span class="op">:</span> <span class="nm">END</span><span class="op">},</span>
+<span class="op">)</span></pre>
+        </div>
+      </div>
+    </article>
 
 
     <!-- ── 1. Agentic Research Assistant ─────────── -->
