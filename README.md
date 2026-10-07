@@ -1,18 +1,29 @@
 # Aleksander Dudek — Portfolio
 
-A single-file static portfolio built with pure HTML, CSS, and JavaScript — no framework, no build step.
+A static portfolio built with pure HTML, CSS, and JavaScript — no framework, no build step.
+`index.html` holds the content, `styles.css` the styles, `main.js` the effects.
 
 ## Features
 
-- Animated neural-mesh canvas background
+- Mobile-first layout: base styles target phones, `min-width` media queries add tablet/desktop columns
+- Touch-friendly: 44px tap targets on coarse pointers, hover effects only on devices that can hover
+- Code previews are native `<details>` — open on desktop, collapsed on phones
+- YouTube videos load as thumbnails; the player loads only when a video is played
+- Respects `prefers-reduced-motion` (static mesh, no typing/counters/animations)
+- Animated neural-mesh canvas background (fewer nodes on small screens)
 - Glitch effect on the hero name
 - Typing animation cycling through tech skills
 - Animated counters for stats
-- Cards scroll in with stagger on IntersectionObserver
-- 3-D tilt effect on project cards (mousemove)
+- Cards scroll in with stagger on IntersectionObserver (still visible without JS)
+- 3-D tilt effect on project cards (mouse/trackpad only)
 - Scanline animation on code blocks
 - Full syntax highlighting via CSS spans
 - Live demo links, Storybook, GraphQL playground links
+
+## Adding a project
+
+Copy an `<article class="card">` block at the top of the `main .grid` in `index.html`
+(newest first), then bump the hero stats (`data-target`) to match.
 
 ## Deploy to GitHub Pages
 

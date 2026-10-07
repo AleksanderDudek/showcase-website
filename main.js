@@ -1,9 +1,15 @@
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const finePointer  = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
 /* ── Canvas neural-mesh animation ────────────── */
 (function() {
   const canvas = document.getElementById('bg-canvas');
   const ctx = canvas.getContext('2d');
-  let W, H, nodes;
-  const N = 70, MAX_DIST = 160, SPEED = 0.35;
+  let W, H, N, nodes;
+  const MAX_DIST = 160, SPEED = 0.35;
+
+  // Fewer nodes on small screens: the connection pass is O(N²).
+  const nodeCount = () => Math.round(Math.min(70, Math.max(28, (W * H) / 16000)));
 
   function resize() {
     W = canvas.width  = window.innerWidth;
@@ -11,6 +17,7 @@
   }
 
   function initNodes() {
+    N = nodeCount();
     nodes = Array.from({ length: N }, () => ({
       x: Math.random() * W,
       y: Math.random() * H,
@@ -21,7 +28,7 @@
     }));
   }
 
-  function draw() {
+  function render() {
     ctx.clearRect(0, 0, W, H);
 
     // connections
@@ -48,18 +55,36 @@
       ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
       ctx.fillStyle = `hsla(${n.hue}, 90%, 70%, .8)`;
       ctx.fill();
+    });
+  }
 
-      // move
+  function step() {
+    nodes.forEach(n => {
       n.x += n.vx; n.y += n.vy;
       if (n.x < 0) n.x = W; if (n.x > W) n.x = 0;
       if (n.y < 0) n.y = H; if (n.y > H) n.y = 0;
     });
-
-    requestAnimationFrame(draw);
   }
 
-  window.addEventListener('resize', () => { resize(); initNodes(); });
-  resize(); initNodes(); draw();
+  function loop() {
+    render();
+    step();
+    requestAnimationFrame(loop);
+  }
+
+  // Mobile browsers fire resize when the URL bar shows/hides while scrolling;
+  // only reseed the mesh when the width really changes so it doesn't jump.
+  let lastW = window.innerWidth;
+  window.addEventListener('resize', () => {
+    const widthChanged = window.innerWidth !== lastW;
+    lastW = window.innerWidth;
+    resize();
+    if (widthChanged) initNodes();
+    if (reduceMotion) render();
+  });
+
+  resize(); initNodes();
+  if (reduceMotion) render(); else loop();
 })();
 
 /* ── Typing effect ───────────────────────────── */
@@ -67,11 +92,13 @@
   const lines = [
     'Full-Stack Engineer',
     'TypeScript · React · Python',
+    'Local-first PWAs · Web Speech',
+    'AI Agents · MCP · RAG',
     'WebSockets · Docker · CI/CD',
-    'AI Integrations · DSP · GraphQL',
     'Builder of things that run in prod.',
   ];
   const el = document.getElementById('typed');
+  if (reduceMotion) { el.textContent = lines[0]; return; }
   let li = 0, ci = 0, deleting = false;
   const TSPEED = 55, DSPEED = 28, PAUSE = 2200;
 
@@ -96,6 +123,7 @@
       if (!e.isIntersecting) return;
       counterObs.unobserve(e.target);
       const target = +e.target.dataset.target;
+      if (reduceMotion) { e.target.textContent = target; return; }
       let cur = 0;
       const step = Math.ceil(target / 30);
       const id = setInterval(() => {
@@ -121,8 +149,31 @@
   document.querySelectorAll('.card, .video-card').forEach(c => obs.observe(c));
 })();
 
-/* ── 3-D tilt on cards ───────────────────────── */
+/* ── Code previews: collapsed on phones, open on wider screens ── */
 (function() {
+  if (window.matchMedia('(min-width: 768px)').matches) return;
+  document.querySelectorAll('details.code-wrap[open]').forEach(d => { d.open = false; });
+})();
+
+/* ── YouTube facades: load the player only when asked ── */
+(function() {
+  document.querySelectorAll('.yt-facade[data-yt]').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://www.youtube.com/embed/${link.dataset.yt}?rel=0&autoplay=1`;
+      iframe.title = link.getAttribute('aria-label').replace(/^Play video: /, '');
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+      iframe.allowFullscreen = true;
+      link.replaceWith(iframe);
+      iframe.focus();
+    });
+  });
+})();
+
+/* ── 3-D tilt on cards (mouse/trackpad only) ─── */
+(function() {
+  if (!finePointer || reduceMotion) return;
   document.querySelectorAll('.card').forEach(card => {
     card.addEventListener('mousemove', e => {
       const r = card.getBoundingClientRect();

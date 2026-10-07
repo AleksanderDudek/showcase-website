@@ -3,9 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Aleksander Dudek — Full-Stack Engineer portfolio: TypeScript, React, Python, WebSockets, AI integrations, DevOps." />
+  <meta name="description" content="Aleksander Dudek — Full-Stack Engineer portfolio: TypeScript, React, Python, local-first PWAs, AI agents, MCP servers, WebSockets, DevOps." />
   <title>Aleksander Dudek — Portfolio</title>
+  <meta name="theme-color" content="#07070f" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2307070f'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='monospace' font-weight='700' font-size='30' fill='%2300d4ff'%3EAD%3C/text%3E%3C/svg%3E" />
   <link rel="stylesheet" href="styles.css">
+  <script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
 
@@ -26,7 +29,7 @@
   <div class="badge">// available for opportunities</div>
 
   <div class="avatar-wrap">
-    <img src="avatar.jpg" alt="Aleksander Dudek" />
+    <img src="assets/avatar-320.jpg" alt="Aleksander Dudek" width="148" height="148" fetchpriority="high" />
     <div class="avatar-ring"></div>
   </div>
 
@@ -37,10 +40,10 @@
   </p>
 
   <div class="stats">
-    <div class="stat"><span class="stat-n" data-target="12">0</span><span class="stat-l">Projects</span></div>
+    <div class="stat"><span class="stat-n" data-target="18">0</span><span class="stat-l">Projects</span></div>
     <div class="stat"><span class="stat-n" data-target="5">0</span><span class="stat-l">Languages</span></div>
-    <div class="stat"><span class="stat-n" data-target="22">0</span><span class="stat-l">Technologies</span></div>
-    <div class="stat"><span class="stat-n" data-target="12">0</span><span class="stat-l">Live Demos</span></div>
+    <div class="stat"><span class="stat-n" data-target="30">0</span><span class="stat-l">Technologies</span></div>
+    <div class="stat"><span class="stat-n" data-target="17">0</span><span class="stat-l">Live Demos</span></div>
   </div>
 
   <div class="scroll-hint">
@@ -64,44 +67,56 @@
     <!-- ── 1. ── -->
     <article class="video-card">
       <div class="video-embed">
-        <iframe
-          src="https://www.youtube.com/embed/4UesiEAv-IU?rel=0"
-          title="Playlist video 1"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen loading="lazy"></iframe>
+        <a class="yt-facade" href="https://www.youtube.com/watch?v=4UesiEAv-IU" data-yt="4UesiEAv-IU" target="_blank" rel="noopener" aria-label="Play video: Factory Method Pattern">
+          <img src="https://i.ytimg.com/vi/4UesiEAv-IU/hqdefault.jpg" alt="" width="480" height="360" loading="lazy" decoding="async" />
+          <span class="yt-play" aria-hidden="true"></span>
+        </a>
+      </div>
+      <div class="video-info">
+        <h3 class="video-title">Factory Method Pattern</h3>
+        <p class="video-desc">Design Patterns in TypeScript · Ep. 1/22</p>
       </div>
     </article>
 
     <!-- ── 2. ── -->
     <article class="video-card">
       <div class="video-embed">
-        <iframe
-          src="https://www.youtube.com/embed/L7STUSNW1Wg?rel=0"
-          title="Playlist video 2"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen loading="lazy"></iframe>
+        <a class="yt-facade" href="https://www.youtube.com/watch?v=L7STUSNW1Wg" data-yt="L7STUSNW1Wg" target="_blank" rel="noopener" aria-label="Play video: Abstract Factory Pattern">
+          <img src="https://i.ytimg.com/vi/L7STUSNW1Wg/hqdefault.jpg" alt="" width="480" height="360" loading="lazy" decoding="async" />
+          <span class="yt-play" aria-hidden="true"></span>
+        </a>
+      </div>
+      <div class="video-info">
+        <h3 class="video-title">Abstract Factory Pattern</h3>
+        <p class="video-desc">Design Patterns in TypeScript · Ep. 2/22</p>
       </div>
     </article>
 
     <!-- ── 3. ── -->
     <article class="video-card">
       <div class="video-embed">
-        <iframe
-          src="https://www.youtube.com/embed/LBUkET80FPk?rel=0"
-          title="Playlist video 3"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen loading="lazy"></iframe>
+        <a class="yt-facade" href="https://www.youtube.com/watch?v=LBUkET80FPk" data-yt="LBUkET80FPk" target="_blank" rel="noopener" aria-label="Play video: Builder Pattern">
+          <img src="https://i.ytimg.com/vi/LBUkET80FPk/hqdefault.jpg" alt="" width="480" height="360" loading="lazy" decoding="async" />
+          <span class="yt-play" aria-hidden="true"></span>
+        </a>
+      </div>
+      <div class="video-info">
+        <h3 class="video-title">Builder Pattern</h3>
+        <p class="video-desc">Design Patterns in TypeScript · Ep. 3/22</p>
       </div>
     </article>
 
     <!-- ── 4. ── -->
     <article class="video-card">
       <div class="video-embed">
-        <iframe
-          src="https://www.youtube.com/embed/Wt6z5C4IxE4?rel=0"
-          title="Playlist video 4"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen loading="lazy"></iframe>
+        <a class="yt-facade" href="https://www.youtube.com/watch?v=Wt6z5C4IxE4" data-yt="Wt6z5C4IxE4" target="_blank" rel="noopener" aria-label="Play video: Prototype Pattern">
+          <img src="https://i.ytimg.com/vi/Wt6z5C4IxE4/hqdefault.jpg" alt="" width="480" height="360" loading="lazy" decoding="async" />
+          <span class="yt-play" aria-hidden="true"></span>
+        </a>
+      </div>
+      <div class="video-info">
+        <h3 class="video-title">Prototype Pattern</h3>
+        <p class="video-desc">Design Patterns in TypeScript · Ep. 4/22</p>
       </div>
     </article>
 
@@ -117,24 +132,361 @@
 
   <div class="grid">
 
+    <!-- ── 1. Fluentum ──────────────────── -->
+    <article class="card" style="--c-accent:#22c55e;--c-glow:rgba(34,197,94,0.12);--c-from:#22c55e;--c-to:#06b6d4">
+      <div class="accent-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="c-icon" aria-hidden="true">🗣️</div>
+          <div class="c-meta">
+            <h3 class="c-title">Fluentum — speak a new language</h3>
+            <p class="c-desc">Local-first PWA for learning to speak one conversation a day — 16 A1–A2 dialogues (PL↔EN) in a messenger-style chat, practised in Read → Prompt → Recall modes. Every line is checked aloud via the Web Speech API or an on-device Whisper engine (Transformers.js, WebGPU/WASM in a Web Worker). React 19, Dexie/IndexedDB, Zustand, i18next and Tailwind 4, with XP, streaks, achievements and AES-256-GCM encrypted backups.</p>
+          </div>
+          <div class="c-links">
+            <a class="btn btn-gh" href="https://github.com/AleksanderDudek/fluentum" target="_blank" rel="noopener">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.39.6.1.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02 0 2.04.13 3 .4 2.3-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.87.12 3.17.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.69.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              GitHub
+            </a>
+            <a class="btn btn-live" href="https://aleksanderdudek.github.io/fluentum/" target="_blank" rel="noopener">▶ Live</a>
+          </div>
+        </div>
+        <div class="tags">
+          <span class="tag ts">TypeScript</span>
+          <span class="tag rct">React 19</span>
+          <span class="tag nx">Vite 8</span>
+          <span class="tag tw">Tailwind 4</span>
+          <span class="tag sc">Dexie · IndexedDB</span>
+          <span class="tag rdx">Zustand</span>
+          <span class="tag ai">Whisper · Transformers.js</span>
+          <span class="tag ws">Web Speech API</span>
+          <span class="tag pwa">PWA</span>
+          <span class="tag vt">Vitest</span>
+          <span class="tag sc">Playwright</span>
+        </div>
+        <details class="code-wrap" open>
+          <summary class="code-bar">
+            <span class="dot dr"></span><span class="dot dy"></span><span class="dot dg"></span>
+            <span class="fname">mask.ts</span>
+          </summary>
+          <pre class="code"><span class="cm">// Recall modes: first letters → every 2nd word → fully hidden</span>
+<span class="kw">export</span> <span class="kw">function</span> <span class="fn">maskWords</span><span class="op">(</span><span class="nm">content</span><span class="op">:</span> <span class="ty">string</span><span class="op">,</span> <span class="nm">level</span><span class="op">:</span> <span class="ty">MemoryLevel</span><span class="op">,</span>
+    <span class="nm">revealed</span><span class="op">:</span> <span class="kw">readonly</span> <span class="ty">boolean</span><span class="op">[]</span> <span class="op">=</span> <span class="op">[]):</span> <span class="ty">MaskedWord</span><span class="op">[]</span> <span class="op">{</span>
+  <span class="kw">return</span> <span class="nm">content</span>
+    <span class="op">.</span><span class="fn">trim</span><span class="op">()</span>
+    <span class="op">.</span><span class="fn">split</span><span class="op">(</span><span class="st">/\s+/u</span><span class="op">)</span>
+    <span class="op">.</span><span class="fn">filter</span><span class="op">(</span><span class="ty">Boolean</span><span class="op">)</span>
+    <span class="op">.</span><span class="fn">map</span><span class="op">((</span><span class="nm">word</span><span class="op">,</span> <span class="nm">index</span><span class="op">)</span> <span class="op">=&gt;</span> <span class="op">{</span>
+      <span class="kw">const</span> <span class="nm">hide</span> <span class="op">=</span> <span class="nm">level</span> <span class="op">===</span> <span class="st">'initials'</span> <span class="op">?</span> <span class="kw">true</span>
+        <span class="op">:</span> <span class="nm">level</span> <span class="op">===</span> <span class="st">'alternate'</span> <span class="op">?</span> <span class="nm">index</span> <span class="op">%</span> <span class="nu">2</span> <span class="op">===</span> <span class="nu">1</span> <span class="op">:</span> <span class="kw">true</span>
+      <span class="kw">if</span> <span class="op">(!</span><span class="nm">hide</span> <span class="op">||</span> <span class="nm">revealed</span><span class="op">[</span><span class="nm">index</span><span class="op">])</span> <span class="kw">return</span> <span class="op">{</span> <span class="nm">text</span><span class="op">:</span> <span class="nm">word</span><span class="op">,</span> <span class="nm">masked</span><span class="op">:</span> <span class="kw">false</span> <span class="op">}</span>
+      <span class="kw">return</span> <span class="op">{</span> <span class="nm">text</span><span class="op">:</span> <span class="fn">hideLetters</span><span class="op">(</span><span class="nm">word</span><span class="op">,</span> <span class="nm">level</span> <span class="op">===</span> <span class="st">'initials'</span> <span class="op">?</span> <span class="nu">1</span> <span class="op">:</span> <span class="nu">0</span><span class="op">),</span>
+               <span class="nm">masked</span><span class="op">:</span> <span class="kw">true</span> <span class="op">}</span>
+    <span class="op">})</span>
+<span class="op">}</span></pre>
+        </details>
+      </div>
+    </article>
 
+    <!-- ── 2. Teleo ─────────────────────── -->
+    <article class="card" style="--c-accent:#eab308;--c-glow:rgba(234,179,8,0.12);--c-from:#eab308;--c-to:#a855f7">
+      <div class="accent-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="c-icon" aria-hidden="true">🙏</div>
+          <div class="c-meta">
+            <h3 class="c-title">Teleo — prayers &amp; affirmations</h3>
+            <p class="c-desc">Local-first PWA for speaking prayers, affirmations and the whole Bible aloud — Teleo checks every sentence as you speak. The Web Speech API or on-device Whisper (Transformers.js, WebGPU/WASM) transcribes, then a word-level Needleman–Wunsch matcher with Polish sound keys and a 90/80/70% coverage ladder forgives dropped diacritics and split words. React 19 + Vite 8, Dexie, Zustand, Workbox offline, PL/EN — ~900 Vitest and Playwright tests.</p>
+          </div>
+          <div class="c-links">
+            <a class="btn btn-gh" href="https://github.com/AleksanderDudek/teleo" target="_blank" rel="noopener">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.39.6.1.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02 0 2.04.13 3 .4 2.3-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.87.12 3.17.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.69.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              GitHub
+            </a>
+            <a class="btn btn-live" href="https://aleksanderdudek.github.io/teleo/" target="_blank" rel="noopener">▶ Live</a>
+          </div>
+        </div>
+        <div class="tags">
+          <span class="tag ts">TypeScript</span>
+          <span class="tag rct">React 19</span>
+          <span class="tag nx">Vite 8</span>
+          <span class="tag tw">Tailwind 4</span>
+          <span class="tag sc">Dexie · IndexedDB</span>
+          <span class="tag rdx">Zustand</span>
+          <span class="tag ai">Whisper ONNX</span>
+          <span class="tag ws">Web Speech API</span>
+          <span class="tag pwa">Workbox PWA</span>
+          <span class="tag sc">Playwright</span>
+        </div>
+        <details class="code-wrap" open>
+          <summary class="code-bar">
+            <span class="dot dr"></span><span class="dot dy"></span><span class="dot dg"></span>
+            <span class="fname">align.ts</span>
+          </summary>
+          <pre class="code"><span class="cm">// Word-level DP alignment: fuzzy "near" hits, split/merged words</span>
+<span class="kw">const</span> <span class="ty">COST</span> <span class="op">=</span> <span class="op">{</span> <span class="nm">match</span><span class="op">:</span> <span class="nu">0</span><span class="op">,</span> <span class="nm">near</span><span class="op">:</span> <span class="nu">2</span><span class="op">,</span> <span class="nm">wrong</span><span class="op">:</span> <span class="nu">15</span><span class="op">,</span> <span class="nm">missing</span><span class="op">:</span> <span class="nu">10</span><span class="op">,</span> <span class="nm">extra</span><span class="op">:</span> <span class="nu">10</span><span class="op">,</span>
+  <span class="nm">skip</span><span class="op">:</span> <span class="nu">5</span><span class="op">,</span> <span class="nm">join</span><span class="op">:</span> <span class="nu">2</span> <span class="op">}</span> <span class="kw">as</span> <span class="kw">const</span>
 
-    <!-- ── 1. Your Events ─────────── -->
+<span class="nm">sourceWords</span><span class="op">.</span><span class="fn">forEach</span><span class="op">((</span><span class="nm">sourceWord</span><span class="op">,</span> <span class="nm">s</span><span class="op">)</span> <span class="op">=&gt;</span> <span class="op">{</span>
+  <span class="kw">const</span> <span class="nm">i</span> <span class="op">=</span> <span class="nm">s</span> <span class="op">+</span> <span class="nu">1</span>
+  <span class="nm">table</span><span class="op">[</span><span class="nm">i</span> <span class="op">*</span> <span class="nm">width</span><span class="op">]</span> <span class="op">=</span> <span class="nm">i</span> <span class="op">*</span> <span class="ty">COST</span><span class="op">.</span><span class="nm">missing</span>
+  <span class="nm">spokenWords</span><span class="op">.</span><span class="fn">forEach</span><span class="op">((</span><span class="nm">spokenWord</span><span class="op">,</span> <span class="nm">t</span><span class="op">)</span> <span class="op">=&gt;</span> <span class="op">{</span>
+    <span class="kw">const</span> <span class="nm">j</span> <span class="op">=</span> <span class="nm">t</span> <span class="op">+</span> <span class="nu">1</span>
+    <span class="nm">table</span><span class="op">[</span><span class="nm">i</span> <span class="op">*</span> <span class="nm">width</span> <span class="op">+</span> <span class="nm">j</span><span class="op">]</span> <span class="op">=</span> <span class="ty">Math</span><span class="op">.</span><span class="fn">min</span><span class="op">(</span>
+      <span class="fn">cost</span><span class="op">(</span><span class="nm">i</span> <span class="op">-</span> <span class="nu">1</span><span class="op">,</span> <span class="nm">j</span> <span class="op">-</span> <span class="nu">1</span><span class="op">)</span> <span class="op">+</span> <span class="ty">COST</span><span class="op">[</span><span class="fn">diagonalOp</span><span class="op">(</span><span class="nm">sourceWord</span><span class="op">,</span> <span class="nm">spokenWord</span><span class="op">)],</span>
+      <span class="fn">cost</span><span class="op">(</span><span class="nm">i</span> <span class="op">-</span> <span class="nu">1</span><span class="op">,</span> <span class="nm">j</span><span class="op">)</span> <span class="op">+</span> <span class="ty">COST</span><span class="op">.</span><span class="nm">missing</span><span class="op">,</span>
+      <span class="fn">cost</span><span class="op">(</span><span class="nm">i</span><span class="op">,</span> <span class="nm">j</span> <span class="op">-</span> <span class="nu">1</span><span class="op">)</span> <span class="op">+</span> <span class="ty">COST</span><span class="op">.</span><span class="nm">extra</span><span class="op">,</span>
+      <span class="fn">split</span><span class="op">(</span><span class="nm">i</span><span class="op">,</span> <span class="nm">j</span><span class="op">)</span> <span class="op">?</span> <span class="fn">cost</span><span class="op">(</span><span class="nm">i</span> <span class="op">-</span> <span class="nu">1</span><span class="op">,</span> <span class="nm">j</span> <span class="op">-</span> <span class="nu">2</span><span class="op">)</span> <span class="op">+</span> <span class="ty">COST</span><span class="op">.</span><span class="nm">join</span> <span class="op">:</span> <span class="ty">Infinity</span><span class="op">,</span>
+      <span class="fn">merge</span><span class="op">(</span><span class="nm">i</span><span class="op">,</span> <span class="nm">j</span><span class="op">)</span> <span class="op">?</span> <span class="fn">cost</span><span class="op">(</span><span class="nm">i</span> <span class="op">-</span> <span class="nu">2</span><span class="op">,</span> <span class="nm">j</span> <span class="op">-</span> <span class="nu">1</span><span class="op">)</span> <span class="op">+</span> <span class="ty">COST</span><span class="op">.</span><span class="nm">join</span> <span class="op">:</span> <span class="ty">Infinity</span><span class="op">,</span>
+    <span class="op">)</span>
+  <span class="op">})</span>
+<span class="op">})</span></pre>
+        </details>
+      </div>
+    </article>
+
+    <!-- ── 3. Gym Tracker ───────────────── -->
+    <article class="card" style="--c-accent:#f97316;--c-glow:rgba(249,115,22,0.12);--c-from:#f97316;--c-to:#ef4444">
+      <div class="accent-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="c-icon" aria-hidden="true">🏋️</div>
+          <div class="c-meta">
+            <h3 class="c-title">
+              Gym Tracker
+              <span class="lang-badge">🇵🇱 Polish</span>
+            </h3>
+            <p class="c-desc">Strength-training PWA with an automatic progression engine — double progression gated on reps in reserve, Epley-based rep prescription after weight jumps, kettlebell ladders and ACWR overload checks. 109-exercise atlas with SVG joint-angle pose animations, plans, movement snacks, cardio and calorie logging, XP and badges. React 18 + Vite 5 with no backend: localStorage, JSON export/import and a hand-written offline service worker; 429 Vitest tests gate every deploy.</p>
+          </div>
+          <div class="c-links">
+            <a class="btn btn-gh" href="https://github.com/AleksanderDudek/gym-training-tracker" target="_blank" rel="noopener">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.39.6.1.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02 0 2.04.13 3 .4 2.3-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.87.12 3.17.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.69.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              GitHub
+            </a>
+            <a class="btn btn-live" href="https://aleksanderdudek.github.io/gym-training-tracker/" target="_blank" rel="noopener">▶ Live</a>
+          </div>
+        </div>
+        <div class="tags">
+          <span class="tag ts">TypeScript</span>
+          <span class="tag rct">React 18</span>
+          <span class="tag nx">Vite 5</span>
+          <span class="tag vt">Vitest</span>
+          <span class="tag pwa">PWA</span>
+          <span class="tag sc">Service Worker</span>
+          <span class="tag sc">localStorage</span>
+          <span class="tag d3">SVG Animation</span>
+          <span class="tag ci">GitHub Actions</span>
+        </div>
+        <details class="code-wrap" open>
+          <summary class="code-bar">
+            <span class="dot dr"></span><span class="dot dy"></span><span class="dot dg"></span>
+            <span class="fname">progression.ts</span>
+          </summary>
+          <pre class="code"><span class="cm">// Double progression: level up only when target met with reps in reserve</span>
+<span class="kw">export</span> <span class="kw">function</span> <span class="fn">judge</span><span class="op">(</span><span class="nm">state</span><span class="op">:</span> <span class="ty">AppState</span><span class="op">,</span> <span class="nm">id</span><span class="op">:</span> <span class="ty">ExerciseId</span><span class="op">,</span>
+    <span class="nm">rows</span><span class="op">:</span> <span class="ty">SetResult</span><span class="op">[],</span> <span class="nm">effort</span><span class="op">:</span> <span class="ty">EffortKey</span><span class="op">):</span> <span class="ty">Verdict</span> <span class="op">{</span>
+  <span class="kw">const</span> <span class="nm">prescribed</span> <span class="op">=</span> <span class="fn">plan</span><span class="op">(</span><span class="nm">state</span><span class="op">,</span> <span class="nm">id</span><span class="op">);</span>
+  <span class="kw">const</span> <span class="nm">done</span> <span class="op">=</span> <span class="nm">rows</span><span class="op">.</span><span class="fn">filter</span><span class="op">((</span><span class="nm">r</span><span class="op">)</span> <span class="op">=&gt;</span> <span class="nm">r</span><span class="op">.</span><span class="nm">reps</span> <span class="op">&gt;</span> <span class="nu">0</span><span class="op">);</span>
+  <span class="kw">if</span> <span class="op">(!</span><span class="nm">done</span><span class="op">.</span><span class="nm">length</span><span class="op">)</span> <span class="kw">return</span> <span class="st">'none'</span><span class="op">;</span>
+
+  <span class="kw">const</span> <span class="nm">met</span> <span class="op">=</span>
+    <span class="nm">done</span><span class="op">.</span><span class="nm">length</span> <span class="op">&gt;=</span> <span class="nm">prescribed</span><span class="op">.</span><span class="nm">length</span> <span class="op">&amp;&amp;</span>
+    <span class="nm">done</span><span class="op">.</span><span class="fn">every</span><span class="op">((</span><span class="nm">r</span><span class="op">,</span> <span class="nm">i</span><span class="op">)</span> <span class="op">=&gt;</span> <span class="nm">r</span><span class="op">.</span><span class="nm">reps</span> <span class="op">&gt;=</span> <span class="op">(</span><span class="nm">prescribed</span><span class="op">[</span><span class="nm">i</span><span class="op">]?.</span><span class="nm">reps</span> <span class="op">??</span> <span class="nu">0</span><span class="op">));</span>
+  <span class="kw">const</span> <span class="nm">short</span> <span class="op">=</span> <span class="nm">done</span><span class="op">.</span><span class="fn">some</span><span class="op">((</span><span class="nm">r</span><span class="op">,</span> <span class="nm">i</span><span class="op">)</span> <span class="op">=&gt;</span> <span class="op">{</span>
+    <span class="kw">const</span> <span class="nm">target</span> <span class="op">=</span> <span class="nm">prescribed</span><span class="op">[</span><span class="nm">i</span><span class="op">]?.</span><span class="nm">reps</span><span class="op">;</span>
+    <span class="kw">return</span> <span class="nm">target</span> <span class="op">!==</span> <span class="kw">undefined</span> <span class="op">&amp;&amp;</span> <span class="nm">r</span><span class="op">.</span><span class="nm">reps</span> <span class="op">&lt;=</span> <span class="nm">target</span> <span class="op">-</span> <span class="nu">2</span> <span class="op">*</span> <span class="fn">step</span><span class="op">(</span><span class="nm">id</span><span class="op">);</span>
+  <span class="op">});</span>
+  <span class="kw">const</span> <span class="nm">reserve</span> <span class="op">=</span> <span class="nm">effort</span> <span class="op">!==</span> <span class="st">'max'</span><span class="op">;</span>
+
+  <span class="kw">if</span> <span class="op">(</span><span class="nm">met</span> <span class="op">&amp;&amp;</span> <span class="nm">reserve</span><span class="op">)</span> <span class="kw">return</span> <span class="st">'up'</span><span class="op">;</span>
+  <span class="kw">if</span> <span class="op">(</span><span class="nm">met</span> <span class="op">&amp;&amp;</span> <span class="op">!</span><span class="nm">reserve</span><span class="op">)</span> <span class="kw">return</span> <span class="st">'hold-max'</span><span class="op">;</span>
+  <span class="kw">if</span> <span class="op">(</span><span class="nm">short</span><span class="op">)</span> <span class="kw">return</span> <span class="st">'down'</span><span class="op">;</span>
+  <span class="kw">return</span> <span class="st">'hold'</span><span class="op">;</span>
+<span class="op">}</span></pre>
+        </details>
+      </div>
+    </article>
+
+    <!-- ── 4. My Instructions ───────────── -->
+    <article class="card" style="--c-accent:#0ea5e9;--c-glow:rgba(14,165,233,0.12);--c-from:#0ea5e9;--c-to:#6366f1">
+      <div class="accent-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="c-icon" aria-hidden="true">📋</div>
+          <div class="c-meta">
+            <h3 class="c-title">My Instructions</h3>
+            <p class="c-desc">Browser-only self-knowledge app: take a few tests, get one shareable page on how you work — what lands, what drains you, what to do when it goes badly. 30 plugin instruments (Big Five, HEXACO, Enneagram, RIASEC, attachment…) with reverse-keyed items scored onto a normative 1–100. Next.js 16 static export + React 19 with React Compiler, Tailwind 4, Radix UI and EN/PL/ES/DE i18n; share tokens ride in the URL fragment, never to a server.</p>
+          </div>
+          <div class="c-links">
+            <a class="btn btn-gh" href="https://github.com/AleksanderDudek/my-instructions" target="_blank" rel="noopener">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.39.6.1.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02 0 2.04.13 3 .4 2.3-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.87.12 3.17.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.69.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              GitHub
+            </a>
+            <a class="btn btn-live" href="https://aleksanderdudek.github.io/my-instructions/" target="_blank" rel="noopener">▶ Live</a>
+          </div>
+        </div>
+        <div class="tags">
+          <span class="tag ts">TypeScript</span>
+          <span class="tag nx">Next.js 16</span>
+          <span class="tag rct">React 19</span>
+          <span class="tag rct">React Compiler</span>
+          <span class="tag tw">Tailwind 4</span>
+          <span class="tag sc">Radix UI</span>
+          <span class="tag sc">Web Crypto</span>
+          <span class="tag sc">i18n ×4</span>
+          <span class="tag vt">Vitest</span>
+          <span class="tag sc">Playwright</span>
+        </div>
+        <details class="code-wrap" open>
+          <summary class="code-bar">
+            <span class="dot dr"></span><span class="dot dy"></span><span class="dot dg"></span>
+            <span class="fname">scoring.ts</span>
+          </summary>
+          <pre class="code"><span class="cm">// Reverse-keyed Likert sums, rescaled per scale onto a normative 1–100</span>
+<span class="kw">export</span> <span class="kw">function</span> <span class="fn">scoreLikert</span><span class="op">(</span><span class="nm">items</span><span class="op">:</span> <span class="ty">ScoredItem</span><span class="op">[],</span> <span class="nm">answers</span><span class="op">:</span> <span class="ty">Answers</span><span class="op">,</span>
+    <span class="nm">scaleDef</span><span class="op">:</span> <span class="ty">Scale</span><span class="op">):</span> <span class="ty">LikertScores</span> <span class="op">{</span>
+  <span class="kw">const</span> <span class="nm">raw</span><span class="op">:</span> <span class="ty">Record</span><span class="op">&lt;</span><span class="ty">string</span><span class="op">,</span> <span class="ty">number</span><span class="op">&gt;</span> <span class="op">=</span> <span class="op">{};</span>
+  <span class="kw">const</span> <span class="nm">counts</span><span class="op">:</span> <span class="ty">Record</span><span class="op">&lt;</span><span class="ty">string</span><span class="op">,</span> <span class="ty">number</span><span class="op">&gt;</span> <span class="op">=</span> <span class="op">{};</span>
+  <span class="kw">for</span> <span class="op">(</span><span class="kw">const</span> <span class="nm">item</span> <span class="kw">of</span> <span class="nm">items</span><span class="op">)</span> <span class="op">{</span>
+    <span class="nm">counts</span><span class="op">[</span><span class="nm">item</span><span class="op">.</span><span class="nm">scale</span><span class="op">]</span> <span class="op">=</span> <span class="op">(</span><span class="nm">counts</span><span class="op">[</span><span class="nm">item</span><span class="op">.</span><span class="nm">scale</span><span class="op">]</span> <span class="op">??</span> <span class="nu">0</span><span class="op">)</span> <span class="op">+</span> <span class="nu">1</span><span class="op">;</span>
+    <span class="nm">raw</span><span class="op">[</span><span class="nm">item</span><span class="op">.</span><span class="nm">scale</span><span class="op">]</span> <span class="op">??=</span> <span class="nu">0</span><span class="op">;</span>
+    <span class="kw">const</span> <span class="nm">given</span> <span class="op">=</span> <span class="nm">answers</span><span class="op">[</span><span class="nm">item</span><span class="op">.</span><span class="nm">id</span><span class="op">];</span>
+    <span class="kw">const</span> <span class="nm">isNumber</span> <span class="op">=</span> <span class="kw">typeof</span> <span class="nm">given</span> <span class="op">===</span> <span class="st">"number"</span> <span class="op">&amp;&amp;</span> <span class="ty">Number</span><span class="op">.</span><span class="fn">isFinite</span><span class="op">(</span><span class="nm">given</span><span class="op">);</span>
+    <span class="kw">const</span> <span class="nm">value</span> <span class="op">=</span> <span class="nm">isNumber</span> <span class="op">?</span> <span class="fn">clamp</span><span class="op">(</span><span class="nm">given</span><span class="op">,</span> <span class="nm">scaleDef</span><span class="op">.</span><span class="nm">min</span><span class="op">,</span> <span class="nm">scaleDef</span><span class="op">.</span><span class="nm">max</span><span class="op">)</span>
+      <span class="op">:</span> <span class="op">(</span><span class="nm">scaleDef</span><span class="op">.</span><span class="nm">min</span> <span class="op">+</span> <span class="nm">scaleDef</span><span class="op">.</span><span class="nm">max</span><span class="op">)</span> <span class="op">/</span> <span class="nu">2</span><span class="op">;</span>
+    <span class="nm">raw</span><span class="op">[</span><span class="nm">item</span><span class="op">.</span><span class="nm">scale</span><span class="op">]</span> <span class="op">+=</span> <span class="nm">item</span><span class="op">.</span><span class="nm">reverse</span> <span class="op">?</span> <span class="fn">flip</span><span class="op">(</span><span class="nm">value</span><span class="op">,</span> <span class="nm">scaleDef</span><span class="op">)</span> <span class="op">:</span> <span class="nm">value</span><span class="op">;</span>
+  <span class="op">}</span></pre>
+        </details>
+      </div>
+    </article>
+
+    <!-- ── 5. Fakturownia MCP ───────────── -->
+    <article class="card" style="--c-accent:#14b8a6;--c-glow:rgba(20,184,166,0.12);--c-from:#14b8a6;--c-to:#3b82f6">
+      <div class="accent-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="c-icon" aria-hidden="true">🧾</div>
+          <div class="c-meta">
+            <h3 class="c-title">
+              Fakturownia MCP for Claude
+              <span class="lang-badge">🇵🇱 Polish</span>
+            </h3>
+            <p class="c-desc">Unofficial, read-only MCP server that lets Claude Desktop query a Fakturownia (Polish invoicing SaaS) account in plain language — receivables with overdue aging buckets, revenue and per-rate VAT breakdowns, period comparisons, client rankings, CSV/PDF exports. Twelve Zod-typed tools over stdio with server-side aggregation of paginated REST GETs, shipped as a one-click .mcpb bundle with the API token kept in the OS keychain.</p>
+          </div>
+          <div class="c-links">
+            <a class="btn btn-gh" href="https://github.com/AleksanderDudek/fakturownia-mcp-for-claude" target="_blank" rel="noopener">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.39.6.1.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02 0 2.04.13 3 .4 2.3-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.87.12 3.17.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.69.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              GitHub
+            </a>
+            <a class="btn btn-live" href="https://aleksanderdudek.github.io/fakturownia-mcp-for-claude/" target="_blank" rel="noopener">▶ Page</a>
+            <a class="btn btn-ext" href="https://github.com/AleksanderDudek/fakturownia-mcp-for-claude/releases/latest" target="_blank" rel="noopener">⬇ .mcpb</a>
+          </div>
+        </div>
+        <div class="tags">
+          <span class="tag nd">Node.js</span>
+          <span class="tag ag">MCP SDK</span>
+          <span class="tag ai">Claude Desktop</span>
+          <span class="tag sc">Zod 4</span>
+          <span class="tag sc">MCPB Bundle</span>
+          <span class="tag sc">stdio</span>
+          <span class="tag sc">REST API</span>
+          <span class="tag ci">GitHub Actions</span>
+        </div>
+        <details class="code-wrap" open>
+          <summary class="code-bar">
+            <span class="dot dr"></span><span class="dot dy"></span><span class="dot dg"></span>
+            <span class="fname">index.js</span>
+          </summary>
+          <pre class="code"><span class="cm">// Receivables aging: unpaid balances bucketed by days overdue</span>
+<span class="kw">const</span> <span class="nm">buckets</span> <span class="op">=</span> <span class="op">{</span> <span class="st">"0-7"</span><span class="op">:</span> <span class="nu">0</span><span class="op">,</span> <span class="st">"8-30"</span><span class="op">:</span> <span class="nu">0</span><span class="op">,</span> <span class="st">"31-60"</span><span class="op">:</span> <span class="nu">0</span><span class="op">,</span> <span class="st">"60+"</span><span class="op">:</span> <span class="nu">0</span> <span class="op">};</span>
+<span class="kw">for</span> <span class="op">(</span><span class="kw">const</span> <span class="nm">r</span> <span class="kw">of</span> <span class="nm">rows</span><span class="op">)</span> <span class="op">{</span>
+  <span class="kw">if</span> <span class="op">(</span><span class="ty">SKIP_KINDS_RECEIVABLE</span><span class="op">.</span><span class="fn">has</span><span class="op">(</span><span class="nm">r</span><span class="op">.</span><span class="nm">kind</span><span class="op">))</span> <span class="kw">continue</span><span class="op">;</span>
+  <span class="kw">if</span> <span class="op">(</span><span class="fn">isPaid</span><span class="op">(</span><span class="nm">r</span><span class="op">))</span> <span class="kw">continue</span><span class="op">;</span>
+  <span class="kw">const</span> <span class="nm">due</span> <span class="op">=</span> <span class="fn">parseDate</span><span class="op">(</span><span class="nm">r</span><span class="op">.</span><span class="nm">payment_to</span><span class="op">);</span>
+  <span class="kw">const</span> <span class="nm">days</span> <span class="op">=</span> <span class="nm">due</span> <span class="op">?</span> <span class="ty">Math</span><span class="op">.</span><span class="fn">floor</span><span class="op">((</span><span class="nm">today</span> <span class="op">-</span> <span class="nm">due</span><span class="op">)</span> <span class="op">/</span> <span class="nu">86400000</span><span class="op">)</span> <span class="op">:</span> <span class="kw">null</span><span class="op">;</span>
+  <span class="kw">const</span> <span class="nm">overdue</span> <span class="op">=</span> <span class="nm">days</span> <span class="op">!==</span> <span class="kw">null</span> <span class="op">&amp;&amp;</span> <span class="nm">days</span> <span class="op">&gt;</span> <span class="nu">0</span><span class="op">;</span>
+  <span class="kw">const</span> <span class="nm">out</span> <span class="op">=</span> <span class="fn">outstanding</span><span class="op">(</span><span class="nm">r</span><span class="op">);</span>
+  <span class="nm">totalOut</span> <span class="op">+=</span> <span class="nm">out</span><span class="op">;</span>
+  <span class="kw">if</span> <span class="op">(</span><span class="nm">overdue</span><span class="op">)</span> <span class="op">{</span>
+    <span class="kw">const</span> <span class="nm">b</span> <span class="op">=</span> <span class="nm">days</span> <span class="op">&lt;=</span> <span class="nu">7</span> <span class="op">?</span> <span class="st">"0-7"</span> <span class="op">:</span> <span class="nm">days</span> <span class="op">&lt;=</span> <span class="nu">30</span> <span class="op">?</span> <span class="st">"8-30"</span>
+            <span class="op">:</span> <span class="nm">days</span> <span class="op">&lt;=</span> <span class="nu">60</span> <span class="op">?</span> <span class="st">"31-60"</span> <span class="op">:</span> <span class="st">"60+"</span><span class="op">;</span>
+    <span class="nm">buckets</span><span class="op">[</span><span class="nm">b</span><span class="op">]</span> <span class="op">+=</span> <span class="nm">out</span><span class="op">;</span>
+  <span class="op">}</span>
+<span class="op">}</span></pre>
+        </details>
+      </div>
+    </article>
+
+    <!-- ── 6. Multi-Agent Research Pipeline ─── -->
+    <article class="card" style="--c-accent:#8b5cf6;--c-glow:rgba(139,92,246,0.12);--c-from:#8b5cf6;--c-to:#ec4899">
+      <div class="accent-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="c-icon" aria-hidden="true">🧠</div>
+          <div class="c-meta">
+            <h3 class="c-title">Multi-Agent Research Pipeline</h3>
+            <p class="c-desc">Research agent written once as a framework-agnostic run_research(topic) core and shipped four ways — CLI, FastAPI endpoint, native Langflow component and Make HTTP module. A LangGraph StateGraph chains a tool-calling ReAct Researcher (DuckDuckGo search) into Analyst and Writer nodes that return a 5-bullet brief; versioned prompts synced to LangSmith Hub, tracing and an LLM-as-judge faithfulness eval suite.</p>
+          </div>
+          <div class="c-links">
+            <a class="btn btn-gh" href="https://github.com/AleksanderDudek/agentic-research-assistant" target="_blank" rel="noopener">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.39.6.1.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02 0 2.04.13 3 .4 2.3-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.87.12 3.17.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.69.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+        <div class="tags">
+          <span class="tag py">Python</span>
+          <span class="tag ag">LangGraph</span>
+          <span class="tag ag">LangChain</span>
+          <span class="tag ai">OpenAI</span>
+          <span class="tag fp">FastAPI</span>
+          <span class="tag sc">LangSmith</span>
+          <span class="tag sc">Langflow</span>
+          <span class="tag sc">Make</span>
+          <span class="tag sc">pytest</span>
+          <span class="tag dk">Docker</span>
+        </div>
+        <details class="code-wrap" open>
+          <summary class="code-bar">
+            <span class="dot dr"></span><span class="dot dy"></span><span class="dot dg"></span>
+            <span class="fname">agent.py</span>
+          </summary>
+          <pre class="code"><span class="cm"># ReAct researcher (create_agent) wired into a 3-node LangGraph StateGraph</span>
+<span class="kw">def</span> <span class="fn">researcher</span><span class="op">(</span><span class="nm">state</span><span class="op">:</span> <span class="ty">ResearchState</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="ty">dict</span><span class="op">:</span>
+    <span class="nm">result</span> <span class="op">=</span> <span class="nm">_researcher_agent</span><span class="op">.</span><span class="fn">invoke</span><span class="op">(</span>
+        <span class="op">{</span><span class="st">"messages"</span><span class="op">:</span> <span class="op">[(</span><span class="st">"user"</span><span class="op">,</span> <span class="nm">f</span><span class="st">"Research this topic: {state['topic']}"</span><span class="op">)]}</span>
+    <span class="op">)</span>
+    <span class="kw">return</span> <span class="op">{</span><span class="st">"raw_notes"</span><span class="op">:</span> <span class="nm">result</span><span class="op">[</span><span class="st">"messages"</span><span class="op">][-</span><span class="nu">1</span><span class="op">].</span><span class="nm">content</span><span class="op">}</span>
+
+<span class="kw">def</span> <span class="fn">_build_graph</span><span class="op">():</span>
+    <span class="nm">g</span> <span class="op">=</span> <span class="ty">StateGraph</span><span class="op">(</span><span class="ty">ResearchState</span><span class="op">)</span>
+    <span class="nm">g</span><span class="op">.</span><span class="fn">add_node</span><span class="op">(</span><span class="st">"researcher"</span><span class="op">,</span> <span class="nm">researcher</span><span class="op">)</span>
+    <span class="nm">g</span><span class="op">.</span><span class="fn">add_node</span><span class="op">(</span><span class="st">"analyst"</span><span class="op">,</span> <span class="nm">analyst</span><span class="op">)</span>
+    <span class="nm">g</span><span class="op">.</span><span class="fn">add_node</span><span class="op">(</span><span class="st">"writer"</span><span class="op">,</span> <span class="nm">writer</span><span class="op">)</span>
+    <span class="nm">g</span><span class="op">.</span><span class="fn">add_edge</span><span class="op">(</span><span class="ty">START</span><span class="op">,</span> <span class="st">"researcher"</span><span class="op">)</span>
+    <span class="nm">g</span><span class="op">.</span><span class="fn">add_edge</span><span class="op">(</span><span class="st">"researcher"</span><span class="op">,</span> <span class="st">"analyst"</span><span class="op">)</span>
+    <span class="nm">g</span><span class="op">.</span><span class="fn">add_edge</span><span class="op">(</span><span class="st">"analyst"</span><span class="op">,</span> <span class="st">"writer"</span><span class="op">)</span>
+    <span class="nm">g</span><span class="op">.</span><span class="fn">add_edge</span><span class="op">(</span><span class="st">"writer"</span><span class="op">,</span> <span class="ty">END</span><span class="op">)</span>
+    <span class="kw">return</span> <span class="nm">g</span><span class="op">.</span><span class="fn">compile</span><span class="op">()</span></pre>
+        </details>
+      </div>
+    </article>
+
+    <!-- ── 7. Your Events ─────────── -->
     <article class="card" style="--c-accent:#f59e0b;--c-glow:rgba(245,158,11,.12);--c-from:#f59e0b;--c-to:#ef4444">
       <div class="accent-bar"></div>
       <div class="card-body">
         <div class="card-top">
-          <div class="c-icon">🎟️</div>
+          <div class="c-icon" aria-hidden="true">🎟️</div>
           <div class="c-meta">
-            <div class="c-title">Idź na miasto — Your Events</div>
-            <div class="c-desc">City-scale event discovery PWA for Szczecin. Real-time browsing of what's happening in the next four hours, weekend planners and category filters (sports, art, theatre, culinary, dance). Next.js 16 App Router + React 19 with a Supabase backend, TanStack Query data layer, Zod-validated schemas and bilingual (PL/EN) i18n.</div>
+            <h3 class="c-title">Idź na miasto — Your Events</h3>
+            <p class="c-desc">City-scale event discovery PWA for Szczecin. Real-time browsing of what's happening in the next four hours, weekend planners and category filters (sports, art, theatre, culinary, dance). Next.js 16 App Router + React 19 with a Supabase backend, TanStack Query data layer, Zod-validated schemas and bilingual (PL/EN) i18n.</p>
           </div>
           <div class="c-links">
             <a class="btn btn-gh" href="https://github.com/AleksanderDudek/your-events" target="_blank" rel="noopener">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.39.6.1.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02 0 2.04.13 3 .4 2.3-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.87.12 3.17.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.69.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
               GitHub
             </a>
-            <a class="btn btn-live" href="https://aleksanderdudek.github.io/your-events/" target="_blank" rel="noopener">▶ Live</a>
+            <a class="btn btn-live" href="https://idznamiasto.pl/" target="_blank" rel="noopener">▶ Live</a>
           </div>
         </div>
         <div class="tags">
@@ -149,11 +501,11 @@
           <span class="tag sc">Playwright</span>
           <span class="tag vt">Vitest</span>
         </div>
-        <div class="code-wrap">
-          <div class="code-bar">
-            <div class="dot dr"></div><div class="dot dy"></div><div class="dot dg"></div>
+        <details class="code-wrap" open>
+          <summary class="code-bar">
+            <span class="dot dr"></span><span class="dot dy"></span><span class="dot dg"></span>
             <span class="fname">useUpcomingEvents.ts</span>
-          </div>
+          </summary>
           <pre class="code"><span class="cm">// Real-time event window — Supabase + TanStack Query + Zod</span>
 <span class="kw">const</span> <span class="fn">useUpcomingEvents</span> <span class="op">= (</span><span class="nm">hours</span><span class="op">:</span> <span class="ty">number</span><span class="op">) =></span>
   <span class="fn">useQuery</span><span class="op">({</span>
@@ -170,20 +522,20 @@
     <span class="op">},</span>
     <span class="nm">staleTime</span><span class="op">:</span> <span class="nu">60_000</span><span class="op">,</span>
   <span class="op">});</span></pre>
-        </div>
+        </details>
       </div>
     </article>
 
 
-    <!-- ── 2. ResearchMind ─────────── -->
+    <!-- ── 8. ResearchMind ─────────── -->
     <article class="card" style="--c-accent:#6366f1;--c-glow:rgba(99,102,241,.12);--c-from:#6366f1;--c-to:#06b6d4">
       <div class="accent-bar"></div>
       <div class="card-body">
         <div class="card-top">
-          <div class="c-icon">🧩</div>
+          <div class="c-icon" aria-hidden="true">🧩</div>
           <div class="c-meta">
-            <div class="c-title">ResearchMind</div>
-            <div class="c-desc">Multi-modal research assistant that builds isolated knowledge contexts from PDFs, web pages, images, audio and raw text — then chats with an agentic RAG pipeline over them. LangGraph router→retrieve→generate→critic loop, Qdrant vector store, LiteLLM proxy (Ollama / Groq / vLLM / OpenAI), plus a full voice mode with Silero VAD, faster-whisper STT and a quality-gating arbiter.</div>
+            <h3 class="c-title">ResearchMind</h3>
+            <p class="c-desc">Multi-modal research assistant that builds isolated knowledge contexts from PDFs, web pages, images, audio and raw text — then chats with an agentic RAG pipeline over them. LangGraph router→retrieve→generate→critic loop, Qdrant vector store, LiteLLM proxy (Ollama / Groq / vLLM / OpenAI), plus a full voice mode with Silero VAD, faster-whisper STT and a quality-gating arbiter.</p>
           </div>
           <div class="c-links">
             <a class="btn btn-gh" href="https://github.com/AleksanderDudek/research-mind" target="_blank" rel="noopener">
@@ -205,11 +557,11 @@
           <span class="tag dk">Docker</span>
           <span class="tag ts">TypeScript</span>
         </div>
-        <div class="code-wrap">
-          <div class="code-bar">
-            <div class="dot dr"></div><div class="dot dy"></div><div class="dot dg"></div>
+        <details class="code-wrap" open>
+          <summary class="code-bar">
+            <span class="dot dr"></span><span class="dot dy"></span><span class="dot dg"></span>
             <span class="fname">graph.py</span>
-          </div>
+          </summary>
           <pre class="code"><span class="cm"># LangGraph agentic RAG — router → retrieve → generate → critic</span>
 <span class="nm">graph</span> <span class="op">=</span> <span class="ty">StateGraph</span><span class="op">(</span><span class="ty">RAGState</span><span class="op">)</span>
 <span class="nm">graph</span><span class="op">.</span><span class="fn">add_node</span><span class="op">(</span><span class="st">"router"</span><span class="op">,</span>   <span class="nm">router_node</span><span class="op">)</span>
@@ -221,20 +573,20 @@
     <span class="kw">lambda</span> <span class="nm">s</span><span class="op">:</span> <span class="st">"generate"</span> <span class="kw">if</span> <span class="nm">s</span><span class="op">.</span><span class="nm">quality</span> <span class="op">&lt;</span> <span class="nm">THRESHOLD</span> <span class="kw">and</span> <span class="nm">s</span><span class="op">.</span><span class="nm">iter</span> <span class="op">&lt;</span> <span class="nm">MAX_ITERS</span> <span class="kw">else</span> <span class="nm">END</span><span class="op">,</span>
     <span class="op">{</span><span class="st">"generate"</span><span class="op">:</span> <span class="st">"generate"</span><span class="op">,</span> <span class="nm">END</span><span class="op">:</span> <span class="nm">END</span><span class="op">},</span>
 <span class="op">)</span></pre>
-        </div>
+        </details>
       </div>
     </article>
 
 
-    <!-- ── 1. Agentic Research Assistant ─────────── -->
+    <!-- ── 9. Agentic Research Assistant ─────────── -->
     <article class="card" style="--c-accent:#7c3aed;--c-glow:rgba(124,58,237,.12);--c-from:#7c3aed;--c-to:#0ea5e9">
       <div class="accent-bar"></div>
       <div class="card-body">
         <div class="card-top">
-          <div class="c-icon">🔬</div>
+          <div class="c-icon" aria-hidden="true">🔬</div>
           <div class="c-meta">
-            <div class="c-title">Agentic Research Assistant</div>
-            <div class="c-desc">Production-grade AI research agent built from first principles. Plan→Execute→Reflect loop with up to 3 replan cycles, MCP tool execution (web search, PDF reader, sandboxed Python), PostgreSQL crash-safe state, full OpenTelemetry traces, and Starlette SSE streaming to a web UI.</div>
+            <h3 class="c-title">Agentic Research Assistant</h3>
+            <p class="c-desc">Production-grade AI research agent built from first principles. Plan→Execute→Reflect loop with up to 3 replan cycles, MCP tool execution (web search, PDF reader, sandboxed Python), PostgreSQL crash-safe state, full OpenTelemetry traces, and Starlette SSE streaming to a web UI.</p>
           </div>
           <div class="c-links">
             <a class="btn btn-gh" href="https://github.com/AleksanderDudek/research-assistant" target="_blank" rel="noopener">
@@ -253,11 +605,11 @@
           <span class="tag ws">Starlette SSE</span>
           <span class="tag dk">Docker</span>
         </div>
-        <div class="code-wrap">
-          <div class="code-bar">
-            <div class="dot dr"></div><div class="dot dy"></div><div class="dot dg"></div>
+        <details class="code-wrap" open>
+          <summary class="code-bar">
+            <span class="dot dr"></span><span class="dot dy"></span><span class="dot dg"></span>
             <span class="fname">agent.py</span>
-          </div>
+          </summary>
           <pre class="code"><span class="cm"># Plan → Execute → Reflect loop (up to 3 replan cycles)</span>
 <span class="kw">async def</span> <span class="fn">run</span><span class="op">(</span><span class="nm">self</span><span class="op">,</span> <span class="nm">question</span><span class="op">:</span> <span class="ty">str</span><span class="op">) -></span> <span class="ty">str</span><span class="op">:</span>
     <span class="nm">plan</span> <span class="op">=</span> <span class="kw2">await</span> <span class="nm">self</span><span class="op">.</span><span class="nm">planner</span><span class="op">.</span><span class="fn">plan</span><span class="op">(</span><span class="nm">question</span><span class="op">)</span>
@@ -268,20 +620,20 @@
             <span class="kw">return</span> <span class="nm">verdict</span><span class="op">.</span><span class="nm">answer</span>
         <span class="nm">plan</span> <span class="op">=</span> <span class="kw2">await</span> <span class="nm">self</span><span class="op">.</span><span class="nm">planner</span><span class="op">.</span><span class="fn">replan</span><span class="op">(</span><span class="nm">verdict</span><span class="op">.</span><span class="nm">gaps</span><span class="op">)</span>
     <span class="kw">raise</span> <span class="ty">BudgetExceeded</span><span class="op">()</span></pre>
-        </div>
+        </details>
       </div>
     </article>
 
 
-    <!-- ── 2. Gospel RAG ────────────────────── -->
+    <!-- ── 10. Gospel RAG ────────────────────── -->
     <article class="card" style="--c-accent:#0d9488;--c-glow:rgba(13,148,136,.1);--c-from:#0d9488;--c-to:#6366f1">
       <div class="accent-bar"></div>
       <div class="card-body">
         <div class="card-top">
-          <div class="c-icon">📖</div>
+          <div class="c-icon" aria-hidden="true">📖</div>
           <div class="c-meta">
-            <div class="c-title">Gospel RAG</div>
-            <div class="c-desc">Production-grade RAG system for the four Gospels. Streaming chat with inline verse citations, cross-translation comparison and passage synthesis. Hybrid RRF search fuses pgvector semantic similarity with PostgreSQL full-text search. No LangChain — raw SQL and streaming.</div>
+            <h3 class="c-title">Gospel RAG</h3>
+            <p class="c-desc">Production-grade RAG system for the four Gospels. Streaming chat with inline verse citations, cross-translation comparison and passage synthesis. Hybrid RRF search fuses pgvector semantic similarity with PostgreSQL full-text search. No LangChain — raw SQL and streaming.</p>
           </div>
           <div class="c-links">
             <a class="btn btn-gh" href="https://github.com/AleksanderDudek/gospel-rag" target="_blank" rel="noopener">
@@ -301,11 +653,11 @@
           <span class="tag sc">Voyage AI</span>
           <span class="tag rct">Vercel AI SDK</span>
         </div>
-        <div class="code-wrap">
-          <div class="code-bar">
-            <div class="dot dr"></div><div class="dot dy"></div><div class="dot dg"></div>
+        <details class="code-wrap" open>
+          <summary class="code-bar">
+            <span class="dot dr"></span><span class="dot dy"></span><span class="dot dg"></span>
             <span class="fname">search.sql</span>
-          </div>
+          </summary>
           <pre class="code"><span class="cm">-- Hybrid RRF: semantic + full-text fused by rank</span>
 <span class="kw">WITH</span> <span class="ty">semantic</span> <span class="kw">AS</span> <span class="op">(</span>
   <span class="kw">SELECT</span> <span class="nm">id</span><span class="op">,</span> <span class="fn">ROW_NUMBER</span><span class="op">() OVER (ORDER BY</span> <span class="nm">embedding</span> <span class="op">&lt;=&gt;</span> <span class="nm">$1</span><span class="op">)</span> <span class="nm">rk</span>
@@ -317,19 +669,19 @@
 <span class="kw">SELECT</span> <span class="nm">id</span><span class="op">,</span> <span class="fn">SUM</span><span class="op">(</span><span class="nu">1.0</span><span class="op">/(</span><span class="nu">60</span><span class="op">+</span><span class="nm">rk</span><span class="op">))</span> <span class="nm">score</span>
 <span class="kw">FROM</span> <span class="op">(</span><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> <span class="nm">semantic</span> <span class="kw">UNION ALL SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> <span class="nm">lexical</span><span class="op">)</span> <span class="nm">t</span>
 <span class="kw">GROUP BY</span> <span class="nm">id</span> <span class="kw">ORDER BY</span> <span class="nm">score</span> <span class="kw">DESC</span> <span class="kw">LIMIT</span> <span class="nm">$3</span></pre>
-        </div>
+        </details>
       </div>
     </article>
 
-    <!-- ── 3. Signal Decay ─────────────────────── -->
+    <!-- ── 11. Signal Decay ─────────────────────── -->
     <article class="card" style="--c-accent:#00d4ff;--c-glow:rgba(0,212,255,.12);--c-from:#00d4ff;--c-to:#8b5cf6">
       <div class="accent-bar"></div>
       <div class="card-body">
         <div class="card-top">
-          <div class="c-icon">⚡</div>
+          <div class="c-icon" aria-hidden="true">⚡</div>
           <div class="c-meta">
-            <div class="c-title">Signal Decay</div>
-            <div class="c-desc">Real-time multiplayer word-unscramble duel over WebSockets. Race to decode shuffled words before time runs out. Pluggable LLM endpoint generates dynamic words &amp; hints; 250-word fallback bank ensures offline play.</div>
+            <h3 class="c-title">Signal Decay</h3>
+            <p class="c-desc">Real-time multiplayer word-unscramble duel over WebSockets. Race to decode shuffled words before time runs out. Pluggable LLM endpoint generates dynamic words &amp; hints; 250-word fallback bank ensures offline play.</p>
           </div>
           <div class="c-links">
             <a class="btn btn-gh" href="https://github.com/AleksanderDudek/game-of-words" target="_blank" rel="noopener">
@@ -349,11 +701,11 @@
           <span class="tag ai">LLM API</span>
           <span class="tag sc">SCSS</span>
         </div>
-        <div class="code-wrap">
-          <div class="code-bar">
-            <div class="dot dr"></div><div class="dot dy"></div><div class="dot dg"></div>
+        <details class="code-wrap" open>
+          <summary class="code-bar">
+            <span class="dot dr"></span><span class="dot dy"></span><span class="dot dg"></span>
             <span class="fname">session.ts</span>
-          </div>
+          </summary>
           <pre class="code"><span class="cm">// Game state machine — lobby → countdown → playing ⇄ round_end</span>
 <span class="kw">class</span> <span class="ty">GameSession</span> {
   <span class="kw">private</span> <span class="nm">phase</span><span class="op">:</span> <span class="ty">Phase</span> <span class="op">=</span> <span class="st">'lobby'</span><span class="op">;</span>
@@ -368,19 +720,19 @@
     <span class="op">}</span>
   <span class="op">}</span>
 <span class="op">}</span></pre>
-        </div>
+        </details>
       </div>
     </article>
 
-    <!-- ── 4. Sensor App ────────────────────────── -->
+    <!-- ── 12. Sensor App ────────────────────────── -->
     <article class="card" style="--c-accent:#10b981;--c-glow:rgba(16,185,129,.1);--c-from:#10b981;--c-to:#06b6d4">
       <div class="accent-bar"></div>
       <div class="card-body">
         <div class="card-top">
-          <div class="c-icon">📡</div>
+          <div class="c-icon" aria-hidden="true">📡</div>
           <div class="c-meta">
-            <div class="c-title">Sensor App</div>
-            <div class="c-desc">IoT-style sensor &amp; receiver simulation dashboard. Multiple virtual sensors push live data to receivers via WebSocket; receiver status can be toggled from the UI. Built with configurable sensor/receiver counts and clean component architecture.</div>
+            <h3 class="c-title">Sensor App</h3>
+            <p class="c-desc">IoT-style sensor &amp; receiver simulation dashboard. Multiple virtual sensors push live data to receivers via WebSocket; receiver status can be toggled from the UI. Built with configurable sensor/receiver counts and clean component architecture.</p>
           </div>
           <div class="c-links">
             <a class="btn btn-gh" href="https://github.com/AleksanderDudek/sensor-app" target="_blank" rel="noopener">
@@ -399,11 +751,11 @@
           <span class="tag sc">Husky</span>
           <span class="tag sc">ESLint</span>
         </div>
-        <div class="code-wrap">
-          <div class="code-bar">
-            <div class="dot dr"></div><div class="dot dy"></div><div class="dot dg"></div>
+        <details class="code-wrap" open>
+          <summary class="code-bar">
+            <span class="dot dr"></span><span class="dot dy"></span><span class="dot dg"></span>
             <span class="fname">useSensorData.ts</span>
-          </div>
+          </summary>
           <pre class="code"><span class="cm">// Reactive sensor stream — auto-reconnect on unmount</span>
 <span class="kw">const</span> <span class="fn">useSensorData</span> <span class="op">=</span> <span class="op">(</span><span class="nm">id</span><span class="op">:</span> <span class="ty">string</span><span class="op">) => {</span>
   <span class="kw">const</span> <span class="op">[</span><span class="nm">state</span><span class="op">,</span> <span class="fn">setState</span><span class="op">] =</span> <span class="fn">useState</span><span class="op">&lt;</span><span class="ty">SensorData</span> <span class="op">|</span> <span class="kw">null</span><span class="op">&gt;(</span><span class="kw">null</span><span class="op">);</span>
@@ -417,19 +769,19 @@
 
   <span class="kw">return</span> <span class="nm">state</span><span class="op">;</span>
 <span class="op">};</span></pre>
-        </div>
+        </details>
       </div>
     </article>
 
-    <!-- ── 5. BrainLink ────────────────────────── -->
+    <!-- ── 13. BrainLink ────────────────────────── -->
     <article class="card" style="--c-accent:#ec4899;--c-glow:rgba(236,72,153,.1);--c-from:#ec4899;--c-to:#8b5cf6">
       <div class="accent-bar"></div>
       <div class="card-body">
         <div class="card-top">
-          <div class="c-icon">🧠</div>
+          <div class="c-icon" aria-hidden="true">🧠</div>
           <div class="c-meta">
-            <div class="c-title">BrainLink — EEG-to-Game Engine</div>
-            <div class="c-desc">Reverse-engineered BrainAccess HALO EEG headset for macOS (no official support). FastAPI server exposes real-time brain metrics (Focus, Calm, Flow…) over WebSocket &amp; REST. DSP pipeline: Welch PSD band-power extraction, blink detection, combo states, guided calibration.</div>
+            <h3 class="c-title">BrainLink — EEG-to-Game Engine</h3>
+            <p class="c-desc">Reverse-engineered BrainAccess HALO EEG headset for macOS (no official support). FastAPI server exposes real-time brain metrics (Focus, Calm, Flow…) over WebSocket &amp; REST. DSP pipeline: Welch PSD band-power extraction, blink detection, combo states, guided calibration.</p>
           </div>
           <div class="c-links">
             <a class="btn btn-gh" href="https://github.com/AleksanderDudek/brainlink-bluetooth-macos-integration" target="_blank" rel="noopener">
@@ -447,11 +799,11 @@
           <span class="tag sc">NumPy</span>
           <span class="tag sc">macOS</span>
         </div>
-        <div class="code-wrap">
-          <div class="code-bar">
-            <div class="dot dr"></div><div class="dot dy"></div><div class="dot dg"></div>
+        <details class="code-wrap" open>
+          <summary class="code-bar">
+            <span class="dot dr"></span><span class="dot dy"></span><span class="dot dg"></span>
             <span class="fname">dsp.py</span>
-          </div>
+          </summary>
           <pre class="code"><span class="cm"># Band-power extraction via Welch PSD — 10 Hz push</span>
 <span class="kw">def</span> <span class="fn">compute_band_powers</span><span class="op">(</span><span class="nm">self</span><span class="op">,</span> <span class="nm">ch</span><span class="op">:</span> <span class="ty">str</span><span class="op">) -></span> <span class="ty">dict</span><span class="op">[</span><span class="ty">str</span><span class="op">,</span> <span class="ty">float</span><span class="op">]:</span>
     <span class="nm">freq</span><span class="op">,</span> <span class="nm">psd</span> <span class="op">=</span> <span class="fn">welch</span><span class="op">(</span><span class="nm">self</span><span class="op">.</span><span class="nm">_buf</span><span class="op">[</span><span class="nm">ch</span><span class="op">],</span> <span class="nm">fs</span><span class="op">=</span><span class="nu">256</span><span class="op">,</span> <span class="nm">nperseg</span><span class="op">=</span><span class="nu">256</span><span class="op">)</span>
@@ -461,19 +813,19 @@
             <span class="nm">freq</span><span class="op">[(</span><span class="nm">freq</span> <span class="op">&gt;=</span> <span class="nm">lo</span><span class="op">) &amp; (</span><span class="nm">freq</span> <span class="op">&lt;</span> <span class="nm">hi</span><span class="op">)]))</span>
         <span class="kw">for</span> <span class="nm">band</span><span class="op">,</span> <span class="op">(</span><span class="nm">lo</span><span class="op">,</span> <span class="nm">hi</span><span class="op">)</span> <span class="kw">in</span> <span class="nm">FREQ_BANDS</span><span class="op">.</span><span class="fn">items</span><span class="op">()</span>
     <span class="op">}</span></pre>
-        </div>
+        </details>
       </div>
     </article>
 
-    <!-- ── 6. Galactic Data Dashboard ─────────── -->
+    <!-- ── 14. Galactic Data Dashboard ─────────── -->
     <article class="card" style="--c-accent:#8b5cf6;--c-glow:rgba(139,92,246,.12);--c-from:#8b5cf6;--c-to:#ec4899">
       <div class="accent-bar"></div>
       <div class="card-body">
         <div class="card-top">
-          <div class="c-icon">🌌</div>
+          <div class="c-icon" aria-hidden="true">🌌</div>
           <div class="c-meta">
-            <div class="c-title">Galactic Data Dashboard</div>
-            <div class="c-desc">Full-stack monorepo that federates REST Countries, SpaceX, PokéAPI &amp; Open-Meteo behind a single GraphQL layer. D3.js bubble charts, radar charts &amp; timelines; AG Grid with virtual scrolling; Redux RTK Query; Storybook component library — all in strict TypeScript.</div>
+            <h3 class="c-title">Galactic Data Dashboard</h3>
+            <p class="c-desc">Full-stack monorepo that federates REST Countries, SpaceX, PokéAPI &amp; Open-Meteo behind a single GraphQL layer. D3.js bubble charts, radar charts &amp; timelines; AG Grid with virtual scrolling; Redux RTK Query; Storybook component library — all in strict TypeScript.</p>
           </div>
           <div class="c-links">
             <a class="btn btn-gh" href="https://github.com/AleksanderDudek/data-visualization-pro" target="_blank" rel="noopener">
@@ -496,11 +848,11 @@
           <span class="tag sb">Storybook</span>
           <span class="tag nx">npm workspaces</span>
         </div>
-        <div class="code-wrap">
-          <div class="code-bar">
-            <div class="dot dr"></div><div class="dot dy"></div><div class="dot dg"></div>
+        <details class="code-wrap" open>
+          <summary class="code-bar">
+            <span class="dot dr"></span><span class="dot dy"></span><span class="dot dg"></span>
             <span class="fname">resolvers/galaxy.ts</span>
-          </div>
+          </summary>
           <pre class="code"><span class="cm">// GraphQL federation — 4 REST APIs unified in one query</span>
 <span class="kw">const</span> <span class="nm">resolvers</span> <span class="op">= {</span>
   <span class="ty">Query</span><span class="op">: {</span>
@@ -512,19 +864,19 @@
     <span class="op">}),</span>
   <span class="op">},</span>
 <span class="op">};</span></pre>
-        </div>
+        </details>
       </div>
     </article>
 
-    <!-- ── 7. AI Devs 4 ──────────────────────── -->
+    <!-- ── 15. AI Devs 4 ──────────────────────── -->
     <article class="card" style="--c-accent:#a78bfa;--c-glow:rgba(167,139,250,.1);--c-from:#a78bfa;--c-to:#f472b6">
       <div class="accent-bar"></div>
       <div class="card-body">
         <div class="card-top">
-          <div class="c-icon">🤖</div>
+          <div class="c-icon" aria-hidden="true">🤖</div>
           <div class="c-meta">
-            <div class="c-title">AI Devs 4 — TypeScript Solutions</div>
-            <div class="c-desc">Modular solution set for the AI_devs 4 certification programme. Abstracted LLM clients for Anthropic, OpenAI &amp; Gemini behind a unified wrapper supporting structured outputs via Zod schemas; centralised Hub API client with task submission; secure env-driven config.</div>
+            <h3 class="c-title">AI Devs 4 — TypeScript Solutions</h3>
+            <p class="c-desc">Modular solution set for the AI_devs 4 certification programme. Abstracted LLM clients for Anthropic, OpenAI &amp; Gemini behind a unified wrapper supporting structured outputs via Zod schemas; centralised Hub API client with task submission; secure env-driven config.</p>
           </div>
           <div class="c-links">
             <a class="btn btn-gh" href="https://github.com/AleksanderDudek/aidevs4-solutions-typescript" target="_blank" rel="noopener">
@@ -541,11 +893,11 @@
           <span class="tag sc">Zod</span>
           <span class="tag sc">tsx</span>
         </div>
-        <div class="code-wrap">
-          <div class="code-bar">
-            <div class="dot dr"></div><div class="dot dy"></div><div class="dot dg"></div>
+        <details class="code-wrap" open>
+          <summary class="code-bar">
+            <span class="dot dr"></span><span class="dot dy"></span><span class="dot dg"></span>
             <span class="fname">lib/llm.ts</span>
-          </div>
+          </summary>
           <pre class="code"><span class="cm">// Provider-agnostic structured completion</span>
 <span class="kw">export async function</span> <span class="fn">completeStructured</span><span class="op">&lt;</span><span class="ty">T</span><span class="op">&gt;(</span>
   <span class="nm">system</span><span class="op">:</span> <span class="ty">string</span><span class="op">,</span>
@@ -559,19 +911,19 @@
   <span class="op">});</span>
   <span class="kw">return</span> <span class="nm">schema</span><span class="op">.</span><span class="fn">parse</span><span class="op">(</span><span class="ty">JSON</span><span class="op">.</span><span class="fn">parse</span><span class="op">(</span><span class="nm">content</span><span class="op">[</span><span class="nu">0</span><span class="op">].</span><span class="nm">text</span><span class="op">));</span>
 <span class="op">}</span></pre>
-        </div>
+        </details>
       </div>
     </article>
 
-    <!-- ── 8. React Vite Boilerplate ─────────── -->
+    <!-- ── 16. React Vite Boilerplate ─────────── -->
     <article class="card" style="--c-accent:#f97316;--c-glow:rgba(249,115,22,.1);--c-from:#f97316;--c-to:#f59e0b">
       <div class="accent-bar"></div>
       <div class="card-body">
         <div class="card-top">
-          <div class="c-icon">🚀</div>
+          <div class="c-icon" aria-hidden="true">🚀</div>
           <div class="c-meta">
-            <div class="c-title">React / Vite / TS Boilerplate</div>
-            <div class="c-desc">Production-ready starter template with every quality gate wired up: Vitest + RTL with 70 % coverage thresholds, SonarQube Cloud, multi-stage Docker build (Node → nginx), GitHub Actions pipeline (lint → type-check → test → sonar → docker → deploy), Husky pre-push guard, typed env vars.</div>
+            <h3 class="c-title">React / Vite / TS Boilerplate</h3>
+            <p class="c-desc">Production-ready starter template with every quality gate wired up: Vitest + RTL with 70 % coverage thresholds, SonarQube Cloud, multi-stage Docker build (Node → nginx), GitHub Actions pipeline (lint → type-check → test → sonar → docker → deploy), Husky pre-push guard, typed env vars.</p>
           </div>
           <div class="c-links">
             <a class="btn btn-gh" href="https://github.com/AleksanderDudek/react-vite-typescript-boilerplate" target="_blank" rel="noopener">
@@ -592,11 +944,11 @@
           <span class="tag sc">Husky</span>
           <span class="tag sc">ESLint 9</span>
         </div>
-        <div class="code-wrap">
-          <div class="code-bar">
-            <div class="dot dr"></div><div class="dot dy"></div><div class="dot dg"></div>
+        <details class="code-wrap" open>
+          <summary class="code-bar">
+            <span class="dot dr"></span><span class="dot dy"></span><span class="dot dg"></span>
             <span class="fname">vite.config.ts</span>
-          </div>
+          </summary>
           <pre class="code"><span class="cm">// Coverage gates + path aliases — CI fails below threshold</span>
 <span class="kw">export default</span> <span class="fn">defineConfig</span><span class="op">({</span>
   <span class="nm">plugins</span><span class="op">: [</span><span class="fn">react</span><span class="op">()],</span>
@@ -611,19 +963,19 @@
     <span class="op">},</span>
   <span class="op">},</span>
 <span class="op">});</span></pre>
-        </div>
+        </details>
       </div>
     </article>
 
-    <!-- ── 9. Pixabay Scripts ─────────────────── -->
+    <!-- ── 17. Pixabay Scripts ─────────────────── -->
     <article class="card" style="--c-accent:#f59e0b;--c-glow:rgba(245,158,11,.1);--c-from:#f59e0b;--c-to:#10b981">
       <div class="accent-bar"></div>
       <div class="card-body">
         <div class="card-top">
-          <div class="c-icon">🎬</div>
+          <div class="c-icon" aria-hidden="true">🎬</div>
           <div class="c-meta">
-            <div class="c-title">Pixabay Script Video Generator</div>
-            <div class="c-desc">Python toolset that transforms screenplay sentences into visual content. Extracts visual keywords per scene using NLP stop-word filtering, then searches Pixabay with multi-strategy fallback (phrase → individual terms), returning ranked download URLs for both videos and images.</div>
+            <h3 class="c-title">Pixabay Script Video Generator</h3>
+            <p class="c-desc">Python toolset that transforms screenplay sentences into visual content. Extracts visual keywords per scene using NLP stop-word filtering, then searches Pixabay with multi-strategy fallback (phrase → individual terms), returning ranked download URLs for both videos and images.</p>
           </div>
           <div class="c-links">
             <a class="btn btn-gh" href="https://github.com/AleksanderDudek/pixabay-api-scripts" target="_blank" rel="noopener">
@@ -639,11 +991,11 @@
           <span class="tag sc">NLP keyword extraction</span>
           <span class="tag sc">dotenv</span>
         </div>
-        <div class="code-wrap">
-          <div class="code-bar">
-            <div class="dot dr"></div><div class="dot dy"></div><div class="dot dg"></div>
+        <details class="code-wrap" open>
+          <summary class="code-bar">
+            <span class="dot dr"></span><span class="dot dy"></span><span class="dot dg"></span>
             <span class="fname">get_pixabay_videos.py</span>
-          </div>
+          </summary>
           <pre class="code"><span class="cm"># Smart keyword extraction with multi-strategy fallback</span>
 <span class="kw">def</span> <span class="fn">extract_keywords</span><span class="op">(</span><span class="nm">sentence</span><span class="op">:</span> <span class="ty">str</span><span class="op">) -></span> <span class="ty">list</span><span class="op">[</span><span class="ty">str</span><span class="op">]:</span>
     <span class="nm">stop</span> <span class="op">= {</span><span class="st">'a'</span><span class="op">,</span> <span class="st">'an'</span><span class="op">,</span> <span class="st">'the'</span><span class="op">,</span> <span class="st">'is'</span><span class="op">,</span> <span class="st">'in'</span><span class="op">,</span> <span class="st">'over'</span><span class="op">,</span> <span class="st">'with'</span><span class="op">}</span>
@@ -652,19 +1004,19 @@
             <span class="kw">if</span> <span class="nm">w</span><span class="op">.</span><span class="fn">strip</span><span class="op">(</span><span class="st">'.,!'</span><span class="op">)</span> <span class="kw">not in</span> <span class="nm">stop</span><span class="op">][:</span><span class="nu">4</span><span class="op">]</span>
 
 <span class="nm">results</span> <span class="op">=</span> <span class="nm">retriever</span><span class="op">.</span><span class="fn">process_script_scenes</span><span class="op">(</span><span class="nm">script_sentences</span><span class="op">)</span></pre>
-        </div>
+        </details>
       </div>
     </article>
 
-    <!-- ── 10. GSC Auto-Indexer ─────────────────── -->
+    <!-- ── 18. GSC Auto-Indexer ─────────────────── -->
     <article class="card" style="--c-accent:#60a5fa;--c-glow:rgba(96,165,250,.1);--c-from:#3b82f6;--c-to:#06b6d4">
       <div class="accent-bar"></div>
       <div class="card-body">
         <div class="card-top">
-          <div class="c-icon">🔍</div>
+          <div class="c-icon" aria-hidden="true">🔍</div>
           <div class="c-meta">
-            <div class="c-title">GSC Auto-Indexer</div>
-            <div class="c-desc">Automates Google Search Console URL submission. Authenticates via a service-account JSON key, parses all sitemaps (supports nested / multi-sitemap setups), batches URL_UPDATED notifications to the Indexing API — no paid SEO tool required. Extended original with multiple-sitemap support.</div>
+            <h3 class="c-title">GSC Auto-Indexer</h3>
+            <p class="c-desc">Automates Google Search Console URL submission. Authenticates via a service-account JSON key, parses all sitemaps (supports nested / multi-sitemap setups), batches URL_UPDATED notifications to the Indexing API — no paid SEO tool required. Extended original with multiple-sitemap support.</p>
           </div>
           <div class="c-links">
             <a class="btn btn-gh" href="https://github.com/AleksanderDudek/google-search-console-index-api-automated" target="_blank" rel="noopener">
@@ -680,11 +1032,11 @@
           <span class="tag sc">Sitemap XML</span>
           <span class="tag sc">SEO automation</span>
         </div>
-        <div class="code-wrap">
-          <div class="code-bar">
-            <div class="dot dr"></div><div class="dot dy"></div><div class="dot dg"></div>
+        <details class="code-wrap" open>
+          <summary class="code-bar">
+            <span class="dot dr"></span><span class="dot dy"></span><span class="dot dg"></span>
             <span class="fname">main.py</span>
-          </div>
+          </summary>
           <pre class="code"><span class="cm"># Batch URL_UPDATED via Google Indexing API</span>
 <span class="kw">def</span> <span class="fn">submit_urls</span><span class="op">(</span><span class="nm">urls</span><span class="op">:</span> <span class="ty">list</span><span class="op">[</span><span class="ty">str</span><span class="op">],</span> <span class="nm">service</span><span class="op">) -></span> <span class="ty">None</span><span class="op">:</span>
     <span class="kw">for</span> <span class="nm">url</span> <span class="kw">in</span> <span class="nm">urls</span><span class="op">:</span>
@@ -692,7 +1044,7 @@
             <span class="nm">body</span><span class="op">={</span><span class="st">"url"</span><span class="op">:</span> <span class="nm">url</span><span class="op">,</span> <span class="st">"type"</span><span class="op">:</span> <span class="st">"URL_UPDATED"</span><span class="op">}</span>
         <span class="op">).</span><span class="fn">execute</span><span class="op">()</span>
         <span class="fn">print</span><span class="op">(</span><span class="st">f"✓ Indexed: <span class="op">{</span><span class="nm">url</span><span class="op">}</span>"</span><span class="op">)</span></pre>
-        </div>
+        </details>
       </div>
     </article>
     
@@ -806,13 +1158,13 @@
       <div class="accent-bar"></div>
       <div class="card-body">
         <div class="card-top">
-          <div class="c-icon">🧘</div>
+          <div class="c-icon" aria-hidden="true">🧘</div>
           <div class="c-meta">
-            <div class="c-title">
+            <h3 class="c-title">
               Tylko Luz Nas Uratuje
               <span class="lang-badge">🇵🇱 Polish</span>
-            </div>
-            <div class="c-desc">Kompletna biblioteka wellbeing — 7 kursów wideo, kontakt bezpośredni i przyszłe materiały w jednej subskrypcji. Oddech, nerw błędny, emocje, koncentracja, technologie.</div>
+            </h3>
+            <p class="c-desc">Kompletna biblioteka wellbeing — 7 kursów wideo, kontakt bezpośredni i przyszłe materiały w jednej subskrypcji. Oddech, nerw błędny, emocje, koncentracja, technologie.</p>
           </div>
           <div class="c-links">
             <a class="btn btn-live" href="https://aleksanderdudek.github.io/monorepo/tylko-luz-nas-uratuje/" target="_blank" rel="noopener">▶ Page</a>
@@ -836,13 +1188,13 @@
       <div class="accent-bar"></div>
       <div class="card-body">
         <div class="card-top">
-          <div class="c-icon">🎯</div>
+          <div class="c-icon" aria-hidden="true">🎯</div>
           <div class="c-meta">
-            <div class="c-title">
+            <h3 class="c-title">
               Stań się Mistrzem Koncentracji i Stanu Flow
               <span class="lang-badge">🇵🇱 Polish</span>
-            </div>
-            <div class="c-desc">E-book + video o budowaniu głębokiej koncentracji. System oparty na psychologii poznawczej, neurofizjologii stresu i technikach elitarnego sportu (Box Breathing).</div>
+            </h3>
+            <p class="c-desc">E-book + video o budowaniu głębokiej koncentracji. System oparty na psychologii poznawczej, neurofizjologii stresu i technikach elitarnego sportu (Box Breathing).</p>
           </div>
           <div class="c-links">
             <a class="btn btn-live" href="https://aleksanderdudek.github.io/monorepo/flow-landing/" target="_blank" rel="noopener">▶ Page</a>
@@ -866,13 +1218,13 @@
       <div class="accent-bar"></div>
       <div class="card-body">
         <div class="card-top">
-          <div class="c-icon">🌬️</div>
+          <div class="c-icon" aria-hidden="true">🌬️</div>
           <div class="c-meta">
-            <div class="c-title">
+            <h3 class="c-title">
               Oddech, Który Zmienia Życie
               <span class="lang-badge">🇵🇱 Polish</span>
-            </div>
-            <div class="c-desc">Kurs wideo o świadomym oddychaniu — 5 odcinków + 3 sesje prowadzone z odliczaniem (5/10/15 min). Technika stosowana przez Navy SEALs i kontrolerów lotów.</div>
+            </h3>
+            <p class="c-desc">Kurs wideo o świadomym oddychaniu — 5 odcinków + 3 sesje prowadzone z odliczaniem (5/10/15 min). Technika stosowana przez Navy SEALs i kontrolerów lotów.</p>
           </div>
           <div class="c-links">
             <a class="btn btn-live" href="https://aleksanderdudek.github.io/monorepo/oddech-zmieniajacy-zycie/" target="_blank" rel="noopener">▶ Page</a>
@@ -896,13 +1248,13 @@
       <div class="accent-bar"></div>
       <div class="card-body">
         <div class="card-top">
-          <div class="c-icon">💆</div>
+          <div class="c-icon" aria-hidden="true">💆</div>
           <div class="c-meta">
-            <div class="c-title">
+            <h3 class="c-title">
               Emocjonalna Błogość w 15 Minut
               <span class="lang-badge">🇵🇱 Polish</span>
-            </div>
-            <div class="c-desc">Kurs o pracy z ciałem przez świadomy dotyk i akupresurę. Wideo, sesje praktyczne, grafiki instruktażowe. Działa w biurze, w domu, w podróży — bez sprzętu.</div>
+            </h3>
+            <p class="c-desc">Kurs o pracy z ciałem przez świadomy dotyk i akupresurę. Wideo, sesje praktyczne, grafiki instruktażowe. Działa w biurze, w domu, w podróży — bez sprzętu.</p>
           </div>
           <div class="c-links">
             <a class="btn btn-live" href="https://aleksanderdudek.github.io/monorepo/emocjonalna-blogosc/" target="_blank" rel="noopener">▶ Page</a>
@@ -957,7 +1309,7 @@
 
       <div class="credential-gallery">
         <article class="credential-media">
-          <img src="assets/credentials/page-7.png" alt="AI Devs certificate scan" />
+          <img src="assets/credentials/thumbs/page-7.jpg" alt="AI Devs certificate scan" width="990" height="700" loading="lazy" decoding="async" />
           <div class="credential-copy">
             <h4>AI Devs Certificate</h4>
             <p>Embedded scan rendered directly from the CV PDF so the credential is visible on the page instead of only living inside the document.</p>
@@ -969,7 +1321,7 @@
         </article>
 
         <article class="credential-media">
-          <img src="assets/credentials/page-5.png" alt="Engineer's diploma scan" />
+          <img src="assets/credentials/thumbs/page-5.jpg" alt="Engineer's diploma scan" width="990" height="700" loading="lazy" decoding="async" />
           <div class="credential-copy">
             <h4>Engineer's Diploma</h4>
             <p>Academic diploma scan extracted from the PDF and surfaced in the certifications area so it is visible without opening the full CV first.</p>
@@ -982,7 +1334,7 @@
         </article>
 
         <article class="credential-media">
-          <img src="assets/credentials/page-8.png" alt="Opanuj Frontend AI Edition certificate scan" />
+          <img src="assets/credentials/thumbs/page-8.jpg" alt="Opanuj Frontend AI Edition certificate scan" width="990" height="700" loading="lazy" decoding="async" />
           <div class="credential-copy">
             <h4>Opanuj Frontend AI Edition</h4>
             <p>Training certificate scan rendered from the PDF with the same credential details summarized above.</p>
@@ -1013,11 +1365,11 @@
         <div class="card-top">
           <div class="interest-num">01</div>
           <div class="c-meta">
-            <div class="c-title">
+            <h3 class="c-title">
               Stan się Mistrzem Koncentracji i Stanu Flow
               <span class="lang-badge">🇵🇱 Polish</span>
-            </div>
-            <div class="c-desc">Naukowe podstawy i praktyczne techniki osiągania głębokiej koncentracji oraz stanu flow — dla programistów i twórców.</div>
+            </h3>
+            <p class="c-desc">Naukowe podstawy i praktyczne techniki osiągania głębokiej koncentracji oraz stanu flow — dla programistów i twórców.</p>
           </div>
           <div class="c-links">
             <a class="btn btn-live" href="https://www.naffy.io/aleksander-dudek/stan-sie-mistrzem-koncentracji-i-stanu-flow-fg7" target="_blank" rel="noopener">▶ Kurs</a>
@@ -1038,11 +1390,11 @@
         <div class="card-top">
           <div class="interest-num">02</div>
           <div class="c-meta">
-            <div class="c-title">
+            <h3 class="c-title">
               Oddech, który Zmienia Życie
               <span class="lang-badge">🇵🇱 Polish</span>
-            </div>
-            <div class="c-desc">Kurs wideo o technikach oddechowych zmieniających codzienne funkcjonowanie — redukcja stresu, lepsza energia i klarowność umysłu.</div>
+            </h3>
+            <p class="c-desc">Kurs wideo o technikach oddechowych zmieniających codzienne funkcjonowanie — redukcja stresu, lepsza energia i klarowność umysłu.</p>
           </div>
           <div class="c-links">
             <a class="btn btn-live" href="https://www.naffy.io/aleksander-dudek/oddech-ktory-zmienia-zycie-kurs-wideo-VyJ" target="_blank" rel="noopener">▶ Kurs</a>
@@ -1063,11 +1415,11 @@
         <div class="card-top">
           <div class="interest-num">03</div>
           <div class="c-meta">
-            <div class="c-title">
+            <h3 class="c-title">
               Tylko Luz Nas Uratuje
               <span class="lang-badge">🇵🇱 Polish</span>
-            </div>
-            <div class="c-desc">Przewodnik po sztuce wewnętrznego luzu — jak zachować spokój, elastyczność i humor w życiu i pracy bez utraty skuteczności.</div>
+            </h3>
+            <p class="c-desc">Przewodnik po sztuce wewnętrznego luzu — jak zachować spokój, elastyczność i humor w życiu i pracy bez utraty skuteczności.</p>
           </div>
           <div class="c-links">
             <a class="btn btn-live" href="https://www.naffy.io/aleksander-dudek/tylko-luz-nas-uratuje-fYr" target="_blank" rel="noopener">▶ Kurs</a>
